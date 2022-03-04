@@ -1,0 +1,43 @@
+<world> <!-- a world can have a camera, a set of lights, and a single group -->
+
+    <camera>
+	    <position x="10" y="10" z="10" />
+	    <lookAt x="0" y="0" z="0" />
+	    <up x="0" y="1" z="0" /> <!-- optional, use these values as default-->
+        <projection fov="60" near="1" far="1000" /> <!-- optional, use these values as default-->
+    </camera>
+
+    <lights> <!-- Required only in phase 4. It can contain up to 8 "light" items -->
+		<light type="point" posX="0" posY="10" posZ="0" />
+        <light type="directional" dirX="1" dirY="1" dirZ="1"/>
+        <light type="spotlight" posX="0" posY="10" posZ="0"   dirX="1" dirY="1" dirZ="1"   cutoff="45" />
+	</lights>
+
+	<group> <!-- can contain a single "transform" item, a single "models" item,
+                and multiple "group" items -->
+        <transform> <!-- not required in phase 1. A single "transform" node is allowed-->
+            <!-- only one entry for each type of transformation (translate, rotate, scale) -->
+            <!-- order is relevant: translate followed by scale can produce results different
+                from scale followed by translation -->
+		    <translate X="5" Y="0" Z="2" />
+		    <rotate angle="45" axisX="0" axisY="1" axisZ="0" />
+            <scale X="2" Y="2" Z="2" />
+        </transform>
+  		<models> <!-- can contain multiple 'model' items.
+                    Each model requires a file. Texture and color are optional -->
+			<model file="sphere.3d" >
+                <!-- it texture is not specified then the model is rendered with color only-->
+                <texture file="earth.jpg" />
+                <!-- if color is not specified, use the values below as defualt -->
+                <color>
+                    <diffuse R="200" G="200" B="200" />
+                    <ambient R="50" G="50" B="50" />
+                    <specular R="0" G="0" B="0" />
+                    <emissive R="0" G="0" B="0" />
+                    <shininess value="0" />
+                </color>
+            </model>
+
+ 		</models>
+ 	</group>
+ </world>
