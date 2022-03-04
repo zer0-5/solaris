@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../common/include/point.hpp"
+#include "point.hpp"
 
 #include <vector>
 #include <string>
