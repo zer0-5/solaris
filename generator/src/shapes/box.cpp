@@ -16,7 +16,7 @@ std::vector<Point> Box::calculateCoords() const {
     for(size_t i = 0; i < n_faces; ++i) {
         switch (i) {
             case 1: { // Face base
-                Point starting_base = Point(-length / 2, 0, length / 2);
+                Point starting_base = Point(-length / 2, -length / 2, length / 2);
                 for (size_t j = 0; j < n_divisions; ++j) {
                     for (size_t k = 0; k < n_divisions; ++k) {
                         Point p1 = starting_base + Point(k * plane_step, 0, j * plane_step);
@@ -36,7 +36,7 @@ std::vector<Point> Box::calculateCoords() const {
                 break;
             }
             case 2: { // Face do topo
-                Point starting_top = Point(-length / 2, length, length / 2);
+                Point starting_top = Point(-length / 2, length / 2, length / 2);
                 for (size_t j = 0; j < n_divisions; ++j) {
                     for (size_t k = 0; k < n_divisions; ++k) {
                         Point p1 = starting_top + Point(k * plane_step, length, j * plane_step);
@@ -57,7 +57,7 @@ std::vector<Point> Box::calculateCoords() const {
             }
             case 3: { // Face traseira direita
                 // coordenada do eixo zz mantém-se fixa, coordenada do eixo yy vai aumentando e coordenada do eixo xx vai diminuindo
-                Point starting_back_r = Point(length / 2, 0, -length / 2);
+                Point starting_back_r = Point(length / 2, -length / 2, -length / 2);
                 for (size_t j = 0; j < n_divisions; j++) {
                     for (size_t k = 0; k < n_divisions; k++) {
                         Point p1 = starting_back_r + Point(-((j * plane_step)), k * plane_step, length / 2);
@@ -78,7 +78,7 @@ std::vector<Point> Box::calculateCoords() const {
             }
             case 4: { // Face traseira esquerda
                 // coordenada do eixo xx mantém-se fixa e coordenada do eixo zz e yy vai aumentando
-                Point starting_back_l = Point(-length / 2, 0, -length / 2);
+                Point starting_back_l = Point(-length / 2, -length / 2, -length / 2);
                 for (size_t j = 0; j < n_divisions; j++) {
                     for (size_t k = 0; k < n_divisions; k++) {
                         Point p1 = starting_back_l + Point(-length / 2, k * plane_step, j * plane_step);
@@ -99,7 +99,7 @@ std::vector<Point> Box::calculateCoords() const {
             }
             case 5: { // Face Frontal Esquerda
                 // coordenada do eixo zz mantém-se fixa e coordenada do eixo dos xx e yy vai aumentando
-                Point starting_front_l = Point(-length / 2, 0, length / 2);
+                Point starting_front_l = Point(-length / 2, -length / 2, length / 2);
                 for (size_t j = 0; j < n_divisions; j++) {
                     for (size_t k = 0; k < n_divisions; k++) {
                         Point p1 = starting_front_l + Point((j * plane_step), k * plane_step, length / 2);
@@ -120,7 +120,7 @@ std::vector<Point> Box::calculateCoords() const {
             }
             case 6: { // Face frontal direita
                 // coordenada do eixo xx mantém-se fixa, coordenada do eixo dos yy vai aumentando e coordenada do eixo dos zz diminuindo
-                Point starting_front_r = Point(length / 2, 0, length / 2);
+                Point starting_front_r = Point(length / 2, -length / 2, length / 2);
                 for (size_t j = 0; j < n_divisions; j++) {
                     for (size_t k = 0; k < n_divisions; k++) {
                         Point p1 = starting_front_r + Point(length / 2, k * plane_step, -(j * plane_step));
