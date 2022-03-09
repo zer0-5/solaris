@@ -27,22 +27,27 @@ std::vector<Point> Cone::calculateCoords() const{
             // P3 --- P4
             // |      |
             // P1 --- P2
-            Point p1 = Point(sin(current_slice_alpha) * current_stack_radius, current_stack_height, cos(current_slice_alpha) * current_stack_radius);
-            Point p2 = Point(sin(next_slice_alpha) * current_stack_radius, current_stack_height, cos(next_slice_alpha) * current_stack_radius);
-            Point p3 = Point(sin(current_slice_alpha) * next_stack_radius, next_stack_height, cos(current_slice_alpha) * next_stack_radius);
-            Point p4 = Point(sin(next_slice_alpha) * next_stack_radius, next_stack_height, cos(next_slice_alpha) * next_stack_radius);
+            Point p1 = Point(cos(current_slice_alpha) * current_stack_radius, current_stack_height, -sin(current_slice_alpha) * current_stack_radius);
+            Point p2 = Point(cos(next_slice_alpha) * current_stack_radius, current_stack_height, -sin(next_slice_alpha) * current_stack_radius);
+            Point p3 = Point(cos(current_slice_alpha) * next_stack_radius, next_stack_height, -sin(current_slice_alpha) * next_stack_radius);
+            Point p4 = Point(cos(next_slice_alpha) * next_stack_radius, next_stack_height, -sin(next_slice_alpha) * next_stack_radius);
 
-            coords.push_back(p1);
             coords.push_back(p2);
             coords.push_back(p4);
+            coords.push_back(p3);
 
             if(stack != n_stacks){
                 coords.push_back(p3);
                 coords.push_back(p1);
                 coords.push_back(p2);
             }
+            else{
+                // top
+                coords.push_back(p2);
+                coords.push_back(p4);
+                coords.push_back(p3);
+            }
         }
     }
-    
     return coords;
 }
