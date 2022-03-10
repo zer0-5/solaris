@@ -5,7 +5,10 @@ project(engine)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+file(GLOB SRC_FILES src/*.cpp)
+add_executable(${PROJECT_NAME} ${SRC_FILES})
+
+target_link_libraries(${PROJECT_NAME} common tinyxml2 fmt Result)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})
@@ -44,7 +47,7 @@ else (WIN32) #Linux and Mac
 	link_directories(${GLUT_LIBRARY_DIRS})
 	add_definitions(${GLUT_DEFINITIONS})
 
-	target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} )
+	target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 	if(NOT GLUT_FOUND)
 	   message(ERROR ": GLUT not found!")
 	endif(NOT GLUT_FOUND)

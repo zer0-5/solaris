@@ -29,3 +29,8 @@ void Point::sumY(float y) {
 void Point::sumZ(float z) {
     _z += z;
 }
+
+auto operator<<(std::ostream& oss, Point const& p) -> std::ostream& {
+    oss << p._x << ' ' << p._y << ' ' << p._z;
+    return oss;
+}
