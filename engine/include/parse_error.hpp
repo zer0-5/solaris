@@ -1,0 +1,17 @@
+#pragma once
+
+#include <string>
+
+enum ParseError : char {
+    COULD_NOT_OPEN_XML_FILE,
+    NO_CAMERA_POSITION_ELEMENT,
+    NO_CAMERA_LOOK_AT_ELEMENT,
+    NO_CAMERA_UP_ELEMENT,
+    NO_CAMERA_PROJECTION_ELEMENT,
+    NO_GROUP_MODELS_ELEMENT,
+    MALFORMED_POINT,
+    MALFORMED_PROJECTION,
+    PRIMITIVE_FILE_NOT_FOUND
+};
+
+char const* const error_msg(ParseError);

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class Point {
   private:
     float _x, _y, _z;
@@ -14,4 +16,5 @@ class Point {
     void sumX(float);
     void sumY(float);
     void sumZ(float);
+    auto friend operator<<(std::ostream&, Point const&) -> std::ostream&;
 };
