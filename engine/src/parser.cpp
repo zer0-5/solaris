@@ -27,8 +27,8 @@ auto parse_point(XMLElement const* const node) noexcept
 {
 
     float x, y, z;
-    if (node->QueryFloatAttribute("x", &x) == XML_SUCCESS ||
-        node->QueryFloatAttribute("y", &y) == XML_SUCCESS ||
+    if (node->QueryFloatAttribute("x", &x) == XML_SUCCESS &&
+        node->QueryFloatAttribute("y", &y) == XML_SUCCESS &&
         node->QueryFloatAttribute("z", &z) == XML_SUCCESS
     ) {
         return Point(x, y, z);
@@ -42,8 +42,8 @@ auto parse_projection(XMLElement const* const node) noexcept
     -> cpp::result<Point, ParseError>
 {
     float x, y, z;
-    if (node->QueryFloatAttribute("fov",  &x) == XML_SUCCESS ||
-        node->QueryFloatAttribute("near", &y) == XML_SUCCESS ||
+    if (node->QueryFloatAttribute("fov",  &x) == XML_SUCCESS &&
+        node->QueryFloatAttribute("near", &y) == XML_SUCCESS &&
         node->QueryFloatAttribute("far",  &z) == XML_SUCCESS
     ) {
         return Point(x, y, z);
