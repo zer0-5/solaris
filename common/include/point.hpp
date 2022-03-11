@@ -5,12 +5,13 @@
 class Point {
   private:
     float _x, _y, _z;
+    // Point() : _x(0), _y(0), _z(0) {}
+    Point(float x, float y, float z) : _x(x), _y(y), _z(z) {}
 
   public:
-    Point() : _x(0), _y(0), _z(0) {}
     static Point spherical(float, float, float);
+    static Point cartesian(float, float, float);
     Point operator+(Point);
-    Point(float, float, float);
     float x() const;
     float y() const;
     float z() const;

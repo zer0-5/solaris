@@ -31,7 +31,7 @@ auto parse_point(XMLElement const* const node) noexcept
         node->QueryFloatAttribute("y", &y) == XML_SUCCESS &&
         node->QueryFloatAttribute("z", &z) == XML_SUCCESS
     ) {
-        return Point(x, y, z);
+        return Point::cartesian(x, y, z);
     } else {
         return cpp::failure(ParseError::MALFORMED_POINT);
     }
@@ -46,7 +46,7 @@ auto parse_projection(XMLElement const* const node) noexcept
         node->QueryFloatAttribute("near", &y) == XML_SUCCESS &&
         node->QueryFloatAttribute("far",  &z) == XML_SUCCESS
     ) {
-        return Point(x, y, z);
+        return Point::cartesian(x, y, z);
     } else {
         return cpp::failure(ParseError::MALFORMED_PROJECTION);
     }
@@ -94,7 +94,7 @@ auto parse_model(std::string_view file_path) noexcept
     float x, y, z;
     auto points = std::vector<Point>();
     while (file >> x >> y >> z) {
-        points.push_back(Point(x, y, z));
+        points.push_back(Point::cartesian(x, y, z));
     }
 
     return Model(std::move(points));

@@ -14,10 +14,10 @@ class Camera {
 
   public:
     Camera()
-      : _eye(Point())
-      , _center(Point())
-      , _up(Point())
-      , _projection(Point()) {}
+      : _eye(Point::cartesian(0, 0, 0))
+      , _center(Point::cartesian(0, 0, 0))
+      , _up(Point::cartesian(0, 0, 0))
+      , _projection(Point::cartesian(0, 0, 0)) {}
     Camera(Point&& eye, Point&& center, Point&& up, Point&& projection)
       : _eye(std::move(eye))
       , _center(std::move(center))

@@ -2,17 +2,19 @@
 
 #include <math.h>
 
-Point::Point(float x, float y, float z) : _x(x), _y(y), _z(z) {}
-
-Point Point::operator+(Point other) {
-    return Point(_x + other._x, _y + other._y, _z + other._z);
+Point  Point::cartesian(float x, float y, float z) {
+    return Point::cartesian(x, y, z);
 }
 
 Point Point::spherical(float radius, float alpha, float beta) {
-    return Point(
+    return Point::cartesian(
         radius * cos(beta) * sin(alpha),
         radius * sin(beta),
         radius * cos(beta) * cos(alpha));
+}
+
+Point Point::operator+(Point other) {
+    return Point::cartesian(_x + other._x, _y + other._y, _z + other._z);
 }
 
 float Point::x() const {

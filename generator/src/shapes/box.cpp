@@ -12,16 +12,16 @@ Box::Box(int argc, char** argv){
 std::vector<Point> Box::calculateCoords() const {
     std::vector<Point> coords;
     float const plane_step = length / n_divisions;
-    Point starting_point = Point(-length/2, - length/2, -length/2);
+    Point starting_point = Point::cartesian(-length/2, - length/2, -length/2);
 
     for (size_t j = 0; j < n_divisions; ++j) {
         for (size_t k = 0; k < n_divisions; ++k) {
 
             // Base triangles
-            Point p1 = starting_point + Point(k * plane_step, 0, j * plane_step);
-            Point p2 = starting_point + Point(k * plane_step, 0, (j + 1) * plane_step);
-            Point p3 = starting_point + Point((k + 1) * plane_step, 0, j * plane_step);
-            Point p4 = starting_point + Point((k + 1) * plane_step, 0, (j + 1) * plane_step);
+            Point p1 = starting_point + Point::cartesian(k * plane_step, 0, j * plane_step);
+            Point p2 = starting_point + Point::cartesian(k * plane_step, 0, (j + 1) * plane_step);
+            Point p3 = starting_point + Point::cartesian((k + 1) * plane_step, 0, j * plane_step);
+            Point p4 = starting_point + Point::cartesian((k + 1) * plane_step, 0, (j + 1) * plane_step);
 
             coords.push_back(p3);
             coords.push_back(p2);
@@ -43,10 +43,10 @@ std::vector<Point> Box::calculateCoords() const {
             coords.push_back(p3);
 
             // Back Right triangles
-            p1 = starting_point + Point(k * plane_step, j * plane_step, 0);
-            p2 = starting_point + Point(k * plane_step, (j + 1) * plane_step, 0);
-            p3 = starting_point + Point((k + 1) * plane_step, j * plane_step, 0);
-            p4 = starting_point + Point((k + 1) * plane_step, (j + 1) * plane_step, 0);
+            p1 = starting_point + Point::cartesian(k * plane_step, j * plane_step, 0);
+            p2 = starting_point + Point::cartesian(k * plane_step, (j + 1) * plane_step, 0);
+            p3 = starting_point + Point::cartesian((k + 1) * plane_step, j * plane_step, 0);
+            p4 = starting_point + Point::cartesian((k + 1) * plane_step, (j + 1) * plane_step, 0);
 
             coords.push_back(p1);
             coords.push_back(p2);
@@ -68,10 +68,10 @@ std::vector<Point> Box::calculateCoords() const {
             coords.push_back(p2);
 
             // Left Back triangles
-            p1 = starting_point + Point(0, k * plane_step, j * plane_step);
-            p2 = starting_point + Point(0, (k + 1) * plane_step, j * plane_step);
-            p3 = starting_point + Point(0, k * plane_step, (j + 1) * plane_step);
-            p4 = starting_point + Point(0, (k + 1) * plane_step, (j + 1) * plane_step);
+            p1 = starting_point + Point::cartesian(0, k * plane_step, j * plane_step);
+            p2 = starting_point + Point::cartesian(0, (k + 1) * plane_step, j * plane_step);
+            p3 = starting_point + Point::cartesian(0, k * plane_step, (j + 1) * plane_step);
+            p4 = starting_point + Point::cartesian(0, (k + 1) * plane_step, (j + 1) * plane_step);
 
             coords.push_back(p3);
             coords.push_back(p2);

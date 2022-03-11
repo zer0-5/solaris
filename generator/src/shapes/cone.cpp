@@ -28,10 +28,10 @@ std::vector<Point> Cone::calculateCoords() const {
             float curr_alpha = alpha * slice;
             float next_alpha = alpha * (slice + 1);
 
-            Point p1 = Point(next_radius * sin(curr_alpha), next_height, next_radius * cos(curr_alpha));
-            Point p2 = Point(next_radius * sin(next_alpha), next_height, next_radius * cos(next_alpha));
-            Point p3 = Point(curr_radius * sin(curr_alpha), curr_height, curr_radius * cos(curr_alpha));
-            Point p4 = Point(curr_radius * sin(next_alpha), curr_height, curr_radius * cos(next_alpha));
+            Point p1 = Point::cartesian(next_radius * sin(curr_alpha), next_height, next_radius * cos(curr_alpha));
+            Point p2 = Point::cartesian(next_radius * sin(next_alpha), next_height, next_radius * cos(next_alpha));
+            Point p3 = Point::cartesian(curr_radius * sin(curr_alpha), curr_height, curr_radius * cos(curr_alpha));
+            Point p4 = Point::cartesian(curr_radius * sin(next_alpha), curr_height, curr_radius * cos(next_alpha));
 
             if (stack != n_stacks - 1) {
                 coords.push_back(p4);
@@ -45,7 +45,7 @@ std::vector<Point> Cone::calculateCoords() const {
 
             if (stack == 0) {
                 // draw base
-                Point o = Point();
+                Point o = Point::cartesian(0, 0, 0);
                 coords.push_back(p4);
                 coords.push_back(p3);
                 coords.push_back(o);
