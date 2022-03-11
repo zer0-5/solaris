@@ -3,7 +3,7 @@
 #include <math.h>
 
 Point  Point::cartesian(float x, float y, float z) {
-    return Point::cartesian(x, y, z);
+    return Point(x, y, z);
 }
 
 Point Point::spherical(float radius, float alpha, float beta) {
