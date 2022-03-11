@@ -2,7 +2,7 @@
 #include <math.h>
 
 Cone::Cone(int argc, char** argv){
-    if (argc < 4){
+    if (argc < 5) {
         throw "wrong number of parameters";
     }
 

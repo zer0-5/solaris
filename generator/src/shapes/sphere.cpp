@@ -3,7 +3,7 @@
 #include <math.h>
 
 Sphere::Sphere(int argc, char** argv) {
-    if (argc < 3) {
+    if (argc < 4) {
         throw "wrong number of parameters";
     }
 

@@ -35,9 +35,7 @@ int main(int argc, char** argv) {
             throw "invalid primitive";
         }
 
-        for (auto& coord : p->calculateCoords()) {
-            printf("%f %f %f\n", coord.x(), coord.y(), coord.z());
-        }
+        p->write(argv[argc - 1]);
 
         delete p;
     } catch (char const* err) {

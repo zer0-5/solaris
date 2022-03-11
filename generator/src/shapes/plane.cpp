@@ -1,7 +1,7 @@
 #include "shapes/plane.hpp"
 
 Plane::Plane(int argc, char** argv) {
-    if (argc < 2) {
+    if (argc < 3) {
         throw "wrong number of parameters";
     }
 

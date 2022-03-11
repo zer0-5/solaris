@@ -10,5 +10,6 @@
 class Primitive {
   public:
     virtual std::vector<Point> calculateCoords() const = 0;
+    void write(char const* const file_path) const;
     virtual ~Primitive(){};
 };
