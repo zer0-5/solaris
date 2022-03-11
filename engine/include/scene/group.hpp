@@ -15,4 +15,5 @@ class Group {
     Group(std::vector<Model> models, std::vector<Group> subgroups)
       : _models(std::move(models))
       , _subgroups(std::move(subgroups)) {}
+    auto draw() const noexcept -> void;
 };

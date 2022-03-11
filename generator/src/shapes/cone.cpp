@@ -12,40 +12,43 @@ Cone::Cone(int argc, char** argv){
     n_stacks = std::stof(argv[3]);
 }
 
-std::vector<Point> Cone::calculateCoords() const{
+std::vector<Point> Cone::calculateCoords() const {
     std::vector<Point> coords;
-    float stacks_height = height / n_stacks;
+    float stack_height = height / n_stacks;
     float alpha = (2 * M_PI) / n_slices;
-    for(size_t stack = 0; stack < n_stacks; ++stack){
-        float current_stack_height = stacks_height * stack;
-        float next_stack_height = stacks_height * (stack + 1);
-        float current_stack_radius = (radius * (height - current_stack_height)) / height;
-        float next_stack_radius = (radius * (height - next_stack_height)) / height;
-        for(size_t slice = 0; slice < n_slices; ++slice){
-            float current_slice_alpha = alpha * slice;
-            float next_slice_alpha = alpha * (slice + 1);
-            // P3 --- P4
-            // |      |
-            // P1 --- P2
-            Point p1 = Point(cos(current_slice_alpha) * current_stack_radius, current_stack_height, -sin(current_slice_alpha) * current_stack_radius);
-            Point p2 = Point(cos(next_slice_alpha) * current_stack_radius, current_stack_height, -sin(next_slice_alpha) * current_stack_radius);
-            Point p3 = Point(cos(current_slice_alpha) * next_stack_radius, next_stack_height, -sin(current_slice_alpha) * next_stack_radius);
-            Point p4 = Point(cos(next_slice_alpha) * next_stack_radius, next_stack_height, -sin(next_slice_alpha) * next_stack_radius);
+    float radius_step = -radius / n_stacks;
 
-            coords.push_back(p2);
+    for (size_t stack = 0; stack < n_stacks; ++stack) {
+        float curr_radius = radius + (radius_step * stack);
+        float next_radius = radius + (radius_step * (stack + 1));
+        float curr_height = stack_height * stack;
+        float next_height = stack_height * (stack + 1);
+
+        for (size_t slice = 0; slice < n_slices; ++slice) {
+            float curr_alpha = alpha * slice;
+            float next_alpha = alpha * (slice + 1);
+
+            Point p1 = Point(next_radius * sin(curr_alpha), next_height, next_radius * cos(curr_alpha));
+            Point p2 = Point(next_radius * sin(next_alpha), next_height, next_radius * cos(next_alpha));
+            Point p3 = Point(curr_radius * sin(curr_alpha), curr_height, curr_radius * cos(curr_alpha));
+            Point p4 = Point(curr_radius * sin(next_alpha), curr_height, curr_radius * cos(next_alpha));
+
+            if (stack != n_stacks - 1) {
+                coords.push_back(p4);
+                coords.push_back(p2);
+                coords.push_back(p1);
+            }
+
             coords.push_back(p4);
+            coords.push_back(p1);
             coords.push_back(p3);
 
-            if(stack != n_stacks){
-                coords.push_back(p3);
-                coords.push_back(p1);
-                coords.push_back(p2);
-            }
-            else{
-                // top
-                coords.push_back(p2);
+            if (stack == 0) {
+                // draw base
+                Point o = Point();
                 coords.push_back(p4);
                 coords.push_back(p3);
+                coords.push_back(o);
             }
         }
     }

@@ -10,5 +10,6 @@ class Model {
 
   public:
     Model(std::vector<Point>&& points) : _points(std::move(points)) {}
+    auto draw() const noexcept -> void;
     auto friend operator<<(std::ostream&, Model const&) -> std::ostream&;
 };

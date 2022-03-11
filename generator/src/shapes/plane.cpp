@@ -12,7 +12,7 @@ Plane::Plane(int argc, char** argv) {
 std::vector<Point> Plane::calculateCoords() const {
     std::vector<Point> coords;
     float step = length / n_divisions;
-    Point starting_point = Point(-length / 2, 0, length / 2);
+    Point starting_point = Point(-length / 2, 0, -length / 2);
 
     for (size_t i = 0; i < n_divisions; ++i) {
         for (size_t j = 0; j < n_divisions; ++j) {

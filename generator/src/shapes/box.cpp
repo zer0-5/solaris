@@ -11,135 +11,86 @@ Box::Box(int argc, char** argv){
 
 std::vector<Point> Box::calculateCoords() const {
     std::vector<Point> coords;
-    float plane_step = length / n_divisions;
-    const short n_faces = 6;
-    for(size_t i = 0; i < n_faces; ++i) {
-        switch (i) {
-            case 1: { // Face base
-                Point starting_base = Point(-length / 2, -length / 2, length / 2);
-                for (size_t j = 0; j < n_divisions; ++j) {
-                    for (size_t k = 0; k < n_divisions; ++k) {
-                        Point p1 = starting_base + Point(k * plane_step, 0, j * plane_step);
-                        Point p2 = starting_base + Point(k * plane_step, 0, (j + 1) * plane_step);
-                        Point p3 = starting_base + Point((k + 1) * plane_step, 0, j * plane_step);
-                        Point p4 = starting_base + Point((k + 1) * plane_step, 0, (j + 1) * plane_step);
+    float const plane_step = length / n_divisions;
+    Point starting_point = Point(-length/2, - length/2, -length/2);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+    for (size_t j = 0; j < n_divisions; ++j) {
+        for (size_t k = 0; k < n_divisions; ++k) {
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            case 2: { // Face do topo
-                Point starting_top = Point(-length / 2, length / 2, length / 2);
-                for (size_t j = 0; j < n_divisions; ++j) {
-                    for (size_t k = 0; k < n_divisions; ++k) {
-                        Point p1 = starting_top + Point(k * plane_step, length, j * plane_step);
-                        Point p2 = starting_top + Point(k * plane_step, length, (j + 1) * plane_step);
-                        Point p3 = starting_top + Point((k + 1) * plane_step, length, j * plane_step);
-                        Point p4 = starting_top + Point((k + 1) * plane_step, length, (j + 1) * plane_step);
+            // Base triangles
+            Point p1 = starting_point + Point(k * plane_step, 0, j * plane_step);
+            Point p2 = starting_point + Point(k * plane_step, 0, (j + 1) * plane_step);
+            Point p3 = starting_point + Point((k + 1) * plane_step, 0, j * plane_step);
+            Point p4 = starting_point + Point((k + 1) * plane_step, 0, (j + 1) * plane_step);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+            coords.push_back(p3);
+            coords.push_back(p2);
+            coords.push_back(p1);
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            case 3: { // Face traseira direita
-                // coordenada do eixo zz mantém-se fixa, coordenada do eixo yy vai aumentando e coordenada do eixo xx vai diminuindo
-                Point starting_back_r = Point(length / 2, -length / 2, -length / 2);
-                for (size_t j = 0; j < n_divisions; j++) {
-                    for (size_t k = 0; k < n_divisions; k++) {
-                        Point p1 = starting_back_r + Point(-((j * plane_step)), k * plane_step, length / 2);
-                        Point p2 = starting_back_r + Point(-((j + 1) * plane_step), k * plane_step, length / 2);
-                        Point p3 = starting_back_r + Point(-(j * plane_step), (k + 1) * plane_step, length / 2);
-                        Point p4 = starting_back_r + Point(-((j + 1) * plane_step), (k + 1) * plane_step, length / 2);
+            coords.push_back(p3);
+            coords.push_back(p4);
+            coords.push_back(p2);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+            // Top triangles
+            p1.set_y(length/2); p2.set_y(length/2); p3.set_y(length/2); p4.set_y(length/2);
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            case 4: { // Face traseira esquerda
-                // coordenada do eixo xx mantém-se fixa e coordenada do eixo zz e yy vai aumentando
-                Point starting_back_l = Point(-length / 2, -length / 2, -length / 2);
-                for (size_t j = 0; j < n_divisions; j++) {
-                    for (size_t k = 0; k < n_divisions; k++) {
-                        Point p1 = starting_back_l + Point(-length / 2, k * plane_step, j * plane_step);
-                        Point p2 = starting_back_l + Point(-length / 2, k * plane_step, (j + 1) * plane_step);
-                        Point p3 = starting_back_l + Point(-length / 2, (k + 1) * plane_step, j * plane_step);
-                        Point p4 = starting_back_l + Point(-length / 2, (k + 1) * plane_step, (j + 1) * plane_step);
+            coords.push_back(p1);
+            coords.push_back(p2);
+            coords.push_back(p3);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+            coords.push_back(p2);
+            coords.push_back(p4);
+            coords.push_back(p3);
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            case 5: { // Face Frontal Esquerda
-                // coordenada do eixo zz mantém-se fixa e coordenada do eixo dos xx e yy vai aumentando
-                Point starting_front_l = Point(-length / 2, -length / 2, length / 2);
-                for (size_t j = 0; j < n_divisions; j++) {
-                    for (size_t k = 0; k < n_divisions; k++) {
-                        Point p1 = starting_front_l + Point((j * plane_step), k * plane_step, length / 2);
-                        Point p2 = starting_front_l + Point((j + 1) * plane_step, k * plane_step, length / 2);
-                        Point p3 = starting_front_l + Point(j * plane_step, (k + 1) * plane_step, length / 2);
-                        Point p4 = starting_front_l + Point((j + 1) * plane_step, (k + 1) * plane_step, length / 2);
+            // Back Right triangles
+            p1 = starting_point + Point(k * plane_step, j * plane_step, 0);
+            p2 = starting_point + Point(k * plane_step, (j + 1) * plane_step, 0);
+            p3 = starting_point + Point((k + 1) * plane_step, j * plane_step, 0);
+            p4 = starting_point + Point((k + 1) * plane_step, (j + 1) * plane_step, 0);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+            coords.push_back(p1);
+            coords.push_back(p2);
+            coords.push_back(p3);
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            case 6: { // Face frontal direita
-                // coordenada do eixo xx mantém-se fixa, coordenada do eixo dos yy vai aumentando e coordenada do eixo dos zz diminuindo
-                Point starting_front_r = Point(length / 2, -length / 2, length / 2);
-                for (size_t j = 0; j < n_divisions; j++) {
-                    for (size_t k = 0; k < n_divisions; k++) {
-                        Point p1 = starting_front_r + Point(length / 2, k * plane_step, -(j * plane_step));
-                        Point p2 = starting_front_r + Point(length / 2, k * plane_step, -((j + 1) * plane_step));
-                        Point p3 = starting_front_r + Point(length / 2, (k + 1) * plane_step, -(j * plane_step));
-                        Point p4 = starting_front_r + Point(length / 2, (k + 1) * plane_step, -((j + 1) * plane_step));
+            coords.push_back(p2);
+            coords.push_back(p4);
+            coords.push_back(p3);
 
-                        coords.push_back(p1);
-                        coords.push_back(p2);
-                        coords.push_back(p3);
+            // Front Right triangles
+            p1.set_z(length/2); p2.set_z(length/2); p3.set_z(length/2); p4.set_z(length/2);
 
-                        coords.push_back(p2);
-                        coords.push_back(p4);
-                        coords.push_back(p3);
-                    }
-                }
-                break;
-            }
-            default: break;
+            coords.push_back(p3);
+            coords.push_back(p2);
+            coords.push_back(p1);
+
+            coords.push_back(p3);
+            coords.push_back(p4);
+            coords.push_back(p2);
+
+            // Left Back triangles
+            p1 = starting_point + Point(0, k * plane_step, j * plane_step);
+            p2 = starting_point + Point(0, (k + 1) * plane_step, j * plane_step);
+            p3 = starting_point + Point(0, k * plane_step, (j + 1) * plane_step);
+            p4 = starting_point + Point(0, (k + 1) * plane_step, (j + 1) * plane_step);
+
+            coords.push_back(p3);
+            coords.push_back(p2);
+            coords.push_back(p1);
+
+            coords.push_back(p3);
+            coords.push_back(p4);
+            coords.push_back(p2);
+
+            // Left Front triangles
+            p1.set_x(length/2); p2.set_x(length/2); p3.set_x(length/2); p4.set_x(length/2);
+
+            coords.push_back(p1);
+            coords.push_back(p2);
+            coords.push_back(p3);
+
+            coords.push_back(p2);
+            coords.push_back(p4);
+            coords.push_back(p3);
         }
     }
     return coords;

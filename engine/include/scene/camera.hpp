@@ -23,5 +23,8 @@ class Camera {
       , _center(std::move(center))
       , _up(std::move(up))
       , _projection(std::move(projection)) {}
+    auto place() const noexcept -> void;
+    auto set_prespective(int, int) const noexcept -> void;
+    auto react_key(unsigned char, int, int) noexcept -> void;
     auto friend operator<<(std::ostream&, Camera const&) -> std::ostream&;
 };
