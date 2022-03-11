@@ -6,12 +6,6 @@
 #    include <GL/glut.h>
 #endif
 
-// auto draw_triangle(Point a, Point b, Point c) noexcept -> void {
-//     glVertex3f(a.x(), a.y(), a.z());
-//     glVertex3f(b.x(), b.y(), b.z());
-//     glVertex3f(c.x(), c.y(), c.z());
-// }
-
 auto Model::draw() const noexcept -> void {
     glBegin(GL_TRIANGLES);
     auto max = (float) _points.size();
