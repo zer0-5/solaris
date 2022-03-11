@@ -5,7 +5,7 @@
 class Cylinder : public Primitive {
 private:
     float radius;
-    int height;
+    float height;
     size_t n_slices;
     size_t n_stacks;
 
