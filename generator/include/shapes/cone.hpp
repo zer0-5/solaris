@@ -11,7 +11,6 @@ private:
 
 public:
     Cone(int argc, char** argv);
-    const static std::string help_message;
     std::vector<Point> calculateCoords() const;
     ~Cone() {};
 };
