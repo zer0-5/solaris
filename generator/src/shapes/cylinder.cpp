@@ -17,13 +17,14 @@ std::vector<Point> Cylinder::calculateCoords() const {
     float stack_height = height / n_stacks;
     float alpha = (2 * M_PI) / n_slices;
 
-    for (size_t stack = 0; stack < n_stacks; ++stack) {
-        float curr_height = stack_height * stack;
-        float next_height = stack_height * (stack + 1);
+    float curr_height = 0;
 
-        for (size_t slice = 0; slice < n_slices; ++slice) {
-            float curr_alpha = alpha * slice;
-            float next_alpha = alpha * (slice + 1);
+    for (size_t stack = 1; stack <= n_stacks; ++stack) {
+        float next_height = stack_height * stack;
+
+        float curr_alpha = 0;
+        for (size_t slice = 1; slice <= n_slices; ++slice) {
+            float next_alpha = alpha * slice;
 
             Point p1 = Point::cartesian(radius * sin(curr_alpha), next_height, radius * cos(curr_alpha));
             Point p2 = Point::cartesian(radius * sin(next_alpha), next_height, radius * cos(next_alpha));
@@ -38,7 +39,7 @@ std::vector<Point> Cylinder::calculateCoords() const {
             coords.push_back(p1);
             coords.push_back(p3);
 
-            if (stack == 0) {
+            if (stack == 1) {
                 // draw base
                 Point o = Point::cartesian(0, 0, 0);
                 coords.push_back(p4);
@@ -46,7 +47,7 @@ std::vector<Point> Cylinder::calculateCoords() const {
                 coords.push_back(o);
             }
             
-            if (stack == n_stacks - 1){
+            if (stack == n_stacks){
                 // draw top
                 Point o = Point::cartesian(0, next_height, 0);
                 coords.push_back(o);
@@ -54,8 +55,12 @@ std::vector<Point> Cylinder::calculateCoords() const {
                 coords.push_back(p2);
                 
             }
+
+            curr_alpha = next_alpha;
             
         }
+
+        curr_height = next_height;
 
     }
     return coords;

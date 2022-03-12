@@ -18,16 +18,15 @@ std::vector<Point> Torus::calculateCoords() const {
 
     double phi_step = 2 * M_PI / n_slices;
     double theta_step = 2 * M_PI / n_stacks;
+    float curr_theta = 0;
 
-    for(size_t stack = 0; stack < n_stacks; stack++){
-        float curr_theta = theta_step * stack;
-        float next_theta = theta_step * (stack + 1);
+    for(size_t stack = 1; stack <= n_stacks; stack++){
+        float next_theta = theta_step * stack;
 
-        for(size_t slice = 0; slice < n_slices; slice++){
-            float curr_phi = phi_step * slice;
-            float next_phi = phi_step * (slice + 1);
+        float curr_phi = 0;
+        for(size_t slice = 1; slice <= n_slices; slice++){
+            float next_phi = phi_step * slice;
             
-
             Point p1 = Point::cartesian((out_radius + torus_radius * cos(curr_phi)) * cos(curr_theta), torus_radius * sin(curr_phi), (out_radius + torus_radius * cos(curr_phi)) * sin(curr_theta));
             Point p2 = Point::cartesian((out_radius + torus_radius * cos(next_phi)) * cos(curr_theta), torus_radius * sin(next_phi), (out_radius + torus_radius * cos(next_phi)) * sin(curr_theta));
             Point p3 = Point::cartesian((out_radius + torus_radius * cos(next_phi)) * cos(next_theta), torus_radius * sin(next_phi), (out_radius + torus_radius * cos(next_phi)) * sin(next_theta));
@@ -40,7 +39,11 @@ std::vector<Point> Torus::calculateCoords() const {
             coords.push_back(p2);
             coords.push_back(p3);
             coords.push_back(p4);
+
+            curr_phi = next_phi;
         }
+
+        curr_theta = next_theta;
     }
     return coords;
 }
