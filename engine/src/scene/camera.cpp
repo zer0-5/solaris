@@ -42,6 +42,12 @@ auto Camera::react_key(unsigned char key, int x, int y) noexcept -> void {
     case 'd':
         alpha += 0.1;
         break;
+    case '+':
+        radius -= 0.5;
+        break;
+    case '-':
+        radius += 0.5;
+        break;
     }
 
     if (beta < -1.5) {
