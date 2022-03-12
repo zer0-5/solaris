@@ -3,6 +3,8 @@
 #include "shapes/cone.hpp"
 #include "shapes/plane.hpp"
 #include "shapes/sphere.hpp"
+#include "shapes/cylinder.hpp"
+#include "shapes/torus.hpp"
 
 #include <iostream>
 
@@ -12,7 +14,9 @@ static auto const help_string =
     "plane      [side] [divisions]\n"
     "box        [side] [divisions]\n"
     "sphere     [radius] [slices] [stacks]\n"
-    "cone       [radius] [height] [slices] [stacks]\n";
+    "cone       [radius] [height] [slices] [stacks]\n"
+    "cylinder   [radius] [height] [slices] [stacks]\n"
+    "torus      [ring radius] [circunference radius] [slices] [stacks]\n";
 
 int main(int argc, char** argv) {
     if (argc < 2 || "--help" == std::string(argv[1])
@@ -31,6 +35,10 @@ int main(int argc, char** argv) {
             p = new Cone(argc - 2, argv + 2);
         } else if (type == "sphere") {
             p = new Sphere(argc - 2, argv + 2);
+        } else if (type == "cylinder"){
+            p = new Cylinder(argc - 2, argv + 2);
+        } else if (type == "torus"){
+            p = new Torus(argc - 2, argv + 2);
         } else {
             throw "invalid primitive";
         }

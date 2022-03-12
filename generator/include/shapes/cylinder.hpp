@@ -2,7 +2,7 @@
 
 #include "shapes/primitive.hpp"
 
-class Cone : public Primitive {
+class Cylinder : public Primitive {
 private:
     float radius;
     float height;
@@ -10,7 +10,7 @@ private:
     size_t n_stacks;
 
 public:
-    Cone(int argc, char** argv);
+    Cylinder(int argc, char** argv);
     std::vector<Point> calculateCoords() const;
-    ~Cone() {};
+    ~Cylinder() {};
 };

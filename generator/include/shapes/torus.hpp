@@ -2,15 +2,15 @@
 
 #include "shapes/primitive.hpp"
 
-class Cone : public Primitive {
+class Torus : public Primitive {
 private:
-    float radius;
-    float height;
+    float torus_radius;
+    float out_radius;
     size_t n_slices;
     size_t n_stacks;
 
 public:
-    Cone(int argc, char** argv);
+    Torus(int argc, char** argv);
     std::vector<Point> calculateCoords() const;
-    ~Cone() {};
+    ~Torus() {};
 };
