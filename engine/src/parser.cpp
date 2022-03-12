@@ -24,7 +24,6 @@ using namespace tinyxml2;
 auto parse_point(XMLElement const* const node) noexcept
     -> cpp::result<Point, ParseError>
 {
-
     float x, y, z;
     if (node->QueryFloatAttribute("x", &x) == XML_SUCCESS &&
         node->QueryFloatAttribute("y", &y) == XML_SUCCESS &&
@@ -81,7 +80,7 @@ auto parse_camera(XMLElement const* const node) noexcept
         auto proj = parse_projection(proj_elem);
         CHECK_RESULT(proj);
     } else {
-        warn("no 'proj' attribute found for 'camera', using default");
+        warn("no 'projection' attribute found for 'camera', using default");
     }
 
     return Camera(
