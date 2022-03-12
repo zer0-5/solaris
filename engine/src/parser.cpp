@@ -119,15 +119,12 @@ auto parse_group(XMLElement const* const node) noexcept
     }
 
     auto groups = std::vector<Group>();
-    auto const groups_elem = node->FirstChildElement("grupos");
-    if (groups_elem) {
-
-        auto group_elem = groups_elem->FirstChildElement("group");
-        while (group_elem) {
-            auto group_res = parse_group(group_elem);
-            CHECK_RESULT(group_res);
-            groups.push_back(group_res.value());
-        }
+    auto group_elem = node->FirstChildElement("group");
+    while (group_elem) {
+        auto group_res = parse_group(group_elem);
+        CHECK_RESULT(group_res);
+        groups.push_back(group_res.value());
+        group_elem = group_elem->NextSiblingElement("group");
     }
 
     return Group(std::move(models), std::move(groups));
