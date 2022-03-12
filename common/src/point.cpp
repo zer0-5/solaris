@@ -53,6 +53,18 @@ void Point::sum_z(float z) {
     _z += z;
 }
 
+float Point::radius() const noexcept {
+    return sqrt(_x * _x + _y * _y + _z * _z);
+}
+
+float Point::alpha() const noexcept {
+    return atan2(_x, _z);
+}
+
+float Point::beta() const noexcept {
+    return atan(_y / sqrt(_z*_z + _x*_x));
+}
+
 auto operator<<(std::ostream& oss, Point const& p) -> std::ostream& {
     oss << p._x << ' ' << p._y << ' ' << p._z;
     return oss;

@@ -22,22 +22,35 @@ auto Camera::set_prespective(int w, int h) const noexcept -> void {
         _projection.x(),
         w * 1.0 / h,
         _projection.y(),
-        _projection.z()
-    );
+        _projection.z());
 }
 
-// FIXME
 auto Camera::react_key(unsigned char key, int x, int y) noexcept -> void {
+    auto radius = _eye.radius();
+    auto alpha = _eye.alpha();
+    auto beta = _eye.beta();
     switch (key) {
     case 'w':
-        _eye = _eye + Point::spherical(1, M_PI / 16, M_PI / 2);
-    case 'a':
-        _eye = _eye + Point::spherical(1, M_PI / 2, -M_PI / 16);
+        beta += 0.1;
+        break;
     case 's':
-        _eye = _eye + Point::spherical(1, -M_PI / 16, M_PI / 2);
+        beta -= 0.1;
+        break;
+    case 'a':
+        alpha -= 0.1;
+        break;
     case 'd':
-        _eye = _eye + Point::spherical(1, 0, M_PI / 16);
+        alpha += 0.1;
+        break;
     }
+
+    if (beta < -1.5) {
+        beta = -1.5;
+    } else if (beta > 1.5) {
+       beta = 1.5;
+    }
+
+    _eye = Point::spherical(radius, alpha, beta);
 }
 
 auto operator<<(std::ostream& oss, Camera const& c) -> std::ostream& {
