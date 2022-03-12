@@ -1,5 +1,6 @@
 #include "parser.hpp"
 
+#include "logger.hpp"
 #include "tinyxml2.h"
 
 #include <fstream>
@@ -11,16 +12,14 @@ using namespace tinyxml2;
         if (!nullable) {                                                       \
             return cpp::failure(err);                                          \
         }                                                                      \
-    }                                                                          \
-    while (0)
+    } while (0)
 
 #define CHECK_RESULT(result)                                                   \
     do {                                                                       \
         if (result.has_error()) {                                              \
             return cpp::failure(result.error());                               \
         }                                                                      \
-    }                                                                          \
-    while (0)
+    } while (0)
 
 auto parse_point(XMLElement const* const node) noexcept
     -> cpp::result<Point, ParseError>
@@ -66,14 +65,24 @@ auto parse_camera(XMLElement const* const node) noexcept
     CHECK_RESULT(look_at);
 
     auto const up_elem = node->FirstChildElement("up");
-    CHECK_NULL(look_at_elem, ParseError::NO_CAMERA_UP_ELEMENT);
-    auto up = parse_point(up_elem);
-    CHECK_RESULT(up);
+    cpp::result<Point, ParseError> up =
+        cpp::result<Point, ParseError>(Point::cartesian(0, 1, 0));
+    if (up_elem) {
+        up = parse_point(up_elem);
+        CHECK_RESULT(up);
+    } else {
+        warn("no 'up' attribute found for 'camera', using default");
+    }
 
     auto const proj_elem = node->FirstChildElement("projection");
-    CHECK_NULL(proj_elem, ParseError::NO_CAMERA_PROJECTION_ELEMENT);
-    auto proj = parse_projection(proj_elem);
-    CHECK_RESULT(proj);
+    cpp::result<Point, ParseError> proj =
+        cpp::result<Point, ParseError>(Point::cartesian(60, 1, 1000));
+    if (proj_elem) {
+        auto proj = parse_projection(proj_elem);
+        CHECK_RESULT(proj);
+    } else {
+        warn("no 'proj' attribute found for 'camera', using default");
+    }
 
     return Camera(
         std::move(pos.value()),
