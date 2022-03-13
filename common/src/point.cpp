@@ -13,10 +13,6 @@ Point Point::spherical(float radius, float alpha, float beta) {
         radius * cos(beta) * cos(alpha));
 }
 
-Point Point::operator+(Point other) {
-    return Point::cartesian(_x + other._x, _y + other._y, _z + other._z);
-}
-
 float Point::x() const {
     return _x;
 }
@@ -63,6 +59,26 @@ float Point::alpha() const noexcept {
 
 float Point::beta() const noexcept {
     return atan(_y / sqrt(_z*_z + _x*_x));
+}
+
+void Point::normalize() noexcept {
+    auto len = sqrt(_x * _x + _y * _y + _z * _z);
+
+    _x = _x / len;
+    _y = _y / len;
+    _z = _z / len;
+}
+
+Point Point::operator+(Point other) const noexcept {
+    return Point::cartesian(_x + other._x, _y + other._y, _z + other._z);
+}
+
+Point Point::operator-(Point other) const noexcept {
+    return Point::cartesian(_x - other._x, _y - other._y, _z - other._z);
+}
+
+Point Point::operator*(float num) const noexcept {
+    return Point::cartesian(num * _x, num * _y, num * _z);
 }
 
 auto operator<<(std::ostream& oss, Point const& p) -> std::ostream& {

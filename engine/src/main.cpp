@@ -11,9 +11,13 @@
 
 // singletons
 World WORLD;
-float rot = 0.f;
+int CENTER_X;
+int CENTER_Y;
 
 void change_size(int w, int h) {
+    CENTER_X = w / 2;
+    CENTER_Y = h / 2;
+
     // Prevent a divide by zero, when window is too short
     // (you cant make a window with zero width).
     if (h == 0)
@@ -58,14 +62,17 @@ void render_scene(void) {
     // set the camera
     WORLD.camera.place();
 
+    if (WORLD.camera.mode() == CameraMode::FPV) {
+        glutWarpPointer(CENTER_X, CENTER_Y);
+    }
+
     // draw axis
-    glBegin(GL_LINES);
-    draw_axis();
-    glEnd();
+    // glBegin(GL_LINES);
+    // draw_axis();
+    // glEnd();
 
     // draw groups
-    glRotatef(rot++, 1, 0, 1);
-    glPolygonMode(GL_FRONT, GL_LINE);
+    // glPolygonMode(GL_FRONT, GL_LINE);
     WORLD.group.draw();
 
     // end of frame
@@ -74,6 +81,10 @@ void render_scene(void) {
 
 void process_keys(unsigned char key, int x, int y) {
     WORLD.camera.react_key(key, x, y);
+}
+
+void cursor_motion(int x, int y) {
+    WORLD.camera.cursor_motion(CENTER_X, CENTER_Y, x, y);
 }
 
 int main(int argc, char** argv) {
@@ -95,6 +106,8 @@ int main(int argc, char** argv) {
     // Required callback registry
     glutDisplayFunc(render_scene);
     glutIdleFunc(render_scene);
+    glutPassiveMotionFunc(cursor_motion);
+    glutMotionFunc(cursor_motion);
     glutReshapeFunc(change_size);
 
     // Callback registration for keyboard processing

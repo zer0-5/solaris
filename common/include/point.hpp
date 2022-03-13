@@ -10,7 +10,6 @@ class Point {
   public:
     static Point cartesian(float, float, float);
     static Point spherical(float, float, float);
-    Point operator+(Point);
     float x() const;
     float y() const;
     float z() const;
@@ -25,5 +24,9 @@ class Point {
     float beta() const noexcept;
     void sum_alpha(float);
     void sum_beta(float);
+    void normalize() noexcept;
+    Point operator+(Point) const noexcept;
+    Point operator-(Point) const noexcept;
+    Point operator*(float) const noexcept;
     auto friend operator<<(std::ostream&, Point const&) -> std::ostream&;
 };
