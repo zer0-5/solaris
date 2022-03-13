@@ -81,10 +81,12 @@ void render_scene(void) {
 
 void process_keys(unsigned char key, int x, int y) {
     WORLD.camera.react_key(key, x, y);
+    glutPostRedisplay();
 }
 
 void cursor_motion(int x, int y) {
     WORLD.camera.cursor_motion(CENTER_X, CENTER_Y, x, y);
+    glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
@@ -105,7 +107,7 @@ int main(int argc, char** argv) {
 
     // Required callback registry
     glutDisplayFunc(render_scene);
-    glutIdleFunc(render_scene);
+    // glutIdleFunc(render_scene);
     glutPassiveMotionFunc(cursor_motion);
     glutMotionFunc(cursor_motion);
     glutReshapeFunc(change_size);
