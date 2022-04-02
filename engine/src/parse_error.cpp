@@ -16,6 +16,10 @@ char const malformed_point_error_msg[] =
     "malformed point";
 char const malformed_projection_error_msg[] =
     "malformed projection";
+char const malformed_rotation_error_msg[] =
+    "malformed rotation";
+char const unknown_transformation_error_msg[] =
+    "unknown transformation";
 char const primitive_file_not_found_error_msg[] =
     "primitive file not found";
 
@@ -37,6 +41,10 @@ char const* const error_msg(ParseError e) {
         return malformed_point_error_msg;
     case MALFORMED_PROJECTION:
         return malformed_projection_error_msg;
+    case MALFORMED_ROTATION:
+        return malformed_rotation_error_msg;
+    case UNKNOWN_TRANFORMATION:
+        return unknown_transformation_error_msg;
     case PRIMITIVE_FILE_NOT_FOUND:
         return primitive_file_not_found_error_msg;
     default:

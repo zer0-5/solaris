@@ -7,7 +7,7 @@ class World {
   public:
     Camera camera;
     Group group;
-    World() : camera(Camera()), group(Group()) {}
+    World() = default;
     World(Camera&& camera, Group&& group)
       : camera(std::move(camera))
       , group(std::move(group)) {}

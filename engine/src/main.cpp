@@ -72,7 +72,7 @@ void render_scene(void) {
     // glEnd();
 
     // draw groups
-    glPolygonMode(GL_FRONT, GL_LINE);
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     WORLD.group.draw();
 
     // end of frame
