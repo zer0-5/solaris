@@ -141,19 +141,20 @@ auto parse_transform(XMLElement const* const node) noexcept
 auto parse_group(XMLElement const* const node) noexcept
     -> cpp::result<Group, ParseError>
 {
-    auto models = std::vector<Model>();
-    char const* file_path;
 
+    auto models = std::vector<Model>();
     auto const models_elem = node->FirstChildElement("models");
-    CHECK_NULL(models_elem, ParseError::NO_GROUP_MODELS_ELEMENT);
-    for (auto model_elem = models_elem->FirstChildElement("model");
-         model_elem;
-         model_elem = model_elem->NextSiblingElement("model")
-    ) {
-        model_elem->QueryStringAttribute("file", &file_path);
-        auto model = parse_model(file_path);
-        CHECK_RESULT(model);
-        models.push_back(model.value());
+    if (models_elem != nullptr) {
+        char const* file_path;
+        for (auto model_elem = models_elem->FirstChildElement("model");
+            model_elem;
+            model_elem = model_elem->NextSiblingElement("model")
+        ) {
+            model_elem->QueryStringAttribute("file", &file_path);
+            auto model = parse_model(file_path);
+            CHECK_RESULT(model);
+            models.push_back(model.value());
+        }
     }
 
     auto groups = std::vector<Group>();

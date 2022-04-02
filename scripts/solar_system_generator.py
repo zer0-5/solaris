@@ -27,8 +27,6 @@ with tag('world'):
         doc.stag('up', x="0", y="1", z="0")
         doc.stag('projection', fov="60", near="1", far="1000")
     with tag('group'):
-        with tag('models'):
-            pass
         with tag('group', name='sun'):
             with tag('models'):
                 doc.stag('model', file='models/sphere.3d')
@@ -69,8 +67,6 @@ with tag('world'):
                                 doc.stag('translate', x=dist, y=0, z=0)
                                 doc.stag('scale', x=sat_radius, y=sat_radius, z=sat_radius)
         with tag('group', name="Asteroid Belt"):
-            with tag('models'):
-                pass
             for x in range(1, 200):
                 with tag ('group', name="Asteroid" + f"{x}"):
                     with tag('models'):
@@ -82,7 +78,7 @@ with tag('world'):
                         doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
                         doc.stag('translate', x=dist, y = 0, z = 0)
                         doc.stag('scale', x=size, y=size, z=size)
-                    
+
 result = indent(
     doc.getvalue(),
     indentation = ' ' * 4,

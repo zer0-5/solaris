@@ -10,8 +10,6 @@ char const no_camera_up_error_msg[] =
     "no 'up' element found inside 'camera' element";
 char const no_camera_projecton_error_msg[] =
     "no 'projection' element found inside 'camera' element";
-char const no_group_models_error_msg[] =
-    "no 'models' element found inside 'group' element";
 char const malformed_point_error_msg[] =
     "malformed point";
 char const malformed_projection_error_msg[] =
@@ -35,8 +33,6 @@ char const* const error_msg(ParseError e) {
         return no_camera_up_error_msg;
     case NO_CAMERA_PROJECTION_ELEMENT:
         return no_camera_projecton_error_msg;
-    case NO_GROUP_MODELS_ELEMENT:
-        return no_group_models_error_msg;
     case MALFORMED_POINT:
         return malformed_point_error_msg;
     case MALFORMED_PROJECTION:
