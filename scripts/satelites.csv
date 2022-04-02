@@ -1,0 +1,178 @@
+planet,name,radius
+Earth,Moon,1737.5
+Mars,Phobos,11.1
+Mars,Deimos,6.2
+Jupiter,Io,1821.6
+Jupiter,Europa,1560.8
+Jupiter,Ganymede,2631.2
+Jupiter,Callisto,2410.3
+Jupiter,Amalthea,83.45
+Jupiter,Himalia,85
+Jupiter,Elara,43
+Jupiter,Pasiphae,30
+Jupiter,Sinope,19
+Jupiter,Lysithea,18
+Jupiter,Carme,23
+Jupiter,Ananke,14
+Jupiter,Leda,10
+Jupiter,Thebe,49.3
+Jupiter,Adrastea,8.2
+Jupiter,Metis,21.5
+Jupiter,Callirrhoe,4.3
+Jupiter,Themisto,4
+Jupiter,Megaclite,2.7
+Jupiter,Taygete,2.5
+Jupiter,Chaldene,1.9
+Jupiter,Harpalyke,2.2
+Jupiter,Kalyke,2.6
+Jupiter,Iocaste,2.6
+Jupiter,Erinome,1.6
+Jupiter,Isonoe,1.9
+Jupiter,Praxidike,3.4
+Jupiter,Autonoe,2
+Jupiter,Thyone,2
+Jupiter,Hermippe,2
+Jupiter,Aitne,1.5
+Jupiter,Eurydome,1.5
+Jupiter,Euanthe,1.5
+Jupiter,Euporie,1
+Jupiter,Orthosie,1
+Jupiter,Sponde,1
+Jupiter,Kale,1
+Jupiter,Pasithee,1
+Jupiter,Hegemone,1.5
+Jupiter,Mneme,1
+Jupiter,Aoede,2
+Jupiter,Thelxinoe,1
+Jupiter,Arche,1.5
+Jupiter,Kallichore,1
+Jupiter,Helike,2
+Jupiter,Carpo,1.5
+Jupiter,Eukelade,2
+Jupiter,Cyllene,1
+Jupiter,Kore,1
+Jupiter,Herse,1
+Jupiter,S/2000 J11,1
+Jupiter,S/2003 J2,1
+Jupiter,S/2003 J3,1
+Jupiter,S/2003 J4,1
+Jupiter,S/2003 J5,2
+Jupiter,S/2003 J9,0.5
+Jupiter,S/2003 J10,1
+Jupiter,S/2003 J12,0.5
+Jupiter,S/2003 J15,1
+Jupiter,S/2003 J16,1
+Jupiter,S/2003 J18,1
+Jupiter,S/2003 J19,1
+Jupiter,S/2003 J23,1
+Jupiter,S/2010 J1,1
+Jupiter,S/2010 J2,1
+Jupiter,S/2011 J1,1
+Jupiter,S/2011 J2,1
+Saturn,Mimas,198.2
+Saturn,Enceladus,252.1
+Saturn,Tethys,533
+Saturn,Dione,561.7
+Saturn,Rhea,764.3
+Saturn,Titan,2574.73
+Saturn,Hyperion,135
+Saturn,Iapetus,735.6
+Saturn,Phoebe,106.5
+Saturn,Janus,89.5
+Saturn,Epimetheus,58.1
+Saturn,Helene,17.6
+Saturn,Telesto,12.4
+Saturn,Calypso,10.7
+Saturn,Atlas,15.1
+Saturn,Prometheus,43.1
+Saturn,Pandora,40.7
+Saturn,Pan,14.1
+Saturn,Methone,1.6
+Saturn,Pallene,2.5
+Saturn,Polydeuces,1.3
+Saturn,Daphnis,3.8
+Saturn,Anthe,0.9
+Saturn,Aegaeon,0.3
+Saturn,Ymir,9
+Saturn,Paaliaq,11
+Saturn,Tarvos,7.5
+Saturn,Ijiraq,6
+Saturn,Suttungr,3.5
+Saturn,Kiviuq,8
+Saturn,Mundilfari,3.5
+Saturn,Albiorix,16
+Saturn,Skathi,4
+Saturn,Erriapus,5
+Saturn,Siarnaq,20
+Saturn,Thrymr,3.5
+Saturn,Narvi,3.5
+Saturn,Aegir,3
+Saturn,Bebhionn,3
+Saturn,Bergelmir,3
+Saturn,Bestla,3.5
+Saturn,Farbauti,2.5
+Saturn,Fenrir,2
+Saturn,Fornjot,3
+Saturn,Hati,3
+Saturn,Hyrrokkin,3
+Saturn,Kari,3
+Saturn,Loge,3
+Saturn,Skoll,3
+Saturn,Surtur,3
+Saturn,Jarnsaxa,3
+Saturn,Greip,3
+Saturn,Tarqeq,3
+Saturn,S/2004 S7,3
+Saturn,S/2004 S12,2.5
+Saturn,S/2004 S13,3
+Saturn,S/2004 S17,2
+Saturn,S/2006 S1,3
+Saturn,S/2006 S3,2.5
+Saturn,S/2007 S2,3
+Saturn,S/2007 S3,2
+Uranus,Ariel,578.9
+Uranus,Umbriel,584.7
+Uranus,Titania,788.9
+Uranus,Oberon,761.4
+Uranus,Miranda,235.8
+Uranus,Cordelia,20.1
+Uranus,Ophelia,21.4
+Uranus,Bianca,27
+Uranus,Cressida,41
+Uranus,Desdemona,35
+Uranus,Juliet,53
+Uranus,Portia,70
+Uranus,Rosalind,36
+Uranus,Belinda,45
+Uranus,Puck,81
+Uranus,Caliban,36
+Uranus,Sycorax,75
+Uranus,Prospero,25
+Uranus,Setebos,24
+Uranus,Stephano,16
+Uranus,Trinculo,9
+Uranus,Francisco,11
+Uranus,Margaret,10
+Uranus,Ferdinand,10
+Uranus,Perdita,13
+Uranus,Mab,12
+Uranus,Cupid,9
+Neptune,Triton,1353.4
+Neptune,Nereid,170
+Neptune,Naiad,33
+Neptune,Thalassa,41
+Neptune,Despina,75
+Neptune,Galatea,88
+Neptune,Larissa,97
+Neptune,Proteus,210
+Neptune,Halimede,31
+Neptune,Psamathe,20
+Neptune,Sao,22
+Neptune,Laomedeia,21
+Neptune,Neso,30
+Neptune,S/2004 N1,9
+Pluto,Charon,603.6
+Pluto,Nix,23
+Pluto,Hydra,30.5
+Pluto,Kerberos,14
+Pluto,Styx,10

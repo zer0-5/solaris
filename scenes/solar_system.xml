@@ -1,0 +1,3880 @@
+<world>
+    <camera>
+        <position x="10" y="10" z="10" />
+        <lookAt x="0" y="0" z="0" />
+        <up x="0" y="1" z="0" />
+        <projection fov="60" near="1" far="1000" />
+    </camera>
+    <group>
+        <models></models>
+        <group name="sun">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <scale x="3" y="3" z="3" />
+            </transform>
+        </group>
+        <group name="Mercury">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="201.63449101665597" x="0" y="1" z="0" />
+                <translate x="4.0" y="0" z="0" />
+                <scale x="0.040661666666666665" y="0.040661666666666665" z="0.040661666666666665" />
+            </transform>
+        </group>
+        <group name="Venus">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="282.2197842827574" x="0" y="1" z="0" />
+                <translate x="5.0" y="0" z="0" />
+                <scale x="0.10086333333333333" y="0.10086333333333333" z="0.10086333333333333" />
+            </transform>
+        </group>
+        <group name="Earth">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="326.5261195760391" x="0" y="1" z="0" />
+                <translate x="5.5" y="0" z="0" />
+                <scale x="0.10618333333333334" y="0.10618333333333334" z="0.10618333333333334" />
+            </transform>
+            <group name="Moon">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="83.76417998361713" x="0" y="1" z="0" />
+                    <translate x="1.7827904572077795" y="0" z="0" />
+                    <scale x="0.27272013812588286" y="0.27272013812588286" z="0.27272013812588286" />
+                </transform>
+            </group>
+        </group>
+        <group name="Mars">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="314.42757316323565" x="0" y="1" z="0" />
+                <translate x="7.0" y="0" z="0" />
+                <scale x="0.05649166666666667" y="0.05649166666666667" z="0.05649166666666667" />
+            </transform>
+            <group name="Phobos">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="203.12127103446795" x="0" y="1" z="0" />
+                    <translate x="1.965434719734379" y="0" z="0" />
+                    <scale x="0.003274819294881251" y="0.003274819294881251" z="0.003274819294881251" />
+                </transform>
+            </group>
+            <group name="Deimos">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="328.3187758238749" x="0" y="1" z="0" />
+                    <translate x="1.9043844570251351" y="0" z="0" />
+                    <scale x="0.0018291783448886267" y="0.0018291783448886267" z="0.0018291783448886267" />
+                </transform>
+            </group>
+        </group>
+        <group name="Jupiter">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="52.09331930682285" x="0" y="1" z="0" />
+                <translate x="16.0" y="0" z="0" />
+                <scale x="1.1651833333333332" y="1.1651833333333332" z="1.1651833333333332" />
+            </transform>
+            <group name="Io">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="106.67537558933569" x="0" y="1" z="0" />
+                    <translate x="2.14056302997986" y="0" z="0" />
+                    <scale x="0.026055985467236916" y="0.026055985467236916" z="0.026055985467236916" />
+                </transform>
+            </group>
+            <group name="Europa">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="269.9704486470039" x="0" y="1" z="0" />
+                    <translate x="2.119551430667276" y="0" z="0" />
+                    <scale x="0.02232552817153238" y="0.02232552817153238" z="0.02232552817153238" />
+                </transform>
+            </group>
+            <group name="Ganymede">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="349.508293085448" x="0" y="1" z="0" />
+                    <translate x="2.4100931198427538" y="0" z="0" />
+                    <scale x="0.037636423452675545" y="0.037636423452675545" z="0.037636423452675545" />
+                </transform>
+            </group>
+            <group name="Callisto">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="301.381954230958" x="0" y="1" z="0" />
+                    <translate x="1.775551631507536" y="0" z="0" />
+                    <scale x="0.03447669179385219" y="0.03447669179385219" z="0.03447669179385219" />
+                </transform>
+            </group>
+            <group name="Amalthea">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="251.73495420218367" x="0" y="1" z="0" />
+                    <translate x="2.2255361238568203" y="0" z="0" />
+                    <scale x="0.00119366051122141" y="0.00119366051122141" z="0.00119366051122141" />
+                </transform>
+            </group>
+            <group name="Himalia">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="102.08720928082991" x="0" y="1" z="0" />
+                    <translate x="1.8762692590556773" y="0" z="0" />
+                    <scale x="0.0012158315572656665" y="0.0012158315572656665" z="0.0012158315572656665" />
+                </transform>
+            </group>
+            <group name="Elara">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="205.18678892026324" x="0" y="1" z="0" />
+                    <translate x="2.1671301856752296" y="0" z="0" />
+                    <scale x="0.0006150677289696901" y="0.0006150677289696901" z="0.0006150677289696901" />
+                </transform>
+            </group>
+            <group name="Pasiphae">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="242.1244048946693" x="0" y="1" z="0" />
+                    <translate x="2.4789050396999244" y="0" z="0" />
+                    <scale x="0.0004291170202114117" y="0.0004291170202114117" z="0.0004291170202114117" />
+                </transform>
+            </group>
+            <group name="Sinope">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="25.258884417127977" x="0" y="1" z="0" />
+                    <translate x="2.397717444437184" y="0" z="0" />
+                    <scale x="0.00027177411280056074" y="0.00027177411280056074" z="0.00027177411280056074" />
+                </transform>
+            </group>
+            <group name="Lysithea">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="178.04172441583455" x="0" y="1" z="0" />
+                    <translate x="2.249845112741461" y="0" z="0" />
+                    <scale x="0.000257470212126847" y="0.000257470212126847" z="0.000257470212126847" />
+                </transform>
+            </group>
+            <group name="Carme">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="97.73371671851041" x="0" y="1" z="0" />
+                    <translate x="2.4091553617123345" y="0" z="0" />
+                    <scale x="0.00032898971549541565" y="0.00032898971549541565" z="0.00032898971549541565" />
+                </transform>
+            </group>
+            <group name="Ananke">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="260.1940295353753" x="0" y="1" z="0" />
+                    <translate x="2.0981030903677222" y="0" z="0" />
+                    <scale x="0.00020025460943199212" y="0.00020025460943199212" z="0.00020025460943199212" />
+                </transform>
+            </group>
+            <group name="Leda">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="235.87229423430531" x="0" y="1" z="0" />
+                    <translate x="1.6256021594170178" y="0" z="0" />
+                    <scale x="0.0001430390067371372" y="0.0001430390067371372" z="0.0001430390067371372" />
+                </transform>
+            </group>
+            <group name="Thebe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="91.45938821799295" x="0" y="1" z="0" />
+                    <translate x="2.210418578087977" y="0" z="0" />
+                    <scale x="0.0007051823032140865" y="0.0007051823032140865" z="0.0007051823032140865" />
+                </transform>
+            </group>
+            <group name="Adrastea">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="30.918982800825834" x="0" y="1" z="0" />
+                    <translate x="2.012319308730823" y="0" z="0" />
+                    <scale x="0.00011729198552445253" y="0.00011729198552445253" z="0.00011729198552445253" />
+                </transform>
+            </group>
+            <group name="Metis">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="237.85309361450746" x="0" y="1" z="0" />
+                    <translate x="2.143840453290224" y="0" z="0" />
+                    <scale x="0.00030753386448484506" y="0.00030753386448484506" z="0.00030753386448484506" />
+                </transform>
+            </group>
+            <group name="Callirrhoe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="46.30317404680755" x="0" y="1" z="0" />
+                    <translate x="2.0557101131119317" y="0" z="0" />
+                    <scale x="6.1506772896969e-05" y="6.1506772896969e-05" z="6.1506772896969e-05" />
+                </transform>
+            </group>
+            <group name="Themisto">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="163.0707791235052" x="0" y="1" z="0" />
+                    <translate x="1.8922873389029025" y="0" z="0" />
+                    <scale x="5.721560269485489e-05" y="5.721560269485489e-05" z="5.721560269485489e-05" />
+                </transform>
+            </group>
+            <group name="Megaclite">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="85.85378392900999" x="0" y="1" z="0" />
+                    <translate x="1.5909292096190064" y="0" z="0" />
+                    <scale x="3.8620531819027055e-05" y="3.8620531819027055e-05" z="3.8620531819027055e-05" />
+                </transform>
+            </group>
+            <group name="Taygete">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="81.27372887444886" x="0" y="1" z="0" />
+                    <translate x="2.2502426909428435" y="0" z="0" />
+                    <scale x="3.57597516842843e-05" y="3.57597516842843e-05" z="3.57597516842843e-05" />
+                </transform>
+            </group>
+            <group name="Chaldene">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="115.20667012500779" x="0" y="1" z="0" />
+                    <translate x="1.9054170526898462" y="0" z="0" />
+                    <scale x="2.7177411280056074e-05" y="2.7177411280056074e-05" z="2.7177411280056074e-05" />
+                </transform>
+            </group>
+            <group name="Harpalyke">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="12.375325403368468" x="0" y="1" z="0" />
+                    <translate x="2.1358935018892757" y="0" z="0" />
+                    <scale x="3.14685814821702e-05" y="3.14685814821702e-05" z="3.14685814821702e-05" />
+                </transform>
+            </group>
+            <group name="Kalyke">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="224.21799308335937" x="0" y="1" z="0" />
+                    <translate x="1.558052069245052" y="0" z="0" />
+                    <scale x="3.719014175165568e-05" y="3.719014175165568e-05" z="3.719014175165568e-05" />
+                </transform>
+            </group>
+            <group name="Iocaste">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="17.942836581409622" x="0" y="1" z="0" />
+                    <translate x="1.8350746999272591" y="0" z="0" />
+                    <scale x="3.719014175165568e-05" y="3.719014175165568e-05" z="3.719014175165568e-05" />
+                </transform>
+            </group>
+            <group name="Erinome">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="3.651861370704621" x="0" y="1" z="0" />
+                    <translate x="2.046823190985734" y="0" z="0" />
+                    <scale x="2.2886241077941956e-05" y="2.2886241077941956e-05" z="2.2886241077941956e-05" />
+                </transform>
+            </group>
+            <group name="Isonoe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="227.7978986632824" x="0" y="1" z="0" />
+                    <translate x="1.5496630432265472" y="0" z="0" />
+                    <scale x="2.7177411280056074e-05" y="2.7177411280056074e-05" z="2.7177411280056074e-05" />
+                </transform>
+            </group>
+            <group name="Praxidike">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="196.92140688720542" x="0" y="1" z="0" />
+                    <translate x="2.0656057527278113" y="0" z="0" />
+                    <scale x="4.863326229062666e-05" y="4.863326229062666e-05" z="4.863326229062666e-05" />
+                </transform>
+            </group>
+            <group name="Autonoe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="153.14996003687762" x="0" y="1" z="0" />
+                    <translate x="1.5669362259275272" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Thyone">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="99.8028997876214" x="0" y="1" z="0" />
+                    <translate x="1.9944020038940455" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Hermippe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="167.18719017809494" x="0" y="1" z="0" />
+                    <translate x="2.489070496658693" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Aitne">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="263.39142905445595" x="0" y="1" z="0" />
+                    <translate x="1.5274045966788798" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Eurydome">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="39.228422259394286" x="0" y="1" z="0" />
+                    <translate x="1.8455631439322675" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Euanthe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="70.5130304469522" x="0" y="1" z="0" />
+                    <translate x="1.811449935151709" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Euporie">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="309.14554596085736" x="0" y="1" z="0" />
+                    <translate x="1.58341947608983" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Orthosie">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="293.633265569012" x="0" y="1" z="0" />
+                    <translate x="2.046997280979272" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Sponde">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="268.1200193760119" x="0" y="1" z="0" />
+                    <translate x="1.7266225205095649" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Kale">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="338.9967344525174" x="0" y="1" z="0" />
+                    <translate x="2.2707494069183185" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Pasithee">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="303.18403528979604" x="0" y="1" z="0" />
+                    <translate x="1.834096692688164" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Hegemone">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="12.398940876484769" x="0" y="1" z="0" />
+                    <translate x="1.9875736911014086" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Mneme">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="300.13018731286473" x="0" y="1" z="0" />
+                    <translate x="1.6788235659455548" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Aoede">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="37.563478173258346" x="0" y="1" z="0" />
+                    <translate x="2.4681497836514845" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Thelxinoe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="278.0182459730191" x="0" y="1" z="0" />
+                    <translate x="2.104770055568687" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Arche">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="32.204215035634604" x="0" y="1" z="0" />
+                    <translate x="1.8259300467547732" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Kallichore">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="185.62796035335913" x="0" y="1" z="0" />
+                    <translate x="1.8247774962154322" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Helike">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="48.13144461393324" x="0" y="1" z="0" />
+                    <translate x="1.8531548254326742" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Carpo">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="122.9959438394873" x="0" y="1" z="0" />
+                    <translate x="2.184394210290623" y="0" z="0" />
+                    <scale x="2.1455851010570587e-05" y="2.1455851010570587e-05" z="2.1455851010570587e-05" />
+                </transform>
+            </group>
+            <group name="Eukelade">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="137.65888544507493" x="0" y="1" z="0" />
+                    <translate x="2.291167935767763" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="Cyllene">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="329.4300968342618" x="0" y="1" z="0" />
+                    <translate x="2.1680385766494132" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Kore">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="241.13228559788303" x="0" y="1" z="0" />
+                    <translate x="2.228696154659678" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="Herse">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="349.6039490913634" x="0" y="1" z="0" />
+                    <translate x="2.478847079016434" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2000 J11">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="231.34203727496953" x="0" y="1" z="0" />
+                    <translate x="2.3657940552786196" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J2">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="80.29495910889123" x="0" y="1" z="0" />
+                    <translate x="2.163814200912718" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J3">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="250.55340764356427" x="0" y="1" z="0" />
+                    <translate x="1.8868863704539895" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J4">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="263.8440738967611" x="0" y="1" z="0" />
+                    <translate x="1.7500201559690052" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J5">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="234.80199907213856" x="0" y="1" z="0" />
+                    <translate x="1.6104027253844033" y="0" z="0" />
+                    <scale x="2.8607801347427447e-05" y="2.8607801347427447e-05" z="2.8607801347427447e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J9">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="88.80140107973875" x="0" y="1" z="0" />
+                    <translate x="2.0736701672049946" y="0" z="0" />
+                    <scale x="7.151950336856862e-06" y="7.151950336856862e-06" z="7.151950336856862e-06" />
+                </transform>
+            </group>
+            <group name="S/2003 J10">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="161.5544995603579" x="0" y="1" z="0" />
+                    <translate x="1.708742610410612" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J12">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="247.29314021786163" x="0" y="1" z="0" />
+                    <translate x="1.977440591819121" y="0" z="0" />
+                    <scale x="7.151950336856862e-06" y="7.151950336856862e-06" z="7.151950336856862e-06" />
+                </transform>
+            </group>
+            <group name="S/2003 J15">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="38.967571928572184" x="0" y="1" z="0" />
+                    <translate x="2.3368773023756106" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J16">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="25.458097608362028" x="0" y="1" z="0" />
+                    <translate x="1.6333877196873208" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J18">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="40.66899882744567" x="0" y="1" z="0" />
+                    <translate x="1.9405180309160508" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J19">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="234.4123859359158" x="0" y="1" z="0" />
+                    <translate x="2.2525861303818133" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2003 J23">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="79.33732079474545" x="0" y="1" z="0" />
+                    <translate x="2.1018732058654472" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2010 J1">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="44.46577727678527" x="0" y="1" z="0" />
+                    <translate x="1.8206498882765298" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2010 J2">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="356.99418294213024" x="0" y="1" z="0" />
+                    <translate x="1.8488933361320814" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2011 J1">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="16.605850585474723" x="0" y="1" z="0" />
+                    <translate x="2.132375091876092" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+            <group name="S/2011 J2">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="316.48988545974476" x="0" y="1" z="0" />
+                    <translate x="1.7689491994518673" y="0" z="0" />
+                    <scale x="1.4303900673713723e-05" y="1.4303900673713723e-05" z="1.4303900673713723e-05" />
+                </transform>
+            </group>
+        </group>
+        <group name="Saturn">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="241.52605069261415" x="0" y="1" z="0" />
+                <translate x="27.0" y="0" z="0" />
+                <scale x="0.9705333333333334" y="0.9705333333333334" z="0.9705333333333334" />
+            </transform>
+            <group name="ring">
+                <models>
+                    <model file="models/torus.3d" />
+                </models>
+                <transform>
+                    <rotate angle="35" x="1" y="0" z="0" />
+                </transform>
+            </group>
+            <group name="Mimas">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="308.83851919756154" x="0" y="1" z="0" />
+                    <translate x="1.7625199419329936" y="0" z="0" />
+                    <scale x="0.0034036268718230524" y="0.0034036268718230524" z="0.0034036268718230524" />
+                </transform>
+            </group>
+            <group name="Enceladus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="323.36484579111607" x="0" y="1" z="0" />
+                    <translate x="1.9655343528149505" y="0" z="0" />
+                    <scale x="0.004329234784997939" y="0.004329234784997939" z="0.004329234784997939" />
+                </transform>
+            </group>
+            <group name="Tethys">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="22.622690747426777" x="0" y="1" z="0" />
+                    <translate x="2.185265327689874" y="0" z="0" />
+                    <scale x="0.009153043000412144" y="0.009153043000412144" z="0.009153043000412144" />
+                </transform>
+            </group>
+            <group name="Dione">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="293.21599578041884" x="0" y="1" z="0" />
+                    <translate x="2.416717076629864" y="0" z="0" />
+                    <scale x="0.0096458991619728" y="0.0096458991619728" z="0.0096458991619728" />
+                </transform>
+            </group>
+            <group name="Rhea">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="26.980527771303315" x="0" y="1" z="0" />
+                    <translate x="2.316298264142446" y="0" z="0" />
+                    <scale x="0.013125085863442779" y="0.013125085863442779" z="0.013125085863442779" />
+                </transform>
+            </group>
+            <group name="Titan">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="100.61846924111103" x="0" y="1" z="0" />
+                    <translate x="1.9989897601921236" y="0" z="0" />
+                    <scale x="0.044215036406099736" y="0.044215036406099736" z="0.044215036406099736" />
+                </transform>
+            </group>
+            <group name="Hyperion">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="6.009083814868004" x="0" y="1" z="0" />
+                    <translate x="2.247520592996754" y="0" z="0" />
+                    <scale x="0.0023183129550762467" y="0.0023183129550762467" z="0.0023183129550762467" />
+                </transform>
+            </group>
+            <group name="Iapetus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="239.8885905976897" x="0" y="1" z="0" />
+                    <translate x="1.7652151978597368" y="0" z="0" />
+                    <scale x="0.012632229701882127" y="0.012632229701882127" z="0.012632229701882127" />
+                </transform>
+            </group>
+            <group name="Phoebe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="197.69662388820683" x="0" y="1" z="0" />
+                    <translate x="2.4785505726668164" y="0" z="0" />
+                    <scale x="0.0018288913312268168" y="0.0018288913312268168" z="0.0018288913312268168" />
+                </transform>
+            </group>
+            <group name="Janus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="256.50250044522846" x="0" y="1" z="0" />
+                    <translate x="1.7477123554480558" y="0" z="0" />
+                    <scale x="0.001536955625772771" y="0.001536955625772771" z="0.001536955625772771" />
+                </transform>
+            </group>
+            <group name="Epimetheus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="115.89565294808774" x="0" y="1" z="0" />
+                    <translate x="2.049793156086142" y="0" z="0" />
+                    <scale x="0.0009977332051105921" y="0.0009977332051105921" z="0.0009977332051105921" />
+                </transform>
+            </group>
+            <group name="Helene">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="168.46503403002282" x="0" y="1" z="0" />
+                    <translate x="1.645238945181395" y="0" z="0" />
+                    <scale x="0.00030223931858771815" y="0.00030223931858771815" z="0.00030223931858771815" />
+                </transform>
+            </group>
+            <group name="Telesto">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="105.87822017690361" x="0" y="1" z="0" />
+                    <translate x="2.11544742248702" y="0" z="0" />
+                    <scale x="0.0002129413380958923" y="0.0002129413380958923" z="0.0002129413380958923" />
+                </transform>
+            </group>
+            <group name="Calypso">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="95.79193324716587" x="0" y="1" z="0" />
+                    <translate x="2.2245703527674086" y="0" z="0" />
+                    <scale x="0.0001837477675504877" y="0.0001837477675504877" z="0.0001837477675504877" />
+                </transform>
+            </group>
+            <group name="Atlas">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="69.0752012785595" x="0" y="1" z="0" />
+                    <translate x="2.108269257447015" y="0" z="0" />
+                    <scale x="0.0002593075971974172" y="0.0002593075971974172" z="0.0002593075971974172" />
+                </transform>
+            </group>
+            <group name="Prometheus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="50.170425519864644" x="0" y="1" z="0" />
+                    <translate x="1.543690913271867" y="0" z="0" />
+                    <scale x="0.000740142876768787" y="0.000740142876768787" z="0.000740142876768787" />
+                </transform>
+            </group>
+            <group name="Pandora">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="270.39284412279756" x="0" y="1" z="0" />
+                    <translate x="2.148303421554342" y="0" z="0" />
+                    <scale x="0.0006989284242340982" y="0.0006989284242340982" z="0.0006989284242340982" />
+                </transform>
+            </group>
+            <group name="Pan">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="56.179551754535" x="0" y="1" z="0" />
+                    <translate x="1.5710166279808102" y="0" z="0" />
+                    <scale x="0.00024213490864129686" y="0.00024213490864129686" z="0.00024213490864129686" />
+                </transform>
+            </group>
+            <group name="Methone">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="147.74737768807807" x="0" y="1" z="0" />
+                    <translate x="2.0374876176567898" y="0" z="0" />
+                    <scale x="2.7476301689792552e-05" y="2.7476301689792552e-05" z="2.7476301689792552e-05" />
+                </transform>
+            </group>
+            <group name="Pallene">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="150.452035713224" x="0" y="1" z="0" />
+                    <translate x="2.3619303249882924" y="0" z="0" />
+                    <scale x="4.293172139030086e-05" y="4.293172139030086e-05" z="4.293172139030086e-05" />
+                </transform>
+            </group>
+            <group name="Polydeuces">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="67.04570708792099" x="0" y="1" z="0" />
+                    <translate x="1.7221912763906064" y="0" z="0" />
+                    <scale x="2.232449512295645e-05" y="2.232449512295645e-05" z="2.232449512295645e-05" />
+                </transform>
+            </group>
+            <group name="Daphnis">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="219.6379711557286" x="0" y="1" z="0" />
+                    <translate x="1.54275021626506" y="0" z="0" />
+                    <scale x="6.525621651325731e-05" y="6.525621651325731e-05" z="6.525621651325731e-05" />
+                </transform>
+            </group>
+            <group name="Anthe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="33.3545582807677" x="0" y="1" z="0" />
+                    <translate x="1.812233791833745" y="0" z="0" />
+                    <scale x="1.5455419700508312e-05" y="1.5455419700508312e-05" z="1.5455419700508312e-05" />
+                </transform>
+            </group>
+            <group name="Aegaeon">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="214.43810255255516" x="0" y="1" z="0" />
+                    <translate x="2.308009531749293" y="0" z="0" />
+                    <scale x="5.1518065668361035e-06" y="5.1518065668361035e-06" z="5.1518065668361035e-06" />
+                </transform>
+            </group>
+            <group name="Ymir">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="72.92593268551907" x="0" y="1" z="0" />
+                    <translate x="1.9675622206772154" y="0" z="0" />
+                    <scale x="0.0001545541970050831" y="0.0001545541970050831" z="0.0001545541970050831" />
+                </transform>
+            </group>
+            <group name="Paaliaq">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="73.07843953213994" x="0" y="1" z="0" />
+                    <translate x="2.47441047368015" y="0" z="0" />
+                    <scale x="0.0001888995741173238" y="0.0001888995741173238" z="0.0001888995741173238" />
+                </transform>
+            </group>
+            <group name="Tarvos">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="260.6266494082027" x="0" y="1" z="0" />
+                    <translate x="2.4335517039378622" y="0" z="0" />
+                    <scale x="0.00012879516417090258" y="0.00012879516417090258" z="0.00012879516417090258" />
+                </transform>
+            </group>
+            <group name="Ijiraq">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="184.0516221119024" x="0" y="1" z="0" />
+                    <translate x="1.5114795870811928" y="0" z="0" />
+                    <scale x="0.00010303613133672208" y="0.00010303613133672208" z="0.00010303613133672208" />
+                </transform>
+            </group>
+            <group name="Suttungr">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="67.66055417264198" x="0" y="1" z="0" />
+                    <translate x="1.5723485118577971" y="0" z="0" />
+                    <scale x="6.010440994642121e-05" y="6.010440994642121e-05" z="6.010440994642121e-05" />
+                </transform>
+            </group>
+            <group name="Kiviuq">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="135.82594170855327" x="0" y="1" z="0" />
+                    <translate x="2.3540505671899865" y="0" z="0" />
+                    <scale x="0.00013738150844896276" y="0.00013738150844896276" z="0.00013738150844896276" />
+                </transform>
+            </group>
+            <group name="Mundilfari">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="110.65469475809287" x="0" y="1" z="0" />
+                    <translate x="1.6244867018589513" y="0" z="0" />
+                    <scale x="6.010440994642121e-05" y="6.010440994642121e-05" z="6.010440994642121e-05" />
+                </transform>
+            </group>
+            <group name="Albiorix">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="235.53880668727282" x="0" y="1" z="0" />
+                    <translate x="2.0282385946650145" y="0" z="0" />
+                    <scale x="0.0002747630168979255" y="0.0002747630168979255" z="0.0002747630168979255" />
+                </transform>
+            </group>
+            <group name="Skathi">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="50.10701838316619" x="0" y="1" z="0" />
+                    <translate x="2.2974210747373545" y="0" z="0" />
+                    <scale x="6.869075422448138e-05" y="6.869075422448138e-05" z="6.869075422448138e-05" />
+                </transform>
+            </group>
+            <group name="Erriapus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="83.04604081224139" x="0" y="1" z="0" />
+                    <translate x="1.5977091187319257" y="0" z="0" />
+                    <scale x="8.586344278060172e-05" y="8.586344278060172e-05" z="8.586344278060172e-05" />
+                </transform>
+            </group>
+            <group name="Siarnaq">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="68.54829505106257" x="0" y="1" z="0" />
+                    <translate x="1.8024634569973335" y="0" z="0" />
+                    <scale x="0.0003434537711224069" y="0.0003434537711224069" z="0.0003434537711224069" />
+                </transform>
+            </group>
+            <group name="Thrymr">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="275.4934611177095" x="0" y="1" z="0" />
+                    <translate x="1.6130324679145613" y="0" z="0" />
+                    <scale x="6.010440994642121e-05" y="6.010440994642121e-05" z="6.010440994642121e-05" />
+                </transform>
+            </group>
+            <group name="Narvi">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="158.4396890662005" x="0" y="1" z="0" />
+                    <translate x="2.433827258160679" y="0" z="0" />
+                    <scale x="6.010440994642121e-05" y="6.010440994642121e-05" z="6.010440994642121e-05" />
+                </transform>
+            </group>
+            <group name="Aegir">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="103.87425440319103" x="0" y="1" z="0" />
+                    <translate x="1.573552890184692" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Bebhionn">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="358.2675666111402" x="0" y="1" z="0" />
+                    <translate x="2.0813351167572955" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Bergelmir">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="54.835415742474765" x="0" y="1" z="0" />
+                    <translate x="1.6309125517478817" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Bestla">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="160.63269153702237" x="0" y="1" z="0" />
+                    <translate x="2.015594552498588" y="0" z="0" />
+                    <scale x="6.010440994642121e-05" y="6.010440994642121e-05" z="6.010440994642121e-05" />
+                </transform>
+            </group>
+            <group name="Farbauti">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="197.97917538159575" x="0" y="1" z="0" />
+                    <translate x="1.9223858242409875" y="0" z="0" />
+                    <scale x="4.293172139030086e-05" y="4.293172139030086e-05" z="4.293172139030086e-05" />
+                </transform>
+            </group>
+            <group name="Fenrir">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="328.6483701147483" x="0" y="1" z="0" />
+                    <translate x="1.753293960236095" y="0" z="0" />
+                    <scale x="3.434537711224069e-05" y="3.434537711224069e-05" z="3.434537711224069e-05" />
+                </transform>
+            </group>
+            <group name="Fornjot">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="62.36049360301348" x="0" y="1" z="0" />
+                    <translate x="1.6019221619022" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Hati">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="219.2082937903056" x="0" y="1" z="0" />
+                    <translate x="1.6054809644655006" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Hyrrokkin">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="15.920846587845126" x="0" y="1" z="0" />
+                    <translate x="2.1846951793021323" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Kari">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="92.91425225659204" x="0" y="1" z="0" />
+                    <translate x="1.9838546455335004" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Loge">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="243.0651566875409" x="0" y="1" z="0" />
+                    <translate x="2.0833239606449183" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Skoll">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="45.934025949798475" x="0" y="1" z="0" />
+                    <translate x="2.26870483691836" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Surtur">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="77.64018900971436" x="0" y="1" z="0" />
+                    <translate x="1.765717071430119" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Jarnsaxa">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="220.74078042183353" x="0" y="1" z="0" />
+                    <translate x="1.5529480880854805" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Greip">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="55.83547986534102" x="0" y="1" z="0" />
+                    <translate x="1.6188320133646563" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="Tarqeq">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="20.729566956642664" x="0" y="1" z="0" />
+                    <translate x="2.3502702023714646" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="S/2004 S7">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="223.22163385113183" x="0" y="1" z="0" />
+                    <translate x="1.6562726950598738" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="S/2004 S12">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="166.49856498900505" x="0" y="1" z="0" />
+                    <translate x="2.4214988037055383" y="0" z="0" />
+                    <scale x="4.293172139030086e-05" y="4.293172139030086e-05" z="4.293172139030086e-05" />
+                </transform>
+            </group>
+            <group name="S/2004 S13">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="289.2973953981627" x="0" y="1" z="0" />
+                    <translate x="1.8394012363240706" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="S/2004 S17">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="175.12122491748812" x="0" y="1" z="0" />
+                    <translate x="2.3871979841660513" y="0" z="0" />
+                    <scale x="3.434537711224069e-05" y="3.434537711224069e-05" z="3.434537711224069e-05" />
+                </transform>
+            </group>
+            <group name="S/2006 S1">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="10.605118203129177" x="0" y="1" z="0" />
+                    <translate x="2.4600735369754845" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="S/2006 S3">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="356.29710985322606" x="0" y="1" z="0" />
+                    <translate x="2.119415409786636" y="0" z="0" />
+                    <scale x="4.293172139030086e-05" y="4.293172139030086e-05" z="4.293172139030086e-05" />
+                </transform>
+            </group>
+            <group name="S/2007 S2">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="276.945200388217" x="0" y="1" z="0" />
+                    <translate x="2.174378188790112" y="0" z="0" />
+                    <scale x="5.151806566836104e-05" y="5.151806566836104e-05" z="5.151806566836104e-05" />
+                </transform>
+            </group>
+            <group name="S/2007 S3">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="295.6648710948068" x="0" y="1" z="0" />
+                    <translate x="1.9820708390120938" y="0" z="0" />
+                    <scale x="3.434537711224069e-05" y="3.434537711224069e-05" z="3.434537711224069e-05" />
+                </transform>
+            </group>
+        </group>
+        <group name="Uranus">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="321.5826635101095" x="0" y="1" z="0" />
+                <translate x="52.0" y="0" z="0" />
+                <scale x="0.4227" y="0.4227" z="0.4227" />
+            </transform>
+            <group name="Ariel">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="86.5230092686662" x="0" y="1" z="0" />
+                    <translate x="2.175634737361731" y="0" z="0" />
+                    <scale x="0.022825486948978787" y="0.022825486948978787" z="0.022825486948978787" />
+                </transform>
+            </group>
+            <group name="Umbriel">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="56.96674871444062" x="0" y="1" z="0" />
+                    <translate x="2.2432754435753024" y="0" z="0" />
+                    <scale x="0.023054175538206767" y="0.023054175538206767" z="0.023054175538206767" />
+                </transform>
+            </group>
+            <group name="Titania">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="331.32362164667745" x="0" y="1" z="0" />
+                    <translate x="1.9047175425610057" y="0" z="0" />
+                    <scale x="0.031105591041715952" y="0.031105591041715952" z="0.031105591041715952" />
+                </transform>
+            </group>
+            <group name="Oberon">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="106.59262867127914" x="0" y="1" z="0" />
+                    <translate x="2.3324177223197227" y="0" z="0" />
+                    <scale x="0.030021291696238465" y="0.030021291696238465" z="0.030021291696238465" />
+                </transform>
+            </group>
+            <group name="Miranda">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="179.20436973564523" x="0" y="1" z="0" />
+                    <translate x="1.5737731807188364" y="0" z="0" />
+                    <scale x="0.009297374024130589" y="0.009297374024130589" z="0.009297374024130589" />
+                </transform>
+            </group>
+            <group name="Cordelia">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="47.9094128930565" x="0" y="1" z="0" />
+                    <translate x="1.7932284553315045" y="0" z="0" />
+                    <scale x="0.0007925242488762716" y="0.0007925242488762716" z="0.0007925242488762716" />
+                </transform>
+            </group>
+            <group name="Ophelia">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="293.5600720756818" x="0" y="1" z="0" />
+                    <translate x="2.1087151274444906" y="0" z="0" />
+                    <scale x="0.0008437820361170253" y="0.0008437820361170253" z="0.0008437820361170253" />
+                </transform>
+            </group>
+            <group name="Bianca">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="90.74072746585972" x="0" y="1" z="0" />
+                    <translate x="1.9458146775574818" y="0" z="0" />
+                    <scale x="0.0010645848119233499" y="0.0010645848119233499" z="0.0010645848119233499" />
+                </transform>
+            </group>
+            <group name="Cressida">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="14.012740918653899" x="0" y="1" z="0" />
+                    <translate x="2.372879366300427" y="0" z="0" />
+                    <scale x="0.0016165917514391608" y="0.0016165917514391608" z="0.0016165917514391608" />
+                </transform>
+            </group>
+            <group name="Desdemona">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="217.7657022616895" x="0" y="1" z="0" />
+                    <translate x="1.7454708368422467" y="0" z="0" />
+                    <scale x="0.0013800173487895277" y="0.0013800173487895277" z="0.0013800173487895277" />
+                </transform>
+            </group>
+            <group name="Juliet">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="322.867845412348" x="0" y="1" z="0" />
+                    <translate x="1.85881915558042" y="0" z="0" />
+                    <scale x="0.0020897405567384276" y="0.0020897405567384276" z="0.0020897405567384276" />
+                </transform>
+            </group>
+            <group name="Portia">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="319.54738654815543" x="0" y="1" z="0" />
+                    <translate x="1.9848385463832976" y="0" z="0" />
+                    <scale x="0.0027600346975790555" y="0.0027600346975790555" z="0.0027600346975790555" />
+                </transform>
+            </group>
+            <group name="Rosalind">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="222.2824576102604" x="0" y="1" z="0" />
+                    <translate x="1.6418288050026284" y="0" z="0" />
+                    <scale x="0.0014194464158977997" y="0.0014194464158977997" z="0.0014194464158977997" />
+                </transform>
+            </group>
+            <group name="Belinda">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="177.28437643516355" x="0" y="1" z="0" />
+                    <translate x="1.9282229050147945" y="0" z="0" />
+                    <scale x="0.0017743080198722497" y="0.0017743080198722497" z="0.0017743080198722497" />
+                </transform>
+            </group>
+            <group name="Puck">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="359.8079995128413" x="0" y="1" z="0" />
+                    <translate x="1.8659265270274272" y="0" z="0" />
+                    <scale x="0.00319375443577005" y="0.00319375443577005" z="0.00319375443577005" />
+                </transform>
+            </group>
+            <group name="Caliban">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="181.93109412714426" x="0" y="1" z="0" />
+                    <translate x="2.171366678605323" y="0" z="0" />
+                    <scale x="0.0014194464158977997" y="0.0014194464158977997" z="0.0014194464158977997" />
+                </transform>
+            </group>
+            <group name="Sycorax">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="334.7773128120712" x="0" y="1" z="0" />
+                    <translate x="1.8602479530136202" y="0" z="0" />
+                    <scale x="0.0029571800331204164" y="0.0029571800331204164" z="0.0029571800331204164" />
+                </transform>
+            </group>
+            <group name="Prospero">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="27.50875785389795" x="0" y="1" z="0" />
+                    <translate x="1.5046261803974437" y="0" z="0" />
+                    <scale x="0.0009857266777068055" y="0.0009857266777068055" z="0.0009857266777068055" />
+                </transform>
+            </group>
+            <group name="Setebos">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="254.80649033802817" x="0" y="1" z="0" />
+                    <translate x="1.9854297198350315" y="0" z="0" />
+                    <scale x="0.0009462976105985332" y="0.0009462976105985332" z="0.0009462976105985332" />
+                </transform>
+            </group>
+            <group name="Stephano">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="283.4291833576519" x="0" y="1" z="0" />
+                    <translate x="2.2871241661108836" y="0" z="0" />
+                    <scale x="0.0006308650737323555" y="0.0006308650737323555" z="0.0006308650737323555" />
+                </transform>
+            </group>
+            <group name="Trinculo">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="132.57018435831353" x="0" y="1" z="0" />
+                    <translate x="2.250500727437143" y="0" z="0" />
+                    <scale x="0.0003548616039744499" y="0.0003548616039744499" z="0.0003548616039744499" />
+                </transform>
+            </group>
+            <group name="Francisco">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="80.84369422662878" x="0" y="1" z="0" />
+                    <translate x="1.8863175723427608" y="0" z="0" />
+                    <scale x="0.0004337197381909944" y="0.0004337197381909944" z="0.0004337197381909944" />
+                </transform>
+            </group>
+            <group name="Margaret">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="308.09410028107646" x="0" y="1" z="0" />
+                    <translate x="1.8848999855654935" y="0" z="0" />
+                    <scale x="0.00039429067108272216" y="0.00039429067108272216" z="0.00039429067108272216" />
+                </transform>
+            </group>
+            <group name="Ferdinand">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="68.56477021424428" x="0" y="1" z="0" />
+                    <translate x="1.932621863022581" y="0" z="0" />
+                    <scale x="0.00039429067108272216" y="0.00039429067108272216" z="0.00039429067108272216" />
+                </transform>
+            </group>
+            <group name="Perdita">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="318.82042549775485" x="0" y="1" z="0" />
+                    <translate x="2.1900397646626035" y="0" z="0" />
+                    <scale x="0.0005125778724075387" y="0.0005125778724075387" z="0.0005125778724075387" />
+                </transform>
+            </group>
+            <group name="Mab">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="39.15619188023547" x="0" y="1" z="0" />
+                    <translate x="2.361694497734974" y="0" z="0" />
+                    <scale x="0.0004731488052992666" y="0.0004731488052992666" z="0.0004731488052992666" />
+                </transform>
+            </group>
+            <group name="Cupid">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="64.19196348342886" x="0" y="1" z="0" />
+                    <translate x="1.535570915920935" y="0" z="0" />
+                    <scale x="0.0003548616039744499" y="0.0003548616039744499" z="0.0003548616039744499" />
+                </transform>
+            </group>
+        </group>
+        <group name="Neptune">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="97.37304910628534" x="0" y="1" z="0" />
+                <translate x="79.0" y="0" z="0" />
+                <scale x="0.4110333333333333" y="0.4110333333333333" z="0.4110333333333333" />
+            </transform>
+            <group name="Triton">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="175.1248866377237" x="0" y="1" z="0" />
+                    <translate x="2.0550905239840014" y="0" z="0" />
+                    <scale x="0.054877949882410196" y="0.054877949882410196" z="0.054877949882410196" />
+                </transform>
+            </group>
+            <group name="Nereid">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="34.6919672568069" x="0" y="1" z="0" />
+                    <translate x="2.476530381520794" y="0" z="0" />
+                    <scale x="0.006893196010055958" y="0.006893196010055958" z="0.006893196010055958" />
+                </transform>
+            </group>
+            <group name="Naiad">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="238.5889536213316" x="0" y="1" z="0" />
+                    <translate x="1.8242064213300913" y="0" z="0" />
+                    <scale x="0.0013380909901873328" y="0.0013380909901873328" z="0.0013380909901873328" />
+                </transform>
+            </group>
+            <group name="Thalassa">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="337.6514365969957" x="0" y="1" z="0" />
+                    <translate x="1.689093337375595" y="0" z="0" />
+                    <scale x="0.0016624766847782013" y="0.0016624766847782013" z="0.0016624766847782013" />
+                </transform>
+            </group>
+            <group name="Despina">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="219.83852675966173" x="0" y="1" z="0" />
+                    <translate x="2.032278313962418" y="0" z="0" />
+                    <scale x="0.003041115886789393" y="0.003041115886789393" z="0.003041115886789393" />
+                </transform>
+            </group>
+            <group name="Galatea">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="305.8152946488477" x="0" y="1" z="0" />
+                    <translate x="2.147420056572931" y="0" z="0" />
+                    <scale x="0.003568242640499554" y="0.003568242640499554" z="0.003568242640499554" />
+                </transform>
+            </group>
+            <group name="Larissa">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="169.2470444730421" x="0" y="1" z="0" />
+                    <translate x="2.212690297276608" y="0" z="0" />
+                    <scale x="0.003933176546914281" y="0.003933176546914281" z="0.003933176546914281" />
+                </transform>
+            </group>
+            <group name="Proteus">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="117.7193099461795" x="0" y="1" z="0" />
+                    <translate x="2.3074207446476156" y="0" z="0" />
+                    <scale x="0.0085151244830103" y="0.0085151244830103" z="0.0085151244830103" />
+                </transform>
+            </group>
+            <group name="Halimede">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="241.68126355675076" x="0" y="1" z="0" />
+                    <translate x="1.9480138071019628" y="0" z="0" />
+                    <scale x="0.0012569945665396158" y="0.0012569945665396158" z="0.0012569945665396158" />
+                </transform>
+            </group>
+            <group name="Psamathe">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="54.297926980313264" x="0" y="1" z="0" />
+                    <translate x="2.4980707657946772" y="0" z="0" />
+                    <scale x="0.0008109642364771714" y="0.0008109642364771714" z="0.0008109642364771714" />
+                </transform>
+            </group>
+            <group name="Sao">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="253.6701729573083" x="0" y="1" z="0" />
+                    <translate x="1.517133629781248" y="0" z="0" />
+                    <scale x="0.0008920606601248885" y="0.0008920606601248885" z="0.0008920606601248885" />
+                </transform>
+            </group>
+            <group name="Laomedeia">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="39.67871453800675" x="0" y="1" z="0" />
+                    <translate x="1.9035191923874195" y="0" z="0" />
+                    <scale x="0.00085151244830103" y="0.00085151244830103" z="0.00085151244830103" />
+                </transform>
+            </group>
+            <group name="Neso">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="288.21197449475443" x="0" y="1" z="0" />
+                    <translate x="1.7469439474893314" y="0" z="0" />
+                    <scale x="0.0012164463547157571" y="0.0012164463547157571" z="0.0012164463547157571" />
+                </transform>
+            </group>
+            <group name="S/2004 N1">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="321.35146922752034" x="0" y="1" z="0" />
+                    <translate x="2.3083720206357943" y="0" z="0" />
+                    <scale x="0.0003649339064147271" y="0.0003649339064147271" z="0.0003649339064147271" />
+                </transform>
+            </group>
+        </group>
+        <group name="Pluto">
+            <models>
+                <model file="models/sphere.3d" />
+            </models>
+            <transform>
+                <rotate angle="309.7055699977531" x="0" y="1" z="0" />
+                <translate x="93.0" y="0" z="0" />
+                <scale x="0.019805" y="0.019805" z="0.019805" />
+            </transform>
+            <group name="Charon">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="17.885419873702148" x="0" y="1" z="0" />
+                    <translate x="1.8384560896167912" y="0" z="0" />
+                    <scale x="0.5079525372380712" y="0.5079525372380712" z="0.5079525372380712" />
+                </transform>
+            </group>
+            <group name="Nix">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="185.33021067549996" x="0" y="1" z="0" />
+                    <translate x="1.517942814299481" y="0" z="0" />
+                    <scale x="0.019355381637633597" y="0.019355381637633597" z="0.019355381637633597" />
+                </transform>
+            </group>
+            <group name="Hydra">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="279.42142277484555" x="0" y="1" z="0" />
+                    <translate x="1.8708413663509322" y="0" z="0" />
+                    <scale x="0.025666919128166286" y="0.025666919128166286" z="0.025666919128166286" />
+                </transform>
+            </group>
+            <group name="Kerberos">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="195.20573487261433" x="0" y="1" z="0" />
+                    <translate x="2.3817147574262543" y="0" z="0" />
+                    <scale x="0.011781536648994362" y="0.011781536648994362" z="0.011781536648994362" />
+                </transform>
+            </group>
+            <group name="Styx">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="225.56756628707228" x="0" y="1" z="0" />
+                    <translate x="1.8117932083636523" y="0" z="0" />
+                    <scale x="0.008415383320710259" y="0.008415383320710259" z="0.008415383320710259" />
+                </transform>
+            </group>
+        </group>
+        <group name="Asteroid Belt">
+            <models></models>
+            <group name="Asteroid1">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="16.411020310008233" x="0" y="1" z="0" />
+                    <translate x="11.082191054537166" y="0" z="0" />
+                    <scale x="0.02687421241716338" y="0.02687421241716338" z="0.02687421241716338" />
+                </transform>
+            </group>
+            <group name="Asteroid2">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="152.35975112876443" x="0" y="1" z="0" />
+                    <translate x="11.627734517664909" y="0" z="0" />
+                    <scale x="0.027724173845587147" y="0.027724173845587147" z="0.027724173845587147" />
+                </transform>
+            </group>
+            <group name="Asteroid3">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="27.005913998510533" x="0" y="1" z="0" />
+                    <translate x="11.424276978749694" y="0" z="0" />
+                    <scale x="0.014941127511370866" y="0.014941127511370866" z="0.014941127511370866" />
+                </transform>
+            </group>
+            <group name="Asteroid4">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="270.52388011105865" x="0" y="1" z="0" />
+                    <translate x="11.428260811417477" y="0" z="0" />
+                    <scale x="0.015568693788839781" y="0.015568693788839781" z="0.015568693788839781" />
+                </transform>
+            </group>
+            <group name="Asteroid5">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="73.31416483141403" x="0" y="1" z="0" />
+                    <translate x="11.868860930135554" y="0" z="0" />
+                    <scale x="0.0266731547899329" y="0.0266731547899329" z="0.0266731547899329" />
+                </transform>
+            </group>
+            <group name="Asteroid6">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="210.69199156228834" x="0" y="1" z="0" />
+                    <translate x="11.303275934247278" y="0" z="0" />
+                    <scale x="0.014978720059318489" y="0.014978720059318489" z="0.014978720059318489" />
+                </transform>
+            </group>
+            <group name="Asteroid7">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="52.952307310763175" x="0" y="1" z="0" />
+                    <translate x="11.375396840975426" y="0" z="0" />
+                    <scale x="0.023483819263541966" y="0.023483819263541966" z="0.023483819263541966" />
+                </transform>
+            </group>
+            <group name="Asteroid8">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="222.5051830477085" x="0" y="1" z="0" />
+                    <translate x="11.016501157565513" y="0" z="0" />
+                    <scale x="0.017284108385906084" y="0.017284108385906084" z="0.017284108385906084" />
+                </transform>
+            </group>
+            <group name="Asteroid9">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="71.8636630701153" x="0" y="1" z="0" />
+                    <translate x="11.79262732499288" y="0" z="0" />
+                    <scale x="0.018257308071004733" y="0.018257308071004733" z="0.018257308071004733" />
+                </transform>
+            </group>
+            <group name="Asteroid10">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="124.75099642957896" x="0" y="1" z="0" />
+                    <translate x="11.07635492111909" y="0" z="0" />
+                    <scale x="0.019487310667377605" y="0.019487310667377605" z="0.019487310667377605" />
+                </transform>
+            </group>
+            <group name="Asteroid11">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="44.95559580391659" x="0" y="1" z="0" />
+                    <translate x="11.521753616751903" y="0" z="0" />
+                    <scale x="0.01932980778735836" y="0.01932980778735836" z="0.01932980778735836" />
+                </transform>
+            </group>
+            <group name="Asteroid12">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="337.13903502645735" x="0" y="1" z="0" />
+                    <translate x="11.248051041108312" y="0" z="0" />
+                    <scale x="0.014116906485166971" y="0.014116906485166971" z="0.014116906485166971" />
+                </transform>
+            </group>
+            <group name="Asteroid13">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="50.39689940022835" x="0" y="1" z="0" />
+                    <translate x="11.811807727666448" y="0" z="0" />
+                    <scale x="0.01936377916401285" y="0.01936377916401285" z="0.01936377916401285" />
+                </transform>
+            </group>
+            <group name="Asteroid14">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="309.37990091343437" x="0" y="1" z="0" />
+                    <translate x="11.197869364417166" y="0" z="0" />
+                    <scale x="0.02226487905767422" y="0.02226487905767422" z="0.02226487905767422" />
+                </transform>
+            </group>
+            <group name="Asteroid15">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="33.35862861672398" x="0" y="1" z="0" />
+                    <translate x="11.354234803288351" y="0" z="0" />
+                    <scale x="0.014030955533044235" y="0.014030955533044235" z="0.014030955533044235" />
+                </transform>
+            </group>
+            <group name="Asteroid16">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="203.56130323437392" x="0" y="1" z="0" />
+                    <translate x="11.046468791608135" y="0" z="0" />
+                    <scale x="0.01718135374251655" y="0.01718135374251655" z="0.01718135374251655" />
+                </transform>
+            </group>
+            <group name="Asteroid17">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="13.601864746546784" x="0" y="1" z="0" />
+                    <translate x="11.246335724405581" y="0" z="0" />
+                    <scale x="0.013132670334550001" y="0.013132670334550001" z="0.013132670334550001" />
+                </transform>
+            </group>
+            <group name="Asteroid18">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="342.9456844807871" x="0" y="1" z="0" />
+                    <translate x="11.380140624473079" y="0" z="0" />
+                    <scale x="0.015340105687478726" y="0.015340105687478726" z="0.015340105687478726" />
+                </transform>
+            </group>
+            <group name="Asteroid19">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="359.15522910088737" x="0" y="1" z="0" />
+                    <translate x="11.264407119602764" y="0" z="0" />
+                    <scale x="0.022700882857562193" y="0.022700882857562193" z="0.022700882857562193" />
+                </transform>
+            </group>
+            <group name="Asteroid20">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="359.76549655272066" x="0" y="1" z="0" />
+                    <translate x="11.698184618665788" y="0" z="0" />
+                    <scale x="0.021064564960935915" y="0.021064564960935915" z="0.021064564960935915" />
+                </transform>
+            </group>
+            <group name="Asteroid21">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="333.7976629933817" x="0" y="1" z="0" />
+                    <translate x="11.476560793203653" y="0" z="0" />
+                    <scale x="0.020594416363097695" y="0.020594416363097695" z="0.020594416363097695" />
+                </transform>
+            </group>
+            <group name="Asteroid22">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="334.0019203098212" x="0" y="1" z="0" />
+                    <translate x="11.390072250108265" y="0" z="0" />
+                    <scale x="0.02174590085753543" y="0.02174590085753543" z="0.02174590085753543" />
+                </transform>
+            </group>
+            <group name="Asteroid23">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="143.24642625796534" x="0" y="1" z="0" />
+                    <translate x="11.75563705501428" y="0" z="0" />
+                    <scale x="0.016894196618288088" y="0.016894196618288088" z="0.016894196618288088" />
+                </transform>
+            </group>
+            <group name="Asteroid24">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="100.75161709815087" x="0" y="1" z="0" />
+                    <translate x="11.293056187542323" y="0" z="0" />
+                    <scale x="0.02891713890353724" y="0.02891713890353724" z="0.02891713890353724" />
+                </transform>
+            </group>
+            <group name="Asteroid25">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="83.85532896215578" x="0" y="1" z="0" />
+                    <translate x="11.669605199201856" y="0" z="0" />
+                    <scale x="0.016925994444639988" y="0.016925994444639988" z="0.016925994444639988" />
+                </transform>
+            </group>
+            <group name="Asteroid26">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="272.0446713207284" x="0" y="1" z="0" />
+                    <translate x="11.575618552090338" y="0" z="0" />
+                    <scale x="0.025110180447352796" y="0.025110180447352796" z="0.025110180447352796" />
+                </transform>
+            </group>
+            <group name="Asteroid27">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="21.16999215857893" x="0" y="1" z="0" />
+                    <translate x="11.736882719122356" y="0" z="0" />
+                    <scale x="0.018772111747197798" y="0.018772111747197798" z="0.018772111747197798" />
+                </transform>
+            </group>
+            <group name="Asteroid28">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="53.274426396953636" x="0" y="1" z="0" />
+                    <translate x="11.281932538361044" y="0" z="0" />
+                    <scale x="0.022633651997051314" y="0.022633651997051314" z="0.022633651997051314" />
+                </transform>
+            </group>
+            <group name="Asteroid29">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="158.6044998344332" x="0" y="1" z="0" />
+                    <translate x="11.855364451750283" y="0" z="0" />
+                    <scale x="0.02140951039940767" y="0.02140951039940767" z="0.02140951039940767" />
+                </transform>
+            </group>
+            <group name="Asteroid30">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="39.60236539673252" x="0" y="1" z="0" />
+                    <translate x="11.672715140988084" y="0" z="0" />
+                    <scale x="0.024630435637293724" y="0.024630435637293724" z="0.024630435637293724" />
+                </transform>
+            </group>
+            <group name="Asteroid31">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="111.62231468578432" x="0" y="1" z="0" />
+                    <translate x="11.36625677042428" y="0" z="0" />
+                    <scale x="0.023378803514890432" y="0.023378803514890432" z="0.023378803514890432" />
+                </transform>
+            </group>
+            <group name="Asteroid32">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="74.76539920734541" x="0" y="1" z="0" />
+                    <translate x="11.937218732549596" y="0" z="0" />
+                    <scale x="0.029619829091314324" y="0.029619829091314324" z="0.029619829091314324" />
+                </transform>
+            </group>
+            <group name="Asteroid33">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="57.383136108355416" x="0" y="1" z="0" />
+                    <translate x="11.824420571369858" y="0" z="0" />
+                    <scale x="0.024539033179427003" y="0.024539033179427003" z="0.024539033179427003" />
+                </transform>
+            </group>
+            <group name="Asteroid34">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="165.01711047996187" x="0" y="1" z="0" />
+                    <translate x="11.684122618921716" y="0" z="0" />
+                    <scale x="0.01796151426227075" y="0.01796151426227075" z="0.01796151426227075" />
+                </transform>
+            </group>
+            <group name="Asteroid35">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="209.1154693562686" x="0" y="1" z="0" />
+                    <translate x="11.468328384455875" y="0" z="0" />
+                    <scale x="0.015421236716110197" y="0.015421236716110197" z="0.015421236716110197" />
+                </transform>
+            </group>
+            <group name="Asteroid36">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="76.11828018939639" x="0" y="1" z="0" />
+                    <translate x="11.249159631800673" y="0" z="0" />
+                    <scale x="0.014084293292055582" y="0.014084293292055582" z="0.014084293292055582" />
+                </transform>
+            </group>
+            <group name="Asteroid37">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="299.62244321943155" x="0" y="1" z="0" />
+                    <translate x="11.790290390733578" y="0" z="0" />
+                    <scale x="0.021263790112109347" y="0.021263790112109347" z="0.021263790112109347" />
+                </transform>
+            </group>
+            <group name="Asteroid38">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="102.72498740607244" x="0" y="1" z="0" />
+                    <translate x="11.015701893156708" y="0" z="0" />
+                    <scale x="0.01765832474825502" y="0.01765832474825502" z="0.01765832474825502" />
+                </transform>
+            </group>
+            <group name="Asteroid39">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="261.7875779641099" x="0" y="1" z="0" />
+                    <translate x="11.87934691350739" y="0" z="0" />
+                    <scale x="0.01187685021017017" y="0.01187685021017017" z="0.01187685021017017" />
+                </transform>
+            </group>
+            <group name="Asteroid40">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="238.51892130331026" x="0" y="1" z="0" />
+                    <translate x="11.833050862024333" y="0" z="0" />
+                    <scale x="0.020433577051113767" y="0.020433577051113767" z="0.020433577051113767" />
+                </transform>
+            </group>
+            <group name="Asteroid41">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="41.78844127036891" x="0" y="1" z="0" />
+                    <translate x="11.673096714369553" y="0" z="0" />
+                    <scale x="0.014673236719980564" y="0.014673236719980564" z="0.014673236719980564" />
+                </transform>
+            </group>
+            <group name="Asteroid42">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="56.96551897796681" x="0" y="1" z="0" />
+                    <translate x="11.52787408260389" y="0" z="0" />
+                    <scale x="0.024616542228080986" y="0.024616542228080986" z="0.024616542228080986" />
+                </transform>
+            </group>
+            <group name="Asteroid43">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="333.31268162972214" x="0" y="1" z="0" />
+                    <translate x="11.130394768493447" y="0" z="0" />
+                    <scale x="0.012366149343763113" y="0.012366149343763113" z="0.012366149343763113" />
+                </transform>
+            </group>
+            <group name="Asteroid44">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="141.88590036033838" x="0" y="1" z="0" />
+                    <translate x="11.324029835432" y="0" z="0" />
+                    <scale x="0.024730452151749238" y="0.024730452151749238" z="0.024730452151749238" />
+                </transform>
+            </group>
+            <group name="Asteroid45">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="318.39699673575166" x="0" y="1" z="0" />
+                    <translate x="11.688530855406984" y="0" z="0" />
+                    <scale x="0.02252338175720409" y="0.02252338175720409" z="0.02252338175720409" />
+                </transform>
+            </group>
+            <group name="Asteroid46">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="14.80236073473597" x="0" y="1" z="0" />
+                    <translate x="11.056307865862168" y="0" z="0" />
+                    <scale x="0.019806214662752904" y="0.019806214662752904" z="0.019806214662752904" />
+                </transform>
+            </group>
+            <group name="Asteroid47">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="344.59358952205747" x="0" y="1" z="0" />
+                    <translate x="11.009963006709976" y="0" z="0" />
+                    <scale x="0.010361209159553608" y="0.010361209159553608" z="0.010361209159553608" />
+                </transform>
+            </group>
+            <group name="Asteroid48">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="290.466970326714" x="0" y="1" z="0" />
+                    <translate x="11.300118166965028" y="0" z="0" />
+                    <scale x="0.02782851157827669" y="0.02782851157827669" z="0.02782851157827669" />
+                </transform>
+            </group>
+            <group name="Asteroid49">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="191.7648292689882" x="0" y="1" z="0" />
+                    <translate x="11.058679565054074" y="0" z="0" />
+                    <scale x="0.029568434626287415" y="0.029568434626287415" z="0.029568434626287415" />
+                </transform>
+            </group>
+            <group name="Asteroid50">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="288.1099270811136" x="0" y="1" z="0" />
+                    <translate x="11.827933399470606" y="0" z="0" />
+                    <scale x="0.029979451713595645" y="0.029979451713595645" z="0.029979451713595645" />
+                </transform>
+            </group>
+            <group name="Asteroid51">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="40.23159931707422" x="0" y="1" z="0" />
+                    <translate x="11.743366797398881" y="0" z="0" />
+                    <scale x="0.020090131010267104" y="0.020090131010267104" z="0.020090131010267104" />
+                </transform>
+            </group>
+            <group name="Asteroid52">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="338.0199191383299" x="0" y="1" z="0" />
+                    <translate x="11.739853350795782" y="0" z="0" />
+                    <scale x="0.018013216537696147" y="0.018013216537696147" z="0.018013216537696147" />
+                </transform>
+            </group>
+            <group name="Asteroid53">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="165.21146726336477" x="0" y="1" z="0" />
+                    <translate x="11.018659389236204" y="0" z="0" />
+                    <scale x="0.019868427566790504" y="0.019868427566790504" z="0.019868427566790504" />
+                </transform>
+            </group>
+            <group name="Asteroid54">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="277.8147058685054" x="0" y="1" z="0" />
+                    <translate x="11.90470215060893" y="0" z="0" />
+                    <scale x="0.02153639932494277" y="0.02153639932494277" z="0.02153639932494277" />
+                </transform>
+            </group>
+            <group name="Asteroid55">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="228.64275879576294" x="0" y="1" z="0" />
+                    <translate x="11.40372893319778" y="0" z="0" />
+                    <scale x="0.012929265236376974" y="0.012929265236376974" z="0.012929265236376974" />
+                </transform>
+            </group>
+            <group name="Asteroid56">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="73.15001473260202" x="0" y="1" z="0" />
+                    <translate x="11.22633036309437" y="0" z="0" />
+                    <scale x="0.010507347383688947" y="0.010507347383688947" z="0.010507347383688947" />
+                </transform>
+            </group>
+            <group name="Asteroid57">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="211.6188334579094" x="0" y="1" z="0" />
+                    <translate x="11.85930697856027" y="0" z="0" />
+                    <scale x="0.010043543266326041" y="0.010043543266326041" z="0.010043543266326041" />
+                </transform>
+            </group>
+            <group name="Asteroid58">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="355.5950185129797" x="0" y="1" z="0" />
+                    <translate x="11.537418391329165" y="0" z="0" />
+                    <scale x="0.011228332001060253" y="0.011228332001060253" z="0.011228332001060253" />
+                </transform>
+            </group>
+            <group name="Asteroid59">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="354.2769523403904" x="0" y="1" z="0" />
+                    <translate x="11.472441258922297" y="0" z="0" />
+                    <scale x="0.015501361439502946" y="0.015501361439502946" z="0.015501361439502946" />
+                </transform>
+            </group>
+            <group name="Asteroid60">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="81.51535561931237" x="0" y="1" z="0" />
+                    <translate x="11.876559075904433" y="0" z="0" />
+                    <scale x="0.024599974395569952" y="0.024599974395569952" z="0.024599974395569952" />
+                </transform>
+            </group>
+            <group name="Asteroid61">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="308.28943313566305" x="0" y="1" z="0" />
+                    <translate x="11.833223711806692" y="0" z="0" />
+                    <scale x="0.013272539166075063" y="0.013272539166075063" z="0.013272539166075063" />
+                </transform>
+            </group>
+            <group name="Asteroid62">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="13.20029812330259" x="0" y="1" z="0" />
+                    <translate x="11.58467395928567" y="0" z="0" />
+                    <scale x="0.02896368944643407" y="0.02896368944643407" z="0.02896368944643407" />
+                </transform>
+            </group>
+            <group name="Asteroid63">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="74.0172069820358" x="0" y="1" z="0" />
+                    <translate x="11.59332419888068" y="0" z="0" />
+                    <scale x="0.028116864593633772" y="0.028116864593633772" z="0.028116864593633772" />
+                </transform>
+            </group>
+            <group name="Asteroid64">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="337.5288993152262" x="0" y="1" z="0" />
+                    <translate x="11.16309952408453" y="0" z="0" />
+                    <scale x="0.01426717602705823" y="0.01426717602705823" z="0.01426717602705823" />
+                </transform>
+            </group>
+            <group name="Asteroid65">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="221.4067396078432" x="0" y="1" z="0" />
+                    <translate x="11.615598104070296" y="0" z="0" />
+                    <scale x="0.015125437553549132" y="0.015125437553549132" z="0.015125437553549132" />
+                </transform>
+            </group>
+            <group name="Asteroid66">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="220.63784489401172" x="0" y="1" z="0" />
+                    <translate x="11.136325369634697" y="0" z="0" />
+                    <scale x="0.01928470288481518" y="0.01928470288481518" z="0.01928470288481518" />
+                </transform>
+            </group>
+            <group name="Asteroid67">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="320.21332854115195" x="0" y="1" z="0" />
+                    <translate x="11.812356124157755" y="0" z="0" />
+                    <scale x="0.02988093908349558" y="0.02988093908349558" z="0.02988093908349558" />
+                </transform>
+            </group>
+            <group name="Asteroid68">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="313.2504124122161" x="0" y="1" z="0" />
+                    <translate x="11.00763254905686" y="0" z="0" />
+                    <scale x="0.02260127655549447" y="0.02260127655549447" z="0.02260127655549447" />
+                </transform>
+            </group>
+            <group name="Asteroid69">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="107.86597120437142" x="0" y="1" z="0" />
+                    <translate x="11.168437160609065" y="0" z="0" />
+                    <scale x="0.01301608787163007" y="0.01301608787163007" z="0.01301608787163007" />
+                </transform>
+            </group>
+            <group name="Asteroid70">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="295.8847906067458" x="0" y="1" z="0" />
+                    <translate x="11.500609748893812" y="0" z="0" />
+                    <scale x="0.02807810187096227" y="0.02807810187096227" z="0.02807810187096227" />
+                </transform>
+            </group>
+            <group name="Asteroid71">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="21.280622261254564" x="0" y="1" z="0" />
+                    <translate x="11.36940804717526" y="0" z="0" />
+                    <scale x="0.012456279190914944" y="0.012456279190914944" z="0.012456279190914944" />
+                </transform>
+            </group>
+            <group name="Asteroid72">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="325.42515187401415" x="0" y="1" z="0" />
+                    <translate x="11.57286034464671" y="0" z="0" />
+                    <scale x="0.011393646220112179" y="0.011393646220112179" z="0.011393646220112179" />
+                </transform>
+            </group>
+            <group name="Asteroid73">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="97.59937476370777" x="0" y="1" z="0" />
+                    <translate x="11.769079039097164" y="0" z="0" />
+                    <scale x="0.022017841324558456" y="0.022017841324558456" z="0.022017841324558456" />
+                </transform>
+            </group>
+            <group name="Asteroid74">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="249.86810572922613" x="0" y="1" z="0" />
+                    <translate x="11.891450807557785" y="0" z="0" />
+                    <scale x="0.025915056785372037" y="0.025915056785372037" z="0.025915056785372037" />
+                </transform>
+            </group>
+            <group name="Asteroid75">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="15.176934379089442" x="0" y="1" z="0" />
+                    <translate x="11.799106800631122" y="0" z="0" />
+                    <scale x="0.013290492005259868" y="0.013290492005259868" z="0.013290492005259868" />
+                </transform>
+            </group>
+            <group name="Asteroid76">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="128.10420491062945" x="0" y="1" z="0" />
+                    <translate x="11.754625849986414" y="0" z="0" />
+                    <scale x="0.02168504926531706" y="0.02168504926531706" z="0.02168504926531706" />
+                </transform>
+            </group>
+            <group name="Asteroid77">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="194.8495879195956" x="0" y="1" z="0" />
+                    <translate x="11.11702570413968" y="0" z="0" />
+                    <scale x="0.014140951820608635" y="0.014140951820608635" z="0.014140951820608635" />
+                </transform>
+            </group>
+            <group name="Asteroid78">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="39.321570192005176" x="0" y="1" z="0" />
+                    <translate x="11.949028049202814" y="0" z="0" />
+                    <scale x="0.010567364530269841" y="0.010567364530269841" z="0.010567364530269841" />
+                </transform>
+            </group>
+            <group name="Asteroid79">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="105.78083459942171" x="0" y="1" z="0" />
+                    <translate x="11.768432567821419" y="0" z="0" />
+                    <scale x="0.014703498294655141" y="0.014703498294655141" z="0.014703498294655141" />
+                </transform>
+            </group>
+            <group name="Asteroid80">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="74.3015415880751" x="0" y="1" z="0" />
+                    <translate x="11.414938724321416" y="0" z="0" />
+                    <scale x="0.013598110388033581" y="0.013598110388033581" z="0.013598110388033581" />
+                </transform>
+            </group>
+            <group name="Asteroid81">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="38.17907712079131" x="0" y="1" z="0" />
+                    <translate x="11.220584598506917" y="0" z="0" />
+                    <scale x="0.016010853141698502" y="0.016010853141698502" z="0.016010853141698502" />
+                </transform>
+            </group>
+            <group name="Asteroid82">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="45.321228938458695" x="0" y="1" z="0" />
+                    <translate x="11.239103968131536" y="0" z="0" />
+                    <scale x="0.026872511095059955" y="0.026872511095059955" z="0.026872511095059955" />
+                </transform>
+            </group>
+            <group name="Asteroid83">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="339.79409627022665" x="0" y="1" z="0" />
+                    <translate x="11.087955227276963" y="0" z="0" />
+                    <scale x="0.01449389353216872" y="0.01449389353216872" z="0.01449389353216872" />
+                </transform>
+            </group>
+            <group name="Asteroid84">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="45.601643064344394" x="0" y="1" z="0" />
+                    <translate x="11.90086545095818" y="0" z="0" />
+                    <scale x="0.014065181186805506" y="0.014065181186805506" z="0.014065181186805506" />
+                </transform>
+            </group>
+            <group name="Asteroid85">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="292.23775816458584" x="0" y="1" z="0" />
+                    <translate x="11.609269869616586" y="0" z="0" />
+                    <scale x="0.02842445174753957" y="0.02842445174753957" z="0.02842445174753957" />
+                </transform>
+            </group>
+            <group name="Asteroid86">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="207.65900330003203" x="0" y="1" z="0" />
+                    <translate x="11.302226156916173" y="0" z="0" />
+                    <scale x="0.026755000770460627" y="0.026755000770460627" z="0.026755000770460627" />
+                </transform>
+            </group>
+            <group name="Asteroid87">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="167.64221410775986" x="0" y="1" z="0" />
+                    <translate x="11.157703761349662" y="0" z="0" />
+                    <scale x="0.010436039731821611" y="0.010436039731821611" z="0.010436039731821611" />
+                </transform>
+            </group>
+            <group name="Asteroid88">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="331.96331699428373" x="0" y="1" z="0" />
+                    <translate x="11.332308508772483" y="0" z="0" />
+                    <scale x="0.02899048992714362" y="0.02899048992714362" z="0.02899048992714362" />
+                </transform>
+            </group>
+            <group name="Asteroid89">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="339.88275880717754" x="0" y="1" z="0" />
+                    <translate x="11.557436886245437" y="0" z="0" />
+                    <scale x="0.02976592893466918" y="0.02976592893466918" z="0.02976592893466918" />
+                </transform>
+            </group>
+            <group name="Asteroid90">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="259.3912742312983" x="0" y="1" z="0" />
+                    <translate x="11.76333367665202" y="0" z="0" />
+                    <scale x="0.02317117964702306" y="0.02317117964702306" z="0.02317117964702306" />
+                </transform>
+            </group>
+            <group name="Asteroid91">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="287.4581718180104" x="0" y="1" z="0" />
+                    <translate x="11.110289854178712" y="0" z="0" />
+                    <scale x="0.02196267687806629" y="0.02196267687806629" z="0.02196267687806629" />
+                </transform>
+            </group>
+            <group name="Asteroid92">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="169.43107278032366" x="0" y="1" z="0" />
+                    <translate x="11.134043305126388" y="0" z="0" />
+                    <scale x="0.015154710625370146" y="0.015154710625370146" z="0.015154710625370146" />
+                </transform>
+            </group>
+            <group name="Asteroid93">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="309.97069807498553" x="0" y="1" z="0" />
+                    <translate x="11.66021115048212" y="0" z="0" />
+                    <scale x="0.01863725591272742" y="0.01863725591272742" z="0.01863725591272742" />
+                </transform>
+            </group>
+            <group name="Asteroid94">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="144.3872204991094" x="0" y="1" z="0" />
+                    <translate x="11.929671806291259" y="0" z="0" />
+                    <scale x="0.023211964972533645" y="0.023211964972533645" z="0.023211964972533645" />
+                </transform>
+            </group>
+            <group name="Asteroid95">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="264.0424088627605" x="0" y="1" z="0" />
+                    <translate x="11.914250646648462" y="0" z="0" />
+                    <scale x="0.010916154533541316" y="0.010916154533541316" z="0.010916154533541316" />
+                </transform>
+            </group>
+            <group name="Asteroid96">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="334.9340879901121" x="0" y="1" z="0" />
+                    <translate x="11.32036701586804" y="0" z="0" />
+                    <scale x="0.019129456790048967" y="0.019129456790048967" z="0.019129456790048967" />
+                </transform>
+            </group>
+            <group name="Asteroid97">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="316.4644256320356" x="0" y="1" z="0" />
+                    <translate x="11.449023489653143" y="0" z="0" />
+                    <scale x="0.029935518799393122" y="0.029935518799393122" z="0.029935518799393122" />
+                </transform>
+            </group>
+            <group name="Asteroid98">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="108.88445575492294" x="0" y="1" z="0" />
+                    <translate x="11.775473925753415" y="0" z="0" />
+                    <scale x="0.01948364243511674" y="0.01948364243511674" z="0.01948364243511674" />
+                </transform>
+            </group>
+            <group name="Asteroid99">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="163.30165905045573" x="0" y="1" z="0" />
+                    <translate x="11.814937255129653" y="0" z="0" />
+                    <scale x="0.024550257117019237" y="0.024550257117019237" z="0.024550257117019237" />
+                </transform>
+            </group>
+            <group name="Asteroid100">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="222.36567719642673" x="0" y="1" z="0" />
+                    <translate x="11.775299141281906" y="0" z="0" />
+                    <scale x="0.010579646134050305" y="0.010579646134050305" z="0.010579646134050305" />
+                </transform>
+            </group>
+            <group name="Asteroid101">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="157.58226682907153" x="0" y="1" z="0" />
+                    <translate x="11.46363259943704" y="0" z="0" />
+                    <scale x="0.02145988398022446" y="0.02145988398022446" z="0.02145988398022446" />
+                </transform>
+            </group>
+            <group name="Asteroid102">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="306.5225854048721" x="0" y="1" z="0" />
+                    <translate x="11.23418422217719" y="0" z="0" />
+                    <scale x="0.01879901273288824" y="0.01879901273288824" z="0.01879901273288824" />
+                </transform>
+            </group>
+            <group name="Asteroid103">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="146.86754505109081" x="0" y="1" z="0" />
+                    <translate x="11.960759465538645" y="0" z="0" />
+                    <scale x="0.023176513507066898" y="0.023176513507066898" z="0.023176513507066898" />
+                </transform>
+            </group>
+            <group name="Asteroid104">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="78.03342933752975" x="0" y="1" z="0" />
+                    <translate x="11.531076161452036" y="0" z="0" />
+                    <scale x="0.0281358864395125" y="0.0281358864395125" z="0.0281358864395125" />
+                </transform>
+            </group>
+            <group name="Asteroid105">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="0.5329707428892405" x="0" y="1" z="0" />
+                    <translate x="11.547162475091717" y="0" z="0" />
+                    <scale x="0.028381292164012896" y="0.028381292164012896" z="0.028381292164012896" />
+                </transform>
+            </group>
+            <group name="Asteroid106">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="207.5132955683538" x="0" y="1" z="0" />
+                    <translate x="11.418084447825604" y="0" z="0" />
+                    <scale x="0.014843784688561578" y="0.014843784688561578" z="0.014843784688561578" />
+                </transform>
+            </group>
+            <group name="Asteroid107">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="246.13219719828862" x="0" y="1" z="0" />
+                    <translate x="11.429599911206296" y="0" z="0" />
+                    <scale x="0.019502132857873375" y="0.019502132857873375" z="0.019502132857873375" />
+                </transform>
+            </group>
+            <group name="Asteroid108">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="320.1806645308518" x="0" y="1" z="0" />
+                    <translate x="11.677298938311962" y="0" z="0" />
+                    <scale x="0.022100771506487878" y="0.022100771506487878" z="0.022100771506487878" />
+                </transform>
+            </group>
+            <group name="Asteroid109">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="33.074709609169275" x="0" y="1" z="0" />
+                    <translate x="11.993092656181739" y="0" z="0" />
+                    <scale x="0.02764274789036323" y="0.02764274789036323" z="0.02764274789036323" />
+                </transform>
+            </group>
+            <group name="Asteroid110">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="141.3251979119965" x="0" y="1" z="0" />
+                    <translate x="11.231626374543161" y="0" z="0" />
+                    <scale x="0.023225005309418616" y="0.023225005309418616" z="0.023225005309418616" />
+                </transform>
+            </group>
+            <group name="Asteroid111">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="38.976025585681114" x="0" y="1" z="0" />
+                    <translate x="11.370617208026236" y="0" z="0" />
+                    <scale x="0.024160070684500136" y="0.024160070684500136" z="0.024160070684500136" />
+                </transform>
+            </group>
+            <group name="Asteroid112">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="44.11479364976498" x="0" y="1" z="0" />
+                    <translate x="11.256496818056203" y="0" z="0" />
+                    <scale x="0.018956899935680983" y="0.018956899935680983" z="0.018956899935680983" />
+                </transform>
+            </group>
+            <group name="Asteroid113">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="62.011551477675575" x="0" y="1" z="0" />
+                    <translate x="11.795464872147777" y="0" z="0" />
+                    <scale x="0.02679219223539947" y="0.02679219223539947" z="0.02679219223539947" />
+                </transform>
+            </group>
+            <group name="Asteroid114">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="271.60959075721377" x="0" y="1" z="0" />
+                    <translate x="11.42222249448618" y="0" z="0" />
+                    <scale x="0.012425544185378485" y="0.012425544185378485" z="0.012425544185378485" />
+                </transform>
+            </group>
+            <group name="Asteroid115">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="216.27559414115782" x="0" y="1" z="0" />
+                    <translate x="11.514332622369624" y="0" z="0" />
+                    <scale x="0.02647120652752158" y="0.02647120652752158" z="0.02647120652752158" />
+                </transform>
+            </group>
+            <group name="Asteroid116">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="34.69775392855975" x="0" y="1" z="0" />
+                    <translate x="11.835551902625296" y="0" z="0" />
+                    <scale x="0.01724282485270738" y="0.01724282485270738" z="0.01724282485270738" />
+                </transform>
+            </group>
+            <group name="Asteroid117">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="355.88492884828054" x="0" y="1" z="0" />
+                    <translate x="11.043388647599729" y="0" z="0" />
+                    <scale x="0.025546024848223693" y="0.025546024848223693" z="0.025546024848223693" />
+                </transform>
+            </group>
+            <group name="Asteroid118">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="123.13394766044532" x="0" y="1" z="0" />
+                    <translate x="11.43378043036" y="0" z="0" />
+                    <scale x="0.010573742702328848" y="0.010573742702328848" z="0.010573742702328848" />
+                </transform>
+            </group>
+            <group name="Asteroid119">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="295.6160483709061" x="0" y="1" z="0" />
+                    <translate x="11.910768912516787" y="0" z="0" />
+                    <scale x="0.01687485108489296" y="0.01687485108489296" z="0.01687485108489296" />
+                </transform>
+            </group>
+            <group name="Asteroid120">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="155.6993474330612" x="0" y="1" z="0" />
+                    <translate x="11.046562141516333" y="0" z="0" />
+                    <scale x="0.01780531595696614" y="0.01780531595696614" z="0.01780531595696614" />
+                </transform>
+            </group>
+            <group name="Asteroid121">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="318.7830372655166" x="0" y="1" z="0" />
+                    <translate x="11.121817771995769" y="0" z="0" />
+                    <scale x="0.02521125080941495" y="0.02521125080941495" z="0.02521125080941495" />
+                </transform>
+            </group>
+            <group name="Asteroid122">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="0.8204058867600184" x="0" y="1" z="0" />
+                    <translate x="11.195773796626238" y="0" z="0" />
+                    <scale x="0.024675781929212715" y="0.024675781929212715" z="0.024675781929212715" />
+                </transform>
+            </group>
+            <group name="Asteroid123">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="322.6484437745868" x="0" y="1" z="0" />
+                    <translate x="11.852384561158377" y="0" z="0" />
+                    <scale x="0.02503826655659638" y="0.02503826655659638" z="0.02503826655659638" />
+                </transform>
+            </group>
+            <group name="Asteroid124">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="344.9795516812898" x="0" y="1" z="0" />
+                    <translate x="11.899997902306861" y="0" z="0" />
+                    <scale x="0.01637760055189198" y="0.01637760055189198" z="0.01637760055189198" />
+                </transform>
+            </group>
+            <group name="Asteroid125">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="358.71135733357613" x="0" y="1" z="0" />
+                    <translate x="11.887504026002533" y="0" z="0" />
+                    <scale x="0.021627061978199323" y="0.021627061978199323" z="0.021627061978199323" />
+                </transform>
+            </group>
+            <group name="Asteroid126">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="200.99669458964067" x="0" y="1" z="0" />
+                    <translate x="11.022878757003546" y="0" z="0" />
+                    <scale x="0.021720859107827714" y="0.021720859107827714" z="0.021720859107827714" />
+                </transform>
+            </group>
+            <group name="Asteroid127">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="342.2530505500525" x="0" y="1" z="0" />
+                    <translate x="11.64734807506877" y="0" z="0" />
+                    <scale x="0.010199855174481486" y="0.010199855174481486" z="0.010199855174481486" />
+                </transform>
+            </group>
+            <group name="Asteroid128">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="74.81738711679687" x="0" y="1" z="0" />
+                    <translate x="11.210238530985" y="0" z="0" />
+                    <scale x="0.022990143557237733" y="0.022990143557237733" z="0.022990143557237733" />
+                </transform>
+            </group>
+            <group name="Asteroid129">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="327.59047955870477" x="0" y="1" z="0" />
+                    <translate x="11.344806709707594" y="0" z="0" />
+                    <scale x="0.02394830619593038" y="0.02394830619593038" z="0.02394830619593038" />
+                </transform>
+            </group>
+            <group name="Asteroid130">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="231.0059048516637" x="0" y="1" z="0" />
+                    <translate x="11.612740723155326" y="0" z="0" />
+                    <scale x="0.023542996745309602" y="0.023542996745309602" z="0.023542996745309602" />
+                </transform>
+            </group>
+            <group name="Asteroid131">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="290.69842689666" x="0" y="1" z="0" />
+                    <translate x="11.812021253291213" y="0" z="0" />
+                    <scale x="0.025756993458914308" y="0.025756993458914308" z="0.025756993458914308" />
+                </transform>
+            </group>
+            <group name="Asteroid132">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="357.4683186018289" x="0" y="1" z="0" />
+                    <translate x="11.514107780987304" y="0" z="0" />
+                    <scale x="0.01707049595384085" y="0.01707049595384085" z="0.01707049595384085" />
+                </transform>
+            </group>
+            <group name="Asteroid133">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="263.63318022236507" x="0" y="1" z="0" />
+                    <translate x="11.988880155896245" y="0" z="0" />
+                    <scale x="0.010657783524607905" y="0.010657783524607905" z="0.010657783524607905" />
+                </transform>
+            </group>
+            <group name="Asteroid134">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="239.14540705871227" x="0" y="1" z="0" />
+                    <translate x="11.895741540624838" y="0" z="0" />
+                    <scale x="0.016688555240990433" y="0.016688555240990433" z="0.016688555240990433" />
+                </transform>
+            </group>
+            <group name="Asteroid135">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="96.30490125786923" x="0" y="1" z="0" />
+                    <translate x="11.490719434292165" y="0" z="0" />
+                    <scale x="0.013124901020926734" y="0.013124901020926734" z="0.013124901020926734" />
+                </transform>
+            </group>
+            <group name="Asteroid136">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="280.56865695890804" x="0" y="1" z="0" />
+                    <translate x="11.773497848101943" y="0" z="0" />
+                    <scale x="0.02116820532307201" y="0.02116820532307201" z="0.02116820532307201" />
+                </transform>
+            </group>
+            <group name="Asteroid137">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="271.7364367898756" x="0" y="1" z="0" />
+                    <translate x="11.910446691222408" y="0" z="0" />
+                    <scale x="0.029505792276443732" y="0.029505792276443732" z="0.029505792276443732" />
+                </transform>
+            </group>
+            <group name="Asteroid138">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="255.1127763228102" x="0" y="1" z="0" />
+                    <translate x="11.577086701126174" y="0" z="0" />
+                    <scale x="0.012467239559911834" y="0.012467239559911834" z="0.012467239559911834" />
+                </transform>
+            </group>
+            <group name="Asteroid139">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="359.741427580127" x="0" y="1" z="0" />
+                    <translate x="11.610679415953218" y="0" z="0" />
+                    <scale x="0.02831844439531795" y="0.02831844439531795" z="0.02831844439531795" />
+                </transform>
+            </group>
+            <group name="Asteroid140">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="31.291867849876" x="0" y="1" z="0" />
+                    <translate x="11.65375646604352" y="0" z="0" />
+                    <scale x="0.01970048942390907" y="0.01970048942390907" z="0.01970048942390907" />
+                </transform>
+            </group>
+            <group name="Asteroid141">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="87.38627340923324" x="0" y="1" z="0" />
+                    <translate x="11.42682353875884" y="0" z="0" />
+                    <scale x="0.014533292450025376" y="0.014533292450025376" z="0.014533292450025376" />
+                </transform>
+            </group>
+            <group name="Asteroid142">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="70.10528401193305" x="0" y="1" z="0" />
+                    <translate x="11.111003691875903" y="0" z="0" />
+                    <scale x="0.02487927612736774" y="0.02487927612736774" z="0.02487927612736774" />
+                </transform>
+            </group>
+            <group name="Asteroid143">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="168.57638706512586" x="0" y="1" z="0" />
+                    <translate x="11.215384513933154" y="0" z="0" />
+                    <scale x="0.01994232092689308" y="0.01994232092689308" z="0.01994232092689308" />
+                </transform>
+            </group>
+            <group name="Asteroid144">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="5.835235256611688" x="0" y="1" z="0" />
+                    <translate x="11.121694833296852" y="0" z="0" />
+                    <scale x="0.029002024098066674" y="0.029002024098066674" z="0.029002024098066674" />
+                </transform>
+            </group>
+            <group name="Asteroid145">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="47.53745415493641" x="0" y="1" z="0" />
+                    <translate x="11.423653847770055" y="0" z="0" />
+                    <scale x="0.014014478889564976" y="0.014014478889564976" z="0.014014478889564976" />
+                </transform>
+            </group>
+            <group name="Asteroid146">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="173.36893539086776" x="0" y="1" z="0" />
+                    <translate x="11.503687063154274" y="0" z="0" />
+                    <scale x="0.02762732039078332" y="0.02762732039078332" z="0.02762732039078332" />
+                </transform>
+            </group>
+            <group name="Asteroid147">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="15.099661336692565" x="0" y="1" z="0" />
+                    <translate x="11.57017915761361" y="0" z="0" />
+                    <scale x="0.019934525502211645" y="0.019934525502211645" z="0.019934525502211645" />
+                </transform>
+            </group>
+            <group name="Asteroid148">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="133.65328298169487" x="0" y="1" z="0" />
+                    <translate x="11.678547030671975" y="0" z="0" />
+                    <scale x="0.025334752743049034" y="0.025334752743049034" z="0.025334752743049034" />
+                </transform>
+            </group>
+            <group name="Asteroid149">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="283.4726874728432" x="0" y="1" z="0" />
+                    <translate x="11.101882819251188" y="0" z="0" />
+                    <scale x="0.01432511254495465" y="0.01432511254495465" z="0.01432511254495465" />
+                </transform>
+            </group>
+            <group name="Asteroid150">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="87.85498236656981" x="0" y="1" z="0" />
+                    <translate x="11.537764474755514" y="0" z="0" />
+                    <scale x="0.029034326557356153" y="0.029034326557356153" z="0.029034326557356153" />
+                </transform>
+            </group>
+            <group name="Asteroid151">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="262.7229984408228" x="0" y="1" z="0" />
+                    <translate x="11.933357730107788" y="0" z="0" />
+                    <scale x="0.021287924494705956" y="0.021287924494705956" z="0.021287924494705956" />
+                </transform>
+            </group>
+            <group name="Asteroid152">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="38.16701140791177" x="0" y="1" z="0" />
+                    <translate x="11.381179198305306" y="0" z="0" />
+                    <scale x="0.025990097333769613" y="0.025990097333769613" z="0.025990097333769613" />
+                </transform>
+            </group>
+            <group name="Asteroid153">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="9.677029120778794" x="0" y="1" z="0" />
+                    <translate x="11.471403689073185" y="0" z="0" />
+                    <scale x="0.017561056515483373" y="0.017561056515483373" z="0.017561056515483373" />
+                </transform>
+            </group>
+            <group name="Asteroid154">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="28.931955287052187" x="0" y="1" z="0" />
+                    <translate x="11.802780086292307" y="0" z="0" />
+                    <scale x="0.016263658976686603" y="0.016263658976686603" z="0.016263658976686603" />
+                </transform>
+            </group>
+            <group name="Asteroid155">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="71.59997797070294" x="0" y="1" z="0" />
+                    <translate x="11.091963982034807" y="0" z="0" />
+                    <scale x="0.02500854190172864" y="0.02500854190172864" z="0.02500854190172864" />
+                </transform>
+            </group>
+            <group name="Asteroid156">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="333.78298709944295" x="0" y="1" z="0" />
+                    <translate x="11.345981939311654" y="0" z="0" />
+                    <scale x="0.023614512681315487" y="0.023614512681315487" z="0.023614512681315487" />
+                </transform>
+            </group>
+            <group name="Asteroid157">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="334.13524900178777" x="0" y="1" z="0" />
+                    <translate x="11.948326665786544" y="0" z="0" />
+                    <scale x="0.013513926945292881" y="0.013513926945292881" z="0.013513926945292881" />
+                </transform>
+            </group>
+            <group name="Asteroid158">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="30.585400790541485" x="0" y="1" z="0" />
+                    <translate x="11.551150096801281" y="0" z="0" />
+                    <scale x="0.014069966211933502" y="0.014069966211933502" z="0.014069966211933502" />
+                </transform>
+            </group>
+            <group name="Asteroid159">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="130.7992112793211" x="0" y="1" z="0" />
+                    <translate x="11.729053291734152" y="0" z="0" />
+                    <scale x="0.015327823158813939" y="0.015327823158813939" z="0.015327823158813939" />
+                </transform>
+            </group>
+            <group name="Asteroid160">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="357.37301006632947" x="0" y="1" z="0" />
+                    <translate x="11.804168349277273" y="0" z="0" />
+                    <scale x="0.01715838938839801" y="0.01715838938839801" z="0.01715838938839801" />
+                </transform>
+            </group>
+            <group name="Asteroid161">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="14.217364647426788" x="0" y="1" z="0" />
+                    <translate x="11.06955421085557" y="0" z="0" />
+                    <scale x="0.010520659305993298" y="0.010520659305993298" z="0.010520659305993298" />
+                </transform>
+            </group>
+            <group name="Asteroid162">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="268.27593630242416" x="0" y="1" z="0" />
+                    <translate x="11.80997347285624" y="0" z="0" />
+                    <scale x="0.028674526302056795" y="0.028674526302056795" z="0.028674526302056795" />
+                </transform>
+            </group>
+            <group name="Asteroid163">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="268.00752771868514" x="0" y="1" z="0" />
+                    <translate x="11.511119490911103" y="0" z="0" />
+                    <scale x="0.025002813320262447" y="0.025002813320262447" z="0.025002813320262447" />
+                </transform>
+            </group>
+            <group name="Asteroid164">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="167.2620678981111" x="0" y="1" z="0" />
+                    <translate x="11.776361095140295" y="0" z="0" />
+                    <scale x="0.017678482949817914" y="0.017678482949817914" z="0.017678482949817914" />
+                </transform>
+            </group>
+            <group name="Asteroid165">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="150.46109829998025" x="0" y="1" z="0" />
+                    <translate x="11.501739956862064" y="0" z="0" />
+                    <scale x="0.01701971034850323" y="0.01701971034850323" z="0.01701971034850323" />
+                </transform>
+            </group>
+            <group name="Asteroid166">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="328.8364231569228" x="0" y="1" z="0" />
+                    <translate x="11.88389783350606" y="0" z="0" />
+                    <scale x="0.02636716148293671" y="0.02636716148293671" z="0.02636716148293671" />
+                </transform>
+            </group>
+            <group name="Asteroid167">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="302.8326196162669" x="0" y="1" z="0" />
+                    <translate x="11.225815033689909" y="0" z="0" />
+                    <scale x="0.029905472032605226" y="0.029905472032605226" z="0.029905472032605226" />
+                </transform>
+            </group>
+            <group name="Asteroid168">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="139.05937847144375" x="0" y="1" z="0" />
+                    <translate x="11.243551177044576" y="0" z="0" />
+                    <scale x="0.025000438855590678" y="0.025000438855590678" z="0.025000438855590678" />
+                </transform>
+            </group>
+            <group name="Asteroid169">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="167.566314592018" x="0" y="1" z="0" />
+                    <translate x="11.888537132843682" y="0" z="0" />
+                    <scale x="0.025818424806684594" y="0.025818424806684594" z="0.025818424806684594" />
+                </transform>
+            </group>
+            <group name="Asteroid170">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="225.74702664278618" x="0" y="1" z="0" />
+                    <translate x="11.672708003377291" y="0" z="0" />
+                    <scale x="0.014646252919950767" y="0.014646252919950767" z="0.014646252919950767" />
+                </transform>
+            </group>
+            <group name="Asteroid171">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="339.4074175934807" x="0" y="1" z="0" />
+                    <translate x="11.853964565469576" y="0" z="0" />
+                    <scale x="0.017129557276595268" y="0.017129557276595268" z="0.017129557276595268" />
+                </transform>
+            </group>
+            <group name="Asteroid172">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="319.7962180330449" x="0" y="1" z="0" />
+                    <translate x="11.260516951856758" y="0" z="0" />
+                    <scale x="0.017398532688747324" y="0.017398532688747324" z="0.017398532688747324" />
+                </transform>
+            </group>
+            <group name="Asteroid173">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="294.2174394525876" x="0" y="1" z="0" />
+                    <translate x="11.639062559071826" y="0" z="0" />
+                    <scale x="0.017678537747746116" y="0.017678537747746116" z="0.017678537747746116" />
+                </transform>
+            </group>
+            <group name="Asteroid174">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="162.90186474240602" x="0" y="1" z="0" />
+                    <translate x="11.109371918693034" y="0" z="0" />
+                    <scale x="0.02098287675455545" y="0.02098287675455545" z="0.02098287675455545" />
+                </transform>
+            </group>
+            <group name="Asteroid175">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="44.25110333137818" x="0" y="1" z="0" />
+                    <translate x="11.036010297920557" y="0" z="0" />
+                    <scale x="0.01893480660200928" y="0.01893480660200928" z="0.01893480660200928" />
+                </transform>
+            </group>
+            <group name="Asteroid176">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="314.9070589058032" x="0" y="1" z="0" />
+                    <translate x="11.773102828280738" y="0" z="0" />
+                    <scale x="0.019736012200317392" y="0.019736012200317392" z="0.019736012200317392" />
+                </transform>
+            </group>
+            <group name="Asteroid177">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="249.39993104869436" x="0" y="1" z="0" />
+                    <translate x="11.33393098194112" y="0" z="0" />
+                    <scale x="0.02326271626099745" y="0.02326271626099745" z="0.02326271626099745" />
+                </transform>
+            </group>
+            <group name="Asteroid178">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="65.84572373112886" x="0" y="1" z="0" />
+                    <translate x="11.985900361310451" y="0" z="0" />
+                    <scale x="0.013341323248019732" y="0.013341323248019732" z="0.013341323248019732" />
+                </transform>
+            </group>
+            <group name="Asteroid179">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="185.57943279713504" x="0" y="1" z="0" />
+                    <translate x="11.371865726675503" y="0" z="0" />
+                    <scale x="0.024232824419765722" y="0.024232824419765722" z="0.024232824419765722" />
+                </transform>
+            </group>
+            <group name="Asteroid180">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="0.2604319702869651" x="0" y="1" z="0" />
+                    <translate x="11.982079773470751" y="0" z="0" />
+                    <scale x="0.021679901943526064" y="0.021679901943526064" z="0.021679901943526064" />
+                </transform>
+            </group>
+            <group name="Asteroid181">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="137.02664226017464" x="0" y="1" z="0" />
+                    <translate x="11.985655149048263" y="0" z="0" />
+                    <scale x="0.02124520590944002" y="0.02124520590944002" z="0.02124520590944002" />
+                </transform>
+            </group>
+            <group name="Asteroid182">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="66.79174823791942" x="0" y="1" z="0" />
+                    <translate x="11.58260904742206" y="0" z="0" />
+                    <scale x="0.010279745408979992" y="0.010279745408979992" z="0.010279745408979992" />
+                </transform>
+            </group>
+            <group name="Asteroid183">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="328.96614750520695" x="0" y="1" z="0" />
+                    <translate x="11.999624245637824" y="0" z="0" />
+                    <scale x="0.020955261209461326" y="0.020955261209461326" z="0.020955261209461326" />
+                </transform>
+            </group>
+            <group name="Asteroid184">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="305.55746548871053" x="0" y="1" z="0" />
+                    <translate x="11.709841934359483" y="0" z="0" />
+                    <scale x="0.027743625118783366" y="0.027743625118783366" z="0.027743625118783366" />
+                </transform>
+            </group>
+            <group name="Asteroid185">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="244.06497372503088" x="0" y="1" z="0" />
+                    <translate x="11.004548002980936" y="0" z="0" />
+                    <scale x="0.025734952212904477" y="0.025734952212904477" z="0.025734952212904477" />
+                </transform>
+            </group>
+            <group name="Asteroid186">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="342.68796711077414" x="0" y="1" z="0" />
+                    <translate x="11.201836175399274" y="0" z="0" />
+                    <scale x="0.027302617710686587" y="0.027302617710686587" z="0.027302617710686587" />
+                </transform>
+            </group>
+            <group name="Asteroid187">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="184.60747995417955" x="0" y="1" z="0" />
+                    <translate x="11.19994901863992" y="0" z="0" />
+                    <scale x="0.0265876810362456" y="0.0265876810362456" z="0.0265876810362456" />
+                </transform>
+            </group>
+            <group name="Asteroid188">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="61.566831240577905" x="0" y="1" z="0" />
+                    <translate x="11.082248452988086" y="0" z="0" />
+                    <scale x="0.019455428298270478" y="0.019455428298270478" z="0.019455428298270478" />
+                </transform>
+            </group>
+            <group name="Asteroid189">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="219.56579959231098" x="0" y="1" z="0" />
+                    <translate x="11.954369448916308" y="0" z="0" />
+                    <scale x="0.022074867038441248" y="0.022074867038441248" z="0.022074867038441248" />
+                </transform>
+            </group>
+            <group name="Asteroid190">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="69.28025026921566" x="0" y="1" z="0" />
+                    <translate x="11.42254123128168" y="0" z="0" />
+                    <scale x="0.024432807849756242" y="0.024432807849756242" z="0.024432807849756242" />
+                </transform>
+            </group>
+            <group name="Asteroid191">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="172.85094479469552" x="0" y="1" z="0" />
+                    <translate x="11.85321400160581" y="0" z="0" />
+                    <scale x="0.010913886609843371" y="0.010913886609843371" z="0.010913886609843371" />
+                </transform>
+            </group>
+            <group name="Asteroid192">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="247.65788629153153" x="0" y="1" z="0" />
+                    <translate x="11.407378283916078" y="0" z="0" />
+                    <scale x="0.01322563071641103" y="0.01322563071641103" z="0.01322563071641103" />
+                </transform>
+            </group>
+            <group name="Asteroid193">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="45.056180646887015" x="0" y="1" z="0" />
+                    <translate x="11.37336187344045" y="0" z="0" />
+                    <scale x="0.017150704047638885" y="0.017150704047638885" z="0.017150704047638885" />
+                </transform>
+            </group>
+            <group name="Asteroid194">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="52.89160118687026" x="0" y="1" z="0" />
+                    <translate x="11.378838685029503" y="0" z="0" />
+                    <scale x="0.013679910925536078" y="0.013679910925536078" z="0.013679910925536078" />
+                </transform>
+            </group>
+            <group name="Asteroid195">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="23.152293756490888" x="0" y="1" z="0" />
+                    <translate x="11.550603649522733" y="0" z="0" />
+                    <scale x="0.014740192221946603" y="0.014740192221946603" z="0.014740192221946603" />
+                </transform>
+            </group>
+            <group name="Asteroid196">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="96.7888662999625" x="0" y="1" z="0" />
+                    <translate x="11.026138689460378" y="0" z="0" />
+                    <scale x="0.01665566106657425" y="0.01665566106657425" z="0.01665566106657425" />
+                </transform>
+            </group>
+            <group name="Asteroid197">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="253.66520693444303" x="0" y="1" z="0" />
+                    <translate x="11.167545673690405" y="0" z="0" />
+                    <scale x="0.017708963803376516" y="0.017708963803376516" z="0.017708963803376516" />
+                </transform>
+            </group>
+            <group name="Asteroid198">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="277.78392344732293" x="0" y="1" z="0" />
+                    <translate x="11.493851584386075" y="0" z="0" />
+                    <scale x="0.028419696115435968" y="0.028419696115435968" z="0.028419696115435968" />
+                </transform>
+            </group>
+            <group name="Asteroid199">
+                <models>
+                    <model file="models/sphere.3d" />
+                </models>
+                <transform>
+                    <rotate angle="176.3819008767853" x="0" y="1" z="0" />
+                    <translate x="11.20666557661194" y="0" z="0" />
+                    <scale x="0.010840871227573212" y="0.010840871227573212" z="0.010840871227573212" />
+                </transform>
+            </group>
+        </group>
+    </group>
+</world>
