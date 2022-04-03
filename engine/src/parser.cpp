@@ -4,6 +4,7 @@
 #include "tinyxml2.h"
 
 #include <fstream>
+#include <unordered_map>
 
 using namespace tinyxml2;
 
@@ -138,11 +139,12 @@ auto parse_transform(XMLElement const* const node) noexcept
     return cpp::fail(ParseError::UNKNOWN_TRANFORMATION);
 }
 
-auto parse_group(XMLElement const* const node) noexcept
-    -> cpp::result<Group, ParseError>
+auto parse_group(
+    XMLElement const* const node,
+    std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<Model>>>
+        model_map) noexcept -> cpp::result<Group, ParseError>
 {
-
-    auto models = std::vector<Model>();
+    auto models = std::vector<std::shared_ptr<Model>>();
     auto const models_elem = node->FirstChildElement("models");
     if (models_elem != nullptr) {
         char const* file_path;
@@ -151,9 +153,14 @@ auto parse_group(XMLElement const* const node) noexcept
             model_elem = model_elem->NextSiblingElement("model")
         ) {
             model_elem->QueryStringAttribute("file", &file_path);
-            auto model = parse_model(file_path);
-            CHECK_RESULT(model);
-            models.push_back(model.value());
+            auto stored_model = (*model_map)[file_path];
+            if (!stored_model) {
+                auto model = parse_model(file_path);
+                CHECK_RESULT(model);
+                stored_model =
+                    std::make_shared<Model>(std::move(model.value()));
+            }
+            models.push_back(stored_model);
         }
     }
 
@@ -162,7 +169,7 @@ auto parse_group(XMLElement const* const node) noexcept
          group_elem;
          group_elem = group_elem->NextSiblingElement("group")
     ) {
-        auto group_res = parse_group(group_elem);
+        auto group_res = parse_group(group_elem, model_map);
         CHECK_RESULT(group_res);
         groups.push_back(group_res.value());
     }
@@ -197,7 +204,10 @@ auto parse(std::string_view file_path) noexcept
 
     auto camera = parse_camera(camera_element);
     CHECK_RESULT(camera);
-    auto group = parse_group(group_element);
+
+    auto group = parse_group(
+        group_element,
+        std::make_shared<std::unordered_map<std::string, std::shared_ptr<Model>>>());
     CHECK_RESULT(group);
 
     return World(std::move(camera.value()), std::move(group.value()));

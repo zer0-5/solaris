@@ -9,14 +9,14 @@
 
 class Group {
   private:
-    std::vector<Model> _models;
+    std::vector<std::shared_ptr<Model>> _models;
     std::vector<Group> _subgroups;
     std::vector<std::shared_ptr<Transform>> _transforms;
 
   public:
     Group() = default;
     Group(
-        std::vector<Model> models,
+        std::vector<std::shared_ptr<Model>> models,
         std::vector<Group> subgroups,
         std::vector<std::shared_ptr<Transform>> transforms)
       : _models(std::move(models))
