@@ -114,15 +114,17 @@ auto parse_model(
     }
 
     auto color_elem = node->FirstChildElement("color");
-    auto color = Color{255, 255, 255};
+    auto color = Color{1, 1, 1};
     if (color_elem != nullptr) {
         float r, g, b;
-
-        color_elem->QueryFloatAttribute("r", &r);
-        color_elem->QueryFloatAttribute("g", &g);
-        color_elem->QueryFloatAttribute("b", &b);
-
-        color = Color{r, g, b};
+        if (color_elem->QueryFloatAttribute("r", &r) == XML_SUCCESS
+            && color_elem->QueryFloatAttribute("g", &g) == XML_SUCCESS
+            && color_elem->QueryFloatAttribute("b", &b) == XML_SUCCESS
+        ) {
+            color = Color{r / 255, g / 255, b / 255};
+        } else {
+            return cpp::fail(ParseError::MALFORMED_COLOR);
+        }
     }
 
     return Model(stored_points, color);

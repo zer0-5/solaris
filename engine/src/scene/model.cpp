@@ -8,7 +8,7 @@
 
 auto Model::draw() const noexcept -> void {
     glBegin(GL_TRIANGLES);
-    glColor3f(_color.r / 255, _color.g / 255, _color.b / 255);
+    glColor3f(_color.r, _color.g, _color.b);
     for (auto&& p : (*_points)) {
         glVertex3f(p.x(), p.y(), p.z());
     }

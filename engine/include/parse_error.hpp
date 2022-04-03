@@ -12,7 +12,8 @@ enum ParseError : char {
     MALFORMED_PROJECTION,
     MALFORMED_ROTATION,
     UNKNOWN_TRANFORMATION,
-    PRIMITIVE_FILE_NOT_FOUND
+    PRIMITIVE_FILE_NOT_FOUND,
+    MALFORMED_COLOR
 };
 
 char const* const error_msg(ParseError);
