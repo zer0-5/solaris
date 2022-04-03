@@ -8,18 +8,15 @@
 
 auto Model::draw() const noexcept -> void {
     glBegin(GL_TRIANGLES);
-    auto max = (float) _points.size();
-    auto i = 0.f;
-    for (auto&& p : _points) {
-        glColor3f(i / max, (max - i) / max, 0.9);
-        ++i;
+    glColor3f(_color.r / 255, _color.g / 255, _color.b / 255);
+    for (auto&& p : (*_points)) {
         glVertex3f(p.x(), p.y(), p.z());
     }
     glEnd();
 }
 
 auto operator<<(std::ostream& oss, Model const& m) -> std::ostream& {
-    for (auto const& point : m._points) {
+    for (auto const& point : (*m._points)) {
         oss << '(' << point << ") ";
     }
 

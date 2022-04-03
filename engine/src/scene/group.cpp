@@ -15,7 +15,7 @@ auto Group::draw() const noexcept -> void {
         transform->apply();
     }
     for (auto&& model : _models) {
-        model->draw();
+        model.draw();
     }
     for (auto&& group : _subgroups) {
         group.draw();
