@@ -1,4 +1,3 @@
-from tkinter import Image
 from yattag import Doc, indent
 from PIL import ImageColor
 import sys
@@ -29,7 +28,7 @@ with tag('world'):
         doc.stag('up', x="0", y="1", z="0")
         doc.stag('projection', fov="60", near="1", far="1000")
     with tag('group'):
-        with tag('group', name='sun'):
+        with tag('group', name='Sun'):
             (r, g, b) = ImageColor.getcolor("#FDB813", "RGB")
             with tag('models'):
                 with tag('model', file='models/sphere.3d'):
