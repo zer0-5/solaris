@@ -1,10 +1,10 @@
-planet,radius,relative distance,has ring
-Mercury,2439.7,1,False
-Venus,6051.8,2,False
-Earth,6371,2.5,False
-Mars,3389.5,4,False
-Jupiter,69911,13,False
-Saturn,58232,24,True
-Uranus,25362,49,False
-Neptune,24662,76,False
-Pluto,1188.3,90,False
+planet,radius,relative distance,has ring,color
+Mercury,2439.7,1,False,#FF6347
+Venus,6051.8,2,False,#FFA500
+Earth,6371,2.5,False,#4169E1
+Mars,3389.5,4,False,#B22222
+Jupiter,69911,13,False,#8B4513
+Saturn,58232,24,True,#A0522D
+Uranus,25362,49,False,#5F9EA0
+Neptune,24662,76,False,#0000CD
+Pluto,1188.3,90,False,#FFE4E1
