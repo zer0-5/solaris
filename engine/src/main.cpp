@@ -10,13 +10,10 @@
 #include "scene/world.hpp"
 
 // singletons
-World WORLD;
-int CENTER_X;
-int CENTER_Y;
+World* WORLD;
 
 void change_size(int w, int h) {
-    CENTER_X = w / 2;
-    CENTER_Y = h / 2;
+    WORLD->camera.set_screen_size(w, h);
 
     // Prevent a divide by zero, when window is too short
     // (you cant make a window with zero width).
@@ -32,13 +29,14 @@ void change_size(int w, int h) {
     glViewport(0, 0, w, h);
 
     // Set perspective
-    WORLD.camera.set_prespective(w, h);
+    WORLD->camera.set_prespective();
 
     // return to the model view matrix mode
     glMatrixMode(GL_MODELVIEW);
 }
 
 void draw_axis() {
+    glBegin(GL_LINES);
     // X axis in red
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
@@ -53,6 +51,7 @@ void draw_axis() {
     glVertex3f(0.0f, 0.0f, 100.0f);
 
     glColor3f(1.0f, 1.0f, 1.0f);
+    glEnd();
 }
 
 void render_scene(void) {
@@ -60,32 +59,26 @@ void render_scene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // set the camera
-    WORLD.camera.place();
-
-    if (WORLD.camera.mode() == CameraMode::FPV) {
-        glutWarpPointer(CENTER_X, CENTER_Y);
-    }
+    WORLD->camera.place();
 
     // draw axis
-    // glBegin(GL_LINES);
     // draw_axis();
-    // glEnd();
 
     // draw groups
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    WORLD.group.draw();
+    // glPolygonMode(GL_FRONT, GL_LINE);
+    WORLD->group.draw();
 
     // end of frame
     glutSwapBuffers();
 }
 
 void process_keys(unsigned char key, int x, int y) {
-    WORLD.camera.react_key(key, x, y);
+    WORLD->camera.react_key(key, x, y);
     glutPostRedisplay();
 }
 
 void cursor_motion(int x, int y) {
-    WORLD.camera.cursor_motion(CENTER_X, CENTER_Y, x, y);
+    WORLD->camera.cursor_motion(x, y);
     glutPostRedisplay();
 }
 
@@ -96,7 +89,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    WORLD = world_res.value();
+    WORLD = &*world_res;
 
     // init GLUT and the window
     glutInit(&argc, argv);

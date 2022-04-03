@@ -19,6 +19,8 @@ class Camera {
     Point _up;
     Point _projection;
     CameraMode _mode;
+    int _screen_width;
+    int _screen_height;
 
     auto react_key_orbit(unsigned char, int, int) noexcept -> void;
     auto react_key_fpv(unsigned char, int, int) noexcept -> void;
@@ -37,9 +39,10 @@ class Camera {
       , _projection(std::move(projection))
       , _mode(CameraMode::ORBIT) {}
     auto place() const noexcept -> void;
-    auto set_prespective(int, int) const noexcept -> void;
+    auto set_screen_size(int, int) noexcept -> void;
+    auto set_prespective() const noexcept -> void;
     auto react_key(unsigned char, int, int) noexcept -> void;
-    auto cursor_motion(int, int, int, int) noexcept -> void;
+    auto cursor_motion(int, int) noexcept -> void;
     auto mode() const noexcept -> CameraMode;
     auto friend operator<<(std::ostream&, Camera const&) -> std::ostream&;
 };

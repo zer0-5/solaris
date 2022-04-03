@@ -83,19 +83,17 @@ auto parse_camera(XMLElement const* const node) noexcept
     }
 
     return Camera(
-        std::move(pos.value()),
-        std::move(look_at.value()),
-        std::move(up.value()),
-        std::move(proj.value())
+        std::move(*pos),
+        std::move(*look_at),
+        std::move(*up),
+        std::move(*proj)
     );
 }
 
 auto parse_model(
     XMLElement const* const node,
-    std::shared_ptr<
-        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>>
-        points_map) noexcept -> cpp::result<Model, ParseError>
-{
+    std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
+) noexcept -> cpp::result<Model, ParseError> {
     char const* file_path;
     node->QueryStringAttribute("file", &file_path);
 
@@ -131,7 +129,7 @@ auto parse_model(
 }
 
 auto parse_transform(XMLElement const* const node) noexcept
-    -> cpp::result<std::shared_ptr<Transform>, ParseError>
+    -> cpp::result<std::unique_ptr<Transform>, ParseError>
 {
     auto transform_type = std::string_view(node->Value());
 
@@ -139,7 +137,7 @@ auto parse_transform(XMLElement const* const node) noexcept
         auto coords = parse_point(node);
         CHECK_RESULT(coords);
 
-        return std::make_shared<Translation>(coords.value());
+        return std::make_unique<Translation>(*coords);
 
     } else if (transform_type == "rotate") {
         float angle;
@@ -150,13 +148,13 @@ auto parse_transform(XMLElement const* const node) noexcept
         auto coords = parse_point(node);
         CHECK_RESULT(coords);
 
-        return std::make_shared<Rotation>(angle, coords.value());
+        return std::make_unique<Rotation>(angle, *coords);
 
     } else if (transform_type == "scale") {
         auto coords = parse_point(node);
         CHECK_RESULT(coords);
 
-        return  std::make_shared<Scale>(coords.value());
+        return std::make_unique<Scale>(*coords);
     }
 
     return cpp::fail(ParseError::UNKNOWN_TRANFORMATION);
@@ -164,10 +162,8 @@ auto parse_transform(XMLElement const* const node) noexcept
 
 auto parse_group(
     XMLElement const* const node,
-    std::shared_ptr<
-        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>>
-        points_map) noexcept -> cpp::result<Group, ParseError>
-{
+        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
+) noexcept -> cpp::result<Group, ParseError> {
     auto models = std::vector<Model>();
     auto const models_elem = node->FirstChildElement("models");
     if (models_elem != nullptr) {
@@ -177,7 +173,7 @@ auto parse_group(
         ) {
             auto model = parse_model(model_elem, points_map);
             CHECK_RESULT(model);
-            models.push_back(model.value());
+            models.push_back(*model);
         }
     }
 
@@ -188,10 +184,10 @@ auto parse_group(
     ) {
         auto group_res = parse_group(group_elem, points_map);
         CHECK_RESULT(group_res);
-        groups.push_back(group_res.value());
+        groups.push_back(std::move(*group_res));
     }
 
-    auto transforms = std::vector<std::shared_ptr<Transform>>();
+    auto transforms = std::vector<std::unique_ptr<Transform>>();
     auto transforms_elem = node->FirstChildElement("transform");
     if (transforms_elem != nullptr) {
         for (auto transform_elem = transforms_elem->FirstChildElement();
@@ -200,7 +196,7 @@ auto parse_group(
         ) {
             auto transform = parse_transform(transform_elem);
             CHECK_RESULT(transform);
-            transforms.push_back(std::move(transform.value()));
+            transforms.push_back(std::move(*transform));
         }
     }
 
@@ -222,12 +218,11 @@ auto parse(std::string_view file_path) noexcept
     auto camera = parse_camera(camera_element);
     CHECK_RESULT(camera);
 
-    auto group = parse_group(
-        group_element,
-        std::make_shared<std::unordered_map<
-            std::string,
-            std::shared_ptr<std::vector<Point>>>>());
+    auto points_map = new
+        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>();
+    auto group = parse_group(group_element, points_map);
+    delete points_map;
     CHECK_RESULT(group);
 
-    return World(std::move(camera.value()), std::move(group.value()));
+    return World(std::move(*camera), std::move(*group));
 }

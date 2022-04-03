@@ -7,6 +7,10 @@
 #endif
 
 auto Camera::place() const noexcept -> void {
+    if (_mode == CameraMode::FPV) {
+        glutWarpPointer(_screen_width / 2., _screen_height / 2.);
+    }
+
     glLoadIdentity();
     gluLookAt(
         _eye.x(), _eye.y(), _eye.z(),
@@ -15,10 +19,15 @@ auto Camera::place() const noexcept -> void {
     );
 }
 
-auto Camera::set_prespective(int w, int h) const noexcept -> void {
+auto Camera::set_screen_size(int w, int h) noexcept -> void {
+    _screen_width = w;
+    _screen_height = h;
+}
+
+auto Camera::set_prespective() const noexcept -> void {
     gluPerspective(
         _projection.x(),
-        w * 1.0 / h,
+        _screen_width * 1.0 / _screen_height,
         _projection.y(),
         _projection.z()
     );
@@ -98,7 +107,7 @@ auto Camera::react_key_fpv(unsigned char key, int x, int y) noexcept -> void {
     _center = _center + vec;
 }
 
-auto Camera::cursor_motion(int center_x, int center_y, int x, int y) noexcept
+auto Camera::cursor_motion(int x, int y) noexcept
     -> void
 {
     if (_mode == CameraMode::FPV && (x != 0 || y != 0)) {
@@ -108,8 +117,8 @@ auto Camera::cursor_motion(int center_x, int center_y, int x, int y) noexcept
         auto alpha = vec.alpha();
         auto beta = vec.beta();
 
-        alpha += (center_x - x) * 0.001;
-        beta += (center_y - y) * 0.001;
+        alpha += (_screen_width / 2. - x) * 0.001;
+        beta += (_screen_height / 2. - y) * 0.001;
 
         if (beta < -1.5) {
             beta = -1.5;
