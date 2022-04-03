@@ -2,14 +2,25 @@
 
 #include "point.hpp"
 
+#include <memory>
 #include <vector>
+
+struct Color {
+    float r;
+    float g;
+    float b;
+};
 
 class Model {
   private:
-    std::vector<Point> _points;
+    std::shared_ptr<std::vector<Point>> _points;
+    Color _color;
+
 
   public:
-    Model(std::vector<Point>&& points) : _points(std::move(points)) {}
+    Model(std::shared_ptr<std::vector<Point>> points, Color color)
+      : _points(points)
+      , _color(color) {}
     auto draw() const noexcept -> void;
     auto friend operator<<(std::ostream&, Model const&) -> std::ostream&;
 };
