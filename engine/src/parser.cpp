@@ -162,7 +162,7 @@ auto parse_transform(XMLElement const* const node) noexcept
 
 auto parse_group(
     XMLElement const* const node,
-        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
+    std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
 ) noexcept -> cpp::result<Group, ParseError> {
     auto models = std::vector<Model>();
     auto const models_elem = node->FirstChildElement("models");
