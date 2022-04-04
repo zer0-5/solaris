@@ -3,11 +3,13 @@
 #else
 #    include <GL/glut.h>
 #endif
-
 #include "logger.hpp"
 #include "parse_error.hpp"
 #include "parser.hpp"
 #include "scene/world.hpp"
+#include "settings.hpp"
+
+#include <chrono>
 
 // singletons
 World* WORLD;
@@ -62,10 +64,12 @@ void render_scene(void) {
     WORLD->camera.place();
 
     // draw axis
-    // draw_axis();
+    if (settings::enable_axis) {
+        draw_axis();
+    }
 
     // draw groups
-    // glPolygonMode(GL_FRONT, GL_LINE);
+    glPolygonMode(GL_FRONT, settings::polygon_mode);
     WORLD->group.draw();
 
     // end of frame
@@ -83,11 +87,19 @@ void cursor_motion(int x, int y) {
 }
 
 int main(int argc, char** argv) {
+    info("loading XML file...");
+    auto start = std::chrono::high_resolution_clock::now();
     auto world_res = parse(argv[1]);
     if (world_res.has_error()) {
         error(error_msg(world_res.error()));
         return 1;
     }
+    auto finish = std::chrono::high_resolution_clock::now();
+    info(fmt::format(
+        "loaded XML in {}s!",
+        std::chrono::duration_cast<std::chrono::milliseconds>(finish - start)
+            .count() / 1000.
+    ).c_str());
 
     WORLD = &*world_res;
 
