@@ -5,7 +5,7 @@ project(engine)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-file(GLOB SRC_FILES src/scene/*.cpp src/*.cpp)
+file(GLOB SRC_FILES src/*.cpp src/scene/*.cpp src/parse/*.cpp src/render/*.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 target_link_libraries(${PROJECT_NAME} common tinyxml2 fmt Result)

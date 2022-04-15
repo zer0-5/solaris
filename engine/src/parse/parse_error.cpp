@@ -1,4 +1,4 @@
-#include "parse_error.hpp"
+#include "parse/parse_error.hpp"
 
 char const could_not_open_xml_file_error_msg[] =
     "error opening XML file";

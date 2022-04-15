@@ -6,9 +6,6 @@
 #    include <GL/glut.h>
 #endif
 
-#include "parse_error.hpp"
-#include "tinyxml2.h"
-
 auto Group::draw() const noexcept -> void {
     glPushMatrix();
     for (auto&& transform : _transforms) {
