@@ -89,15 +89,18 @@ auto Camera::react_key_fpv(
 ) noexcept -> void {
     auto vec = _center - _eye;
     vec.normalize();
-    auto const old_vec = vec;
 
-    if (kb['w']) vec *= 0.5f;
-    if (kb['s']) vec *= -0.5f;
+    auto mov = Point::cartesian(0.f, 0.f, 0.f);
 
-    if (vec != old_vec) {
-        _eye += vec;
-        _center += vec;
-    }
+    if (kb['w']) mov += vec * 0.5f;
+    if (kb['s']) mov -= vec * 0.5f;
+    if (kb['a']) mov -= Point(vec).cross(_up * 0.5f);
+    if (kb['d']) mov += Point(vec).cross(_up * 0.5f);
+    if (kb['+']) mov += Point(_up) * 0.5f;
+    if (kb['-']) mov -= Point(_up) * 0.5f;
+
+    _eye += mov;
+    _center += mov;
 }
 
 auto Camera::cursor_motion(int x, int y) noexcept

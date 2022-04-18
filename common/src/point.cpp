@@ -69,6 +69,24 @@ void Point::normalize() noexcept {
     _z = _z / len;
 }
 
+Point& Point::dot(Point rhs) noexcept {
+    _x *= rhs._x;
+    _y *= rhs._y;
+    _z *= rhs._z;
+
+    return *this;
+}
+
+Point& Point::cross(Point rhs) noexcept {
+    *this = Point::cartesian(
+        _y * rhs._z - rhs._y * _z,
+        _z * rhs._x - rhs._z * _x,
+        _x * rhs._y - rhs._x * _y
+    );
+
+    return *this;
+}
+
 Point Point::operator+(Point rhs) const noexcept {
     return Point::cartesian(_x + rhs._x, _y + rhs._y, _z + rhs._z);
 }

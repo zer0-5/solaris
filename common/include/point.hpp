@@ -25,6 +25,8 @@ class Point {
     void sum_alpha(float);
     void sum_beta(float);
     void normalize() noexcept;
+    Point& dot(Point) noexcept;
+    Point& cross(Point) noexcept;
     Point operator+(Point) const noexcept;
     Point& operator+=(const Point&) noexcept;
     Point operator-(Point) const noexcept;
