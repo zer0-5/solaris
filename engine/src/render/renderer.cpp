@@ -6,8 +6,13 @@
 #    include <GL/glut.h>
 #endif
 
+#include <limits>
+
 namespace state {
 World static* world = nullptr;
+
+auto static keyboard =
+    std::array<bool, std::numeric_limits<unsigned char>::max()>();
 
 auto static enable_axis = false;
 auto static polygon_mode = GL_FILL;
@@ -18,8 +23,9 @@ void change_size(int w, int h) {
 
     // Prevent a divide by zero, when window is too short
     // (you cant make a window with zero width).
-    if (h == 0)
+    if (h == 0) {
         h = 1;
+    }
 
     // Set the projection matrix as current
     glMatrixMode(GL_PROJECTION);
@@ -61,6 +67,7 @@ void render_scene(void) {
 
     // set the camera
     state::world->camera.place();
+    state::world->camera.react_key(state::keyboard);
 
     // draw axis
     if (state::enable_axis) {
@@ -75,21 +82,41 @@ void render_scene(void) {
     glutSwapBuffers();
 }
 
-void process_keys(unsigned char key, int x, int y) {
-    state::world->camera.react_key(key, x, y);
-    glutPostRedisplay();
+void handle_key_down(unsigned char key, int _x, int _y) {
+    state::keyboard[key] = true;
+}
+
+void handle_key_up(unsigned char key, int _x, int _y) {
+    state::keyboard[key] = false;
+}
+
+void handle_special_key(int key, int x, int y) {
+    switch(key) {
+    case GLUT_KEY_F1:
+        state::world->camera.switch_mode();
+        break;
+    case GLUT_KEY_F2:
+        state::enable_axis = !state::enable_axis;
+        break;
+    case GLUT_KEY_F3:
+        state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
+        break;
+    default:
+        break;
+    }
 }
 
 void cursor_motion(int x, int y) {
     state::world->camera.cursor_motion(x, y);
-    glutPostRedisplay();
 }
 
 Renderer::Renderer(World& world) {
 
     // init GLUT and the window
-    auto glut_argc = 0;
-    glutInit(&glut_argc, nullptr);
+    static int glut_argc = 1;
+    static char glut_arg[] = "";
+    static char* glut_argv[] = {glut_arg};
+    glutInit(&glut_argc, glut_argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(800, 800);
@@ -97,14 +124,15 @@ Renderer::Renderer(World& world) {
 
     // Required callback registry
     glutDisplayFunc(render_scene);
-    // glutIdleFunc(render_scene);
+    glutIdleFunc(render_scene);
     glutPassiveMotionFunc(cursor_motion);
     glutMotionFunc(cursor_motion);
     glutReshapeFunc(change_size);
 
     // Callback registration for keyboard processing
-    glutKeyboardFunc(process_keys);
-    // glutSpecialFunc(process_special_keys);
+    glutKeyboardFunc(handle_key_down);
+    glutKeyboardUpFunc(handle_key_up);
+    glutSpecialFunc(handle_special_key);
 
     //  OpenGL settings
     glEnable(GL_DEPTH_TEST);

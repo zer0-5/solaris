@@ -69,16 +69,44 @@ void Point::normalize() noexcept {
     _z = _z / len;
 }
 
-Point Point::operator+(Point other) const noexcept {
-    return Point::cartesian(_x + other._x, _y + other._y, _z + other._z);
+Point Point::operator+(Point rhs) const noexcept {
+    return Point::cartesian(_x + rhs._x, _y + rhs._y, _z + rhs._z);
 }
 
-Point Point::operator-(Point other) const noexcept {
-    return Point::cartesian(_x - other._x, _y - other._y, _z - other._z);
+Point& Point::operator+=(const Point& rhs) noexcept {
+    _x += rhs._x;
+    _y += rhs._y;
+    _z += rhs._z;
+
+    return *this;
 }
 
-Point Point::operator*(float num) const noexcept {
-    return Point::cartesian(num * _x, num * _y, num * _z);
+Point Point::operator-(Point rhs) const noexcept {
+    return Point::cartesian(_x - rhs._x, _y - rhs._y, _z - rhs._z);
+}
+
+Point& Point::operator-=(const Point& rhs) noexcept {
+    _x -= rhs._x;
+    _y -= rhs._y;
+    _z -= rhs._z;
+
+    return *this;
+}
+
+Point Point::operator*(float rhs) const noexcept {
+    return Point::cartesian(rhs * _x, rhs * _y, rhs * _z);
+}
+
+Point& Point::operator*=(const float& rhs) noexcept {
+    _x *= rhs;
+    _y *= rhs;
+    _z *= rhs;
+
+    return *this;
+}
+
+bool Point::operator!=(Point rhs) const noexcept {
+    return (_x != rhs._x || _y != rhs._y || _z != rhs._z);
 }
 
 auto operator<<(std::ostream& oss, Point const& p) -> std::ostream& {

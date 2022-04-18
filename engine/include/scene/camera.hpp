@@ -4,6 +4,7 @@
 #include "tinyxml2.h"
 
 #include <iostream>
+#include <array>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -22,8 +23,12 @@ class Camera {
     int _screen_width;
     int _screen_height;
 
-    auto react_key_orbit(unsigned char, int, int) noexcept -> void;
-    auto react_key_fpv(unsigned char, int, int) noexcept -> void;
+    auto react_key_orbit(
+      std::array<bool, std::numeric_limits<unsigned char>::max()>
+    ) noexcept -> void;
+    auto react_key_fpv(
+      std::array<bool, std::numeric_limits<unsigned char>::max()>
+    ) noexcept -> void;
 
   public:
     Camera()
@@ -41,8 +46,10 @@ class Camera {
     auto place() const noexcept -> void;
     auto set_screen_size(int, int) noexcept -> void;
     auto set_prespective() const noexcept -> void;
-    auto react_key(unsigned char, int, int) noexcept -> void;
+    auto switch_mode() noexcept -> void;
+    auto react_key(
+      std::array<bool, std::numeric_limits<unsigned char>::max()>
+    ) noexcept -> void;
     auto cursor_motion(int, int) noexcept -> void;
-    auto mode() const noexcept -> CameraMode;
     auto friend operator<<(std::ostream&, Camera const&) -> std::ostream&;
 };

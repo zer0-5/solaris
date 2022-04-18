@@ -6,9 +6,11 @@
 #    include <GL/glut.h>
 #endif
 
+#include <algorithm>
+
 auto Camera::place() const noexcept -> void {
     if (_mode == CameraMode::FPV) {
-        glutWarpPointer(_screen_width / 2., _screen_height / 2.);
+        glutWarpPointer(_screen_width / 2.f, _screen_height / 2.f);
     }
 
     glLoadIdentity();
@@ -27,84 +29,75 @@ auto Camera::set_screen_size(int w, int h) noexcept -> void {
 auto Camera::set_prespective() const noexcept -> void {
     gluPerspective(
         _projection.x(),
-        _screen_width * 1.0 / _screen_height,
+        _screen_width * 1.0f / _screen_height,
         _projection.y(),
         _projection.z()
     );
 }
 
-auto Camera::react_key(unsigned char key, int x, int y) noexcept -> void {
+auto Camera::switch_mode() noexcept -> void {
     switch (_mode) {
     case CameraMode::ORBIT:
-        react_key_orbit(key, x, y);
+        glutSetCursor(GLUT_CURSOR_NONE);
+        _mode = CameraMode::FPV;
         break;
     case CameraMode::FPV:
-        react_key_fpv(key, x, y);
+        glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+        _mode = CameraMode::ORBIT;
         break;
-    }
-    switch(key) {
-    case 'v':
-        if (_mode == CameraMode::ORBIT) {
-            glutSetCursor(GLUT_CURSOR_NONE);
-            _mode = CameraMode::FPV;
-        } else {
-            glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
-            _mode = CameraMode::ORBIT;
-        }
+    default:
+        break;
     }
 }
 
-auto Camera::react_key_orbit(unsigned char key, int x, int y) noexcept -> void {
-    auto radius = _eye.radius();
-    auto alpha = _eye.alpha();
-    auto beta = _eye.beta();
-    switch (key) {
-    case 'w':
-        beta += 0.1;
+auto Camera::react_key(
+    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+) noexcept -> void {
+    switch (_mode) {
+    case CameraMode::ORBIT:
+        react_key_orbit(kb);
         break;
-    case 's':
-        beta -= 0.1;
-        break;
-    case 'a':
-        alpha -= 0.1;
-        break;
-    case 'd':
-        alpha += 0.1;
-        break;
-    case '+':
-        radius -= 0.5;
-        break;
-    case '-':
-        radius += 0.5;
+    case CameraMode::FPV:
+        react_key_fpv(kb);
         break;
     default:
-        return;
+        break;
     }
+}
 
-    if (beta < -1.5) {
-        beta = -1.5;
-    } else if (beta > 1.5) {
-       beta = 1.5;
-    }
+auto Camera::react_key_orbit(
+    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+) noexcept -> void {
+    auto beta = _eye.beta();
+    auto radius = _eye.radius();
+    auto alpha = _eye.alpha();
+
+    if (kb['w']) beta += 0.1f;
+    if (kb['s']) beta -= 0.1f;
+    if (kb['a']) alpha -= 0.1f;
+    if (kb['d']) alpha += 0.1f;
+    if (kb['+']) radius -= 0.5f;
+    if (kb['-']) radius += 0.5f;
+
+    beta = std::clamp(beta, -1.5f, 1.5f);
 
     _eye = Point::spherical(radius, alpha, beta);
 }
 
-auto Camera::react_key_fpv(unsigned char key, int x, int y) noexcept -> void {
+auto Camera::react_key_fpv(
+    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+) noexcept -> void {
     auto vec = _center - _eye;
     vec.normalize();
-    switch (key) {
-    case 'w':
-        vec = vec * 0.5;
-        break;
-    case 's':
-        vec = vec * -0.5;
-        break;
-    default:
-        return;
+    auto const old_vec = vec;
+
+    if (kb['w']) vec *= 0.5f;
+    if (kb['s']) vec *= -0.5f;
+
+    if (vec != old_vec) {
+        _eye += vec;
+        _center += vec;
     }
-    _eye = _eye + vec;
-    _center = _center + vec;
 }
 
 auto Camera::cursor_motion(int x, int y) noexcept
@@ -128,10 +121,6 @@ auto Camera::cursor_motion(int x, int y) noexcept
 
         _center = _eye + Point::spherical(radius, alpha, beta);
     }
-}
-
-auto Camera::mode() const noexcept -> CameraMode {
-    return _mode;
 }
 
 auto operator<<(std::ostream& oss, Camera const& c) -> std::ostream& {

@@ -26,7 +26,11 @@ class Point {
     void sum_beta(float);
     void normalize() noexcept;
     Point operator+(Point) const noexcept;
+    Point& operator+=(const Point&) noexcept;
     Point operator-(Point) const noexcept;
+    Point& operator-=(const Point&) noexcept;
     Point operator*(float) const noexcept;
+    Point& operator*=(const float&) noexcept;
+    bool operator!=(Point) const noexcept;
     auto friend operator<<(std::ostream&, Point const&) -> std::ostream&;
 };
