@@ -24,10 +24,10 @@ class Camera {
     int _screen_height;
 
     auto react_key_orbit(
-      std::array<bool, std::numeric_limits<unsigned char>::max()>
+      std::array<bool, std::numeric_limits<unsigned char>::max()>&
     ) noexcept -> void;
     auto react_key_fpv(
-      std::array<bool, std::numeric_limits<unsigned char>::max()>
+      std::array<bool, std::numeric_limits<unsigned char>::max()>&
     ) noexcept -> void;
 
   public:
@@ -48,7 +48,7 @@ class Camera {
     auto set_prespective() const noexcept -> void;
     auto switch_mode() noexcept -> void;
     auto react_key(
-      std::array<bool, std::numeric_limits<unsigned char>::max()>
+      std::array<bool, std::numeric_limits<unsigned char>::max()>&
     ) noexcept -> void;
     auto cursor_motion(int, int) noexcept -> void;
     auto friend operator<<(std::ostream&, Camera const&) -> std::ostream&;

@@ -51,7 +51,7 @@ auto Camera::switch_mode() noexcept -> void {
 }
 
 auto Camera::react_key(
-    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+    std::array<bool, std::numeric_limits<unsigned char>::max()>& kb
 ) noexcept -> void {
     switch (_mode) {
     case CameraMode::ORBIT:
@@ -66,7 +66,7 @@ auto Camera::react_key(
 }
 
 auto Camera::react_key_orbit(
-    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+    std::array<bool, std::numeric_limits<unsigned char>::max()>& kb
 ) noexcept -> void {
     auto beta = _eye.beta();
     auto radius = _eye.radius();
@@ -85,7 +85,7 @@ auto Camera::react_key_orbit(
 }
 
 auto Camera::react_key_fpv(
-    std::array<bool, std::numeric_limits<unsigned char>::max()> kb
+    std::array<bool, std::numeric_limits<unsigned char>::max()>& kb
 ) noexcept -> void {
     auto vec = _center - _eye;
     vec.normalize();
