@@ -9,44 +9,39 @@
 using namespace tinyxml2;
 
 #define CHECK_NULL(nullable, err)                                              \
-    do {                                                                       \
-        if (!nullable) {                                                       \
-            return cpp::fail(err);                                             \
-        }                                                                      \
-    } while (0)
+    if (!nullable) {                                                           \
+        return cpp::fail(err);                                                 \
+    }
 
 #define CHECK_RESULT(result)                                                   \
-    do {                                                                       \
-        if (result.has_error()) {                                              \
-            return cpp::fail(result.error());                                  \
-        }                                                                      \
-    } while (0)
+    if (result.has_error()) {                                                  \
+        return cpp::fail(result.error());                                      \
+    }
+
+#define TRY_QUERY_FLOAT(node, name, value, err)                                \
+    float value;                                                               \
+    if (node->QueryFloatAttribute(name, &value) != XML_SUCCESS) {              \
+        return cpp::fail(err);                                                 \
+    }
 
 auto parse_point(XMLElement const* const node) noexcept
     -> cpp::result<Point, ParseError>
 {
-    float x, y, z;
-    if (node->QueryFloatAttribute("x", &x) == XML_SUCCESS
-        && node->QueryFloatAttribute("y", &y) == XML_SUCCESS
-        && node->QueryFloatAttribute("z", &z) == XML_SUCCESS) {
-        return Point::cartesian(x, y, z);
-    } else {
-        return cpp::fail(ParseError::MALFORMED_POINT);
-    }
+    TRY_QUERY_FLOAT(node, "x", x, ParseError::MALFORMED_POINT);
+    TRY_QUERY_FLOAT(node, "y", y, ParseError::MALFORMED_POINT);
+    TRY_QUERY_FLOAT(node, "z", z, ParseError::MALFORMED_POINT);
+
+    return Point::cartesian(x, y, z);
 }
 
 auto parse_projection(XMLElement const* const node) noexcept
     -> cpp::result<Point, ParseError>
 {
-    float x, y, z;
-    if (node->QueryFloatAttribute("fov",  &x) == XML_SUCCESS &&
-        node->QueryFloatAttribute("near", &y) == XML_SUCCESS &&
-        node->QueryFloatAttribute("far",  &z) == XML_SUCCESS
-    ) {
-        return Point::cartesian(x, y, z);
-    } else {
-        return cpp::fail(ParseError::MALFORMED_PROJECTION);
-    }
+    TRY_QUERY_FLOAT(node, "fov", x, ParseError::MALFORMED_PROJECTION);
+    TRY_QUERY_FLOAT(node, "near", y, ParseError::MALFORMED_PROJECTION);
+    TRY_QUERY_FLOAT(node, "far", z, ParseError::MALFORMED_PROJECTION);
+
+    return Point::cartesian(x, y, z);
 }
 
 auto parse_camera(XMLElement const* const node) noexcept
@@ -114,15 +109,11 @@ auto parse_model(
     auto color_elem = node->FirstChildElement("color");
     auto color = Color{1, 1, 1};
     if (color_elem != nullptr) {
-        float r, g, b;
-        if (color_elem->QueryFloatAttribute("r", &r) == XML_SUCCESS
-            && color_elem->QueryFloatAttribute("g", &g) == XML_SUCCESS
-            && color_elem->QueryFloatAttribute("b", &b) == XML_SUCCESS
-        ) {
-            color = Color{r / 255, g / 255, b / 255};
-        } else {
-            return cpp::fail(ParseError::MALFORMED_COLOR);
-        }
+        TRY_QUERY_FLOAT(color_elem, "r", r, ParseError::MALFORMED_COLOR);
+        TRY_QUERY_FLOAT(color_elem, "g", g, ParseError::MALFORMED_COLOR);
+        TRY_QUERY_FLOAT(color_elem, "b", b, ParseError::MALFORMED_COLOR);
+
+        color = Color{r / 255, g / 255, b / 255};
     }
 
     return Model(stored_points, color);
@@ -134,16 +125,32 @@ auto parse_transform(XMLElement const* const node) noexcept
     auto transform_type = std::string_view(node->Value());
 
     if (transform_type == "translate") {
-        auto coords = parse_point(node);
-        CHECK_RESULT(coords);
+        float time;
+        if (node->QueryFloatAttribute("time", &time) == XML_SUCCESS) {
+            bool align = false;
+            node->QueryBoolAttribute("align", &align);
 
-        return std::make_unique<Translation>(*coords);
+            auto translation_points = std::vector<Point>();
+            for (auto point_element = node->FirstChildElement("point");
+                point_element;
+                point_element = point_element->NextSiblingElement("point")
+            ) {
+                auto point = parse_point(point_element);
+                CHECK_RESULT(point);
+                translation_points.push_back(*point);
+            }
+
+            return std::make_unique<Translation>(translation_points, time, align);
+
+        } else {
+            auto coords = parse_point(node);
+            CHECK_RESULT(coords);
+
+            return std::make_unique<StaticTranslation>(*coords);
+        }
 
     } else if (transform_type == "rotate") {
-        float angle;
-        if (node->QueryFloatAttribute("angle", &angle) != XML_SUCCESS) {
-            return cpp::fail(ParseError::MALFORMED_ROTATION);
-        }
+        TRY_QUERY_FLOAT(node, "angle", angle, ParseError::MALFORMED_ROTATION);
 
         auto coords = parse_point(node);
         CHECK_RESULT(coords);

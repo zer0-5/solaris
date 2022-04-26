@@ -22,5 +22,5 @@ class Group {
       : _models(std::move(models))
       , _subgroups(std::move(subgroups))
       , _transforms(std::move(transforms)) {}
-    auto draw() const noexcept -> void;
+    auto draw(float, bool) const noexcept -> void;
 };

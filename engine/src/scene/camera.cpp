@@ -94,8 +94,8 @@ auto Camera::react_key_fpv(
 
     if (kb['w']) mov += vec * 0.5f;
     if (kb['s']) mov -= vec * 0.5f;
-    if (kb['a']) mov -= Point(vec).cross(_up * 0.5f);
-    if (kb['d']) mov += Point(vec).cross(_up * 0.5f);
+    if (kb['a']) mov -= Point(vec).cross(_up).normalize() * 0.5f;
+    if (kb['d']) mov += Point(vec).cross(_up).normalize() * 0.5f;
     if (kb['+']) mov += Point(_up) * 0.5f;
     if (kb['-']) mov -= Point(_up) * 0.5f;
 
@@ -103,9 +103,7 @@ auto Camera::react_key_fpv(
     _center += mov;
 }
 
-auto Camera::cursor_motion(int x, int y) noexcept
-    -> void
-{
+auto Camera::cursor_motion(int x, int y) noexcept -> void {
     if (_mode == CameraMode::FPV && (x != 0 || y != 0)) {
         auto vec = _center - _eye;
 
@@ -119,7 +117,7 @@ auto Camera::cursor_motion(int x, int y) noexcept
         if (beta < -1.5) {
             beta = -1.5;
         } else if (beta > 1.5) {
-        beta = 1.5;
+            beta = 1.5;
         }
 
         _center = _eye + Point::spherical(radius, alpha, beta);

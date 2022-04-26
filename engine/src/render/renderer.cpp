@@ -14,7 +14,8 @@ World static* world = nullptr;
 auto static keyboard =
     std::array<bool, std::numeric_limits<unsigned char>::max()>();
 
-auto static enable_axis = false;
+auto static is_paused = false;
+auto static debug_mode = false;
 auto static polygon_mode = GL_FILL;
 }
 
@@ -61,7 +62,23 @@ void draw_axis() {
     glEnd();
 }
 
+auto get_delta() -> int {
+    static int prev_elapsed = 0;
+
+    auto curr_elapsed = glutGet(GLUT_ELAPSED_TIME);
+    auto delta =  curr_elapsed - prev_elapsed;
+    prev_elapsed = curr_elapsed;
+
+    return delta;
+}
+
 void render_scene(void) {
+    static int elapsed_time = 0;
+    auto delta = get_delta();
+    if (!state::is_paused) {
+        elapsed_time += delta;
+    }
+
     // clear buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -70,13 +87,13 @@ void render_scene(void) {
     state::world->camera.react_key(state::keyboard);
 
     // draw axis
-    if (state::enable_axis) {
+    if (state::debug_mode) {
         draw_axis();
     }
 
     // draw groups
     glPolygonMode(GL_FRONT, state::polygon_mode);
-    state::world->group.draw();
+    state::world->group.draw(elapsed_time / 1000.f, state::debug_mode);
 
     // end of frame
     glutSwapBuffers();
@@ -96,10 +113,13 @@ void handle_special_key(int key, int x, int y) {
         state::world->camera.switch_mode();
         break;
     case GLUT_KEY_F2:
-        state::enable_axis = !state::enable_axis;
+        state::debug_mode = !state::debug_mode;
         break;
     case GLUT_KEY_F3:
         state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
+        break;
+    case GLUT_KEY_F4:
+        state::is_paused = !state::is_paused;
         break;
     default:
         break;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <iostream>
 
 class Point {
@@ -24,7 +25,7 @@ class Point {
     float beta() const noexcept;
     void sum_alpha(float);
     void sum_beta(float);
-    void normalize() noexcept;
+    Point& normalize() noexcept;
     Point& dot(Point) noexcept;
     Point& cross(Point) noexcept;
     Point operator+(Point) const noexcept;

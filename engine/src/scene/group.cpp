@@ -6,16 +6,19 @@
 #    include <GL/glut.h>
 #endif
 
-auto Group::draw() const noexcept -> void {
+auto Group::draw(float elapsed_time, bool debug) const noexcept -> void {
     glPushMatrix();
     for (auto&& transform : _transforms) {
-        transform->apply();
+        if (debug) {
+            transform->debug_info();
+        }
+        transform->apply(elapsed_time);
     }
     for (auto&& model : _models) {
         model.draw();
     }
     for (auto&& group : _subgroups) {
-        group.draw();
+        group.draw(elapsed_time, debug);
     }
     glPopMatrix();
 }

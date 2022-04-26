@@ -61,12 +61,14 @@ float Point::beta() const noexcept {
     return atan(_y / sqrt(_z*_z + _x*_x));
 }
 
-void Point::normalize() noexcept {
+Point& Point::normalize() noexcept {
     auto len = sqrt(_x * _x + _y * _y + _z * _z);
 
     _x = _x / len;
     _y = _y / len;
     _z = _z / len;
+
+    return *this;
 }
 
 Point& Point::dot(Point rhs) noexcept {
