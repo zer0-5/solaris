@@ -87,24 +87,10 @@ auto parse_camera(XMLElement const* const node) noexcept
 
 auto parse_model(
     XMLElement const* const node,
-    std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
+    std::unordered_map<std::string, ModelBuffer>& buffers_map
 ) noexcept -> cpp::result<Model, ParseError> {
     char const* file_path;
     node->QueryStringAttribute("file", &file_path);
-
-    auto stored_points = (*points_map)[file_path];
-    if (!stored_points) {
-        std::ifstream file(file_path);
-        if (!file.is_open()) {
-            return cpp::fail(ParseError::PRIMITIVE_FILE_NOT_FOUND);
-        }
-        float x, y, z;
-        auto points = std::vector<Point>();
-        while (file >> x >> y >> z) {
-            points.push_back(Point::cartesian(x, y, z));
-        }
-        stored_points = std::make_shared<std::vector<Point>>(std::move(points));
-    }
 
     auto color_elem = node->FirstChildElement("color");
     auto color = Color{1, 1, 1};
@@ -116,7 +102,14 @@ auto parse_model(
         color = Color{r / 255, g / 255, b / 255};
     }
 
-    return Model(stored_points, color);
+    auto stored_buffer = buffers_map.find(file_path);
+    if (stored_buffer == buffers_map.end()) {
+        auto buffer = ModelBuffer::try_from_file(file_path);
+        CHECK_RESULT(buffer);
+        return Model(*buffer, color);
+    }
+
+    return Model(stored_buffer->second, color);
 }
 
 auto parse_transform(XMLElement const* const node) noexcept
@@ -174,7 +167,7 @@ auto parse_transform(XMLElement const* const node) noexcept
 
 auto parse_group(
     XMLElement const* const node,
-    std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>* points_map
+    std::unordered_map<std::string, ModelBuffer>& buffers_map
 ) noexcept -> cpp::result<Group, ParseError> {
     auto models = std::vector<Model>();
     auto const models_elem = node->FirstChildElement("models");
@@ -183,7 +176,7 @@ auto parse_group(
             model_elem;
             model_elem = model_elem->NextSiblingElement("model")
         ) {
-            auto model = parse_model(model_elem, points_map);
+            auto model = parse_model(model_elem, buffers_map);
             CHECK_RESULT(model);
             models.push_back(*model);
         }
@@ -194,7 +187,7 @@ auto parse_group(
          group_elem;
          group_elem = group_elem->NextSiblingElement("group")
     ) {
-        auto group_res = parse_group(group_elem, points_map);
+        auto group_res = parse_group(group_elem, buffers_map);
         CHECK_RESULT(group_res);
         groups.push_back(std::move(*group_res));
     }
@@ -230,10 +223,10 @@ auto parse(std::string_view file_path) noexcept
     auto camera = parse_camera(camera_element);
     CHECK_RESULT(camera);
 
-    auto points_map = new
-        std::unordered_map<std::string, std::shared_ptr<std::vector<Point>>>();
-    auto group = parse_group(group_element, points_map);
-    delete points_map;
+    auto buffers_map = new
+        std::unordered_map<std::string, ModelBuffer>();
+    auto group = parse_group(group_element, *buffers_map);
+    delete buffers_map;
     CHECK_RESULT(group);
 
     return World(std::move(*camera), std::move(*group));

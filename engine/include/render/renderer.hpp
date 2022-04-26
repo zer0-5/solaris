@@ -4,6 +4,7 @@
 
 class Renderer {
   public:
-    Renderer(World& world);
+    Renderer();
+    auto set_world(World&) noexcept -> Renderer&;
     auto run() const noexcept -> void;
 };

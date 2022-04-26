@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-Point  Point::cartesian(float x, float y, float z) {
+Point Point::cartesian(float x, float y, float z) {
     return Point(x, y, z);
 }
 

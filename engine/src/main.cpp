@@ -1,8 +1,3 @@
-#ifdef __APPLE__
-#    include <GLUT/glut.h>
-#else
-#    include <GL/glut.h>
-#endif
 #include "logger.hpp"
 #include "parse/parse_error.hpp"
 #include "parse/parser.hpp"
@@ -12,6 +7,8 @@
 
 
 int main(int argc, char** argv) {
+    auto renderer = Renderer();
+
     info("loading XML file...");
     auto start = std::chrono::high_resolution_clock::now();
     auto world_res = parse(argv[1]);
@@ -26,7 +23,7 @@ int main(int argc, char** argv) {
             .count() / 1000.f
     ).c_str());
 
-    Renderer(*world_res).run();
+    renderer.set_world(*world_res).run();
 
     return 0;
 }

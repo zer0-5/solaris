@@ -3,6 +3,7 @@
 #ifdef __APPLE__
 #    include <GLUT/glut.h>
 #else
+#    include <GL/glew.h>
 #    include <GL/glut.h>
 #endif
 
@@ -130,7 +131,7 @@ void cursor_motion(int x, int y) {
     state::world->camera.cursor_motion(x, y);
 }
 
-Renderer::Renderer(World& world) {
+Renderer::Renderer() {
 
     // init GLUT and the window
     static int glut_argc = 1;
@@ -141,6 +142,9 @@ Renderer::Renderer(World& world) {
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(800, 800);
     glutCreateWindow("solaris");
+
+    glewInit();
+    glEnableClientState(GL_VERTEX_ARRAY);
 
     // Required callback registry
     glutDisplayFunc(render_scene);
@@ -158,7 +162,12 @@ Renderer::Renderer(World& world) {
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
+}
+
+auto Renderer::set_world(World& world) noexcept -> Renderer& {
     state::world = &world;
+
+    return *this;
 }
 
 auto Renderer::run() const noexcept -> void {
