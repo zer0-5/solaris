@@ -38,14 +38,25 @@ class TimedTranslation: public Transform {
     void debug_info() const noexcept override;
 };
 
-class Rotation: public Transform {
+class StaticRotation: public Transform {
   private:
     float _angle;
     Point _coords;
 
   public:
-    Rotation() : _angle(0), _coords(Point::cartesian(0, 0, 0)) {}
-    Rotation(float angle, Point coords) : _angle(angle), _coords(coords) {}
+    StaticRotation() : _angle(0), _coords(Point::cartesian(0, 0, 0)) {}
+    StaticRotation(float angle, Point coords) : _angle(angle), _coords(coords) {}
+    void apply(float) const noexcept override;
+};
+
+class TimedRotation: public Transform {
+  private:
+    float _time;
+    Point _coords;
+
+  public:
+    TimedRotation() : _time(0), _coords(Point::cartesian(0, 0, 0)) {}
+    TimedRotation(float time, Point coords) : _time(time), _coords(coords) {}
     void apply(float) const noexcept override;
 };
 

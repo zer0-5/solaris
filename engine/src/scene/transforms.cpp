@@ -57,8 +57,15 @@ void TimedTranslation::debug_info() const noexcept {
     glEnd();
 }
 
-void Rotation::apply(float _elapsed_time) const noexcept {
+void StaticRotation::apply(float _elapsed_time) const noexcept {
     glRotatef(_angle, _coords.x(), _coords.y(), _coords.z());
+}
+
+void TimedRotation::apply(float elapsed_time) const noexcept {
+    glRotatef(
+        elapsed_time * (_time ? 360.0f / _time : 0),
+        _coords.x(), _coords.y(), _coords.z()
+    );
 }
 
 void Scale::apply(float _elapsed_time) const noexcept {

@@ -150,13 +150,18 @@ auto parse_transform(XMLElement const* const node) noexcept
         }
 
     } else if (transform_type == "rotate") {
-        TRY_QUERY_FLOAT(node, "angle", angle, ParseError::MALFORMED_ROTATION);
-
         auto coords = parse_point(node);
         CHECK_RESULT(coords);
 
-        return std::make_unique<Rotation>(angle, *coords);
+        float time;
+        if (node->QueryFloatAttribute("time", &time) == XML_SUCCESS) {
+            return std::make_unique<TimedRotation>(time, *coords);
 
+        } else {
+            TRY_QUERY_FLOAT(node, "angle", angle, ParseError::MALFORMED_ROTATION);
+
+            return std::make_unique<StaticRotation>(angle, *coords);
+        }
     } else if (transform_type == "scale") {
         auto coords = parse_point(node);
         CHECK_RESULT(coords);
