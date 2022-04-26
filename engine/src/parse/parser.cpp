@@ -140,7 +140,7 @@ auto parse_transform(XMLElement const* const node) noexcept
                 translation_points.push_back(*point);
             }
 
-            return std::make_unique<Translation>(translation_points, time, align);
+            return std::make_unique<TimedTranslation>(translation_points, time, align);
 
         } else {
             auto coords = parse_point(node);

@@ -12,7 +12,7 @@ void StaticTranslation::apply(float _elapsed_time) const noexcept {
     glTranslatef(_coords.x(), _coords.y(), _coords.z());
 }
 
-Translation::Translation(std::vector<Point> points, float time, bool is_aligned)
+TimedTranslation::TimedTranslation(std::vector<Point> points, float time, bool is_aligned)
     : _curve(Curve::catmull_ron(std::move(points)))
     , _trajectory(std::vector<Point>())
     , _time(time)
@@ -25,7 +25,7 @@ Translation::Translation(std::vector<Point> points, float time, bool is_aligned)
     }
 }
 
-void Translation::apply(float elapsed_time) const noexcept {
+void TimedTranslation::apply(float elapsed_time) const noexcept {
     auto [pos, dir] =  _curve.get_position(elapsed_time / _time);
 
     glTranslatef(pos.x(), pos.y(), pos.z());
@@ -38,7 +38,7 @@ void Translation::apply(float elapsed_time) const noexcept {
     }
 }
 
-std::array<float, 16> Translation::build_rotation_matrix(
+std::array<float, 16> TimedTranslation::build_rotation_matrix(
     Point x, Point y, Point z
 ) const noexcept {
     return std::array<float, 16>{{
@@ -49,7 +49,7 @@ std::array<float, 16> Translation::build_rotation_matrix(
     }};
 }
 
-void Translation::debug_info() const noexcept {
+void TimedTranslation::debug_info() const noexcept {
     glBegin(GL_LINE_LOOP);
     for (auto&& point : _trajectory) {
         glVertex3f(point.x(), point.y(), point.z());

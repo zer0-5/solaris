@@ -21,7 +21,7 @@ class StaticTranslation: public Transform {
     void apply(float) const noexcept override;
 };
 
-class Translation: public Transform {
+class TimedTranslation: public Transform {
   private:
     Curve _curve;
     std::vector<Point> _trajectory;
@@ -33,7 +33,7 @@ class Translation: public Transform {
         build_rotation_matrix(Point, Point, Point) const noexcept;
 
   public:
-    Translation(std::vector<Point>, float, bool);
+    TimedTranslation(std::vector<Point>, float, bool);
     void apply(float) const noexcept override;
     void debug_info() const noexcept override;
 };
