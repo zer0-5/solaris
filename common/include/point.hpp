@@ -9,6 +9,7 @@ class Point {
     Point(float x, float y, float z) : _x(x), _y(y), _z(z) {}
 
   public:
+    Point() = default;
     static Point cartesian(float, float, float);
     static Point spherical(float, float, float);
     float x() const;
@@ -37,3 +38,5 @@ class Point {
     bool operator!=(Point) const noexcept;
     auto friend operator<<(std::ostream&, Point const&) -> std::ostream&;
 };
+
+Point operator*(float, Point) noexcept;

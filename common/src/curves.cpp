@@ -1,26 +1,28 @@
 #include "curves.hpp"
 
+#include "matrices.hpp"
+
 #include <math.h>
 
-Curve Curve::catmull_ron(std::vector<Point> points) {
-    static const std::array<std::array<float, 4>, 4> catmull_ron_matrix{{
-        {-0.5f, +1.5f, -1.5f, +0.5f},
-        {+1.0f, -2.5f, +2.0f, -0.5f},
-        {-0.5f, +0.0f, +0.5f, +0.0f},
-        {+0.0f, +1.0f, +0.0f, +0.0f},
-    }};
+static const std::array<std::array<float, 4>, 4> catmull_ron_matrix{{
+    {-0.5f, +1.5f, -1.5f, +0.5f},
+    {+1.0f, -2.5f, +2.0f, -0.5f},
+    {-0.5f, +0.0f, +0.5f, +0.0f},
+    {+0.0f, +1.0f, +0.0f, +0.0f},
+}};
 
+static const std::array<std::array<float, 4>, 4> bezier_matrix{{
+    {-1.0f, +3.0f, -3.0f, +1.0f},
+    {+3.0f, -6.0f, +3.0f, +0.0f},
+    {-3.0f, +3.0f, +0.0f, +0.0f},
+    {+1.0f, +0.0f, +0.0f, +0.0f},
+}};
+
+auto Curve::catmull_ron(std::vector<Point> points) -> Curve {
     return Curve(catmull_ron_matrix, std::move(points));
 }
 
-Curve Curve::bezier(std::vector<Point> points) {
-    static const std::array<std::array<float, 4>, 4> bezier_matrix{{
-        {-1.0f, +3.0f, -3.0f, +1.0f},
-        {+3.0f, -6.0f, +3.0f, +0.0f},
-        {-3.0f, +3.0f, +0.0f, +0.0f},
-        {+1.0f, +0.0f, +0.0f, +0.0f},
-    }};
-
+auto Curve::bezier(std::vector<Point> points) -> Curve {
     return Curve(bezier_matrix, std::move(points));
 }
 
@@ -69,4 +71,16 @@ auto Curve::get_position(float global_time) const noexcept
         Point::cartesian(pv[0], pv[1], pv[2]),
         Point::cartesian(dv[0], dv[1], dv[2]),
     };
+}
+
+auto Curve::patch_matrix(std::array<std::array<Point, 4>, 4> points_matrix) noexcept
+    -> std::array<std::array<Point, 4>, 4>
+{
+    std::array<std::array<Point, 4>, 4> temp{};
+    matrices::mult<float, Point, Point, 4, 4, 4>(bezier_matrix, points_matrix, temp);
+
+    std::array<std::array<Point, 4>, 4> res{};
+    matrices::mult<Point, float, Point, 4, 4, 4>(temp, bezier_matrix, res);
+
+    return res;
 }

@@ -40,4 +40,5 @@ auto ModelBuffer::draw() const noexcept -> void {
 auto Model::draw() const noexcept -> void {
     glColor3f(_color.r, _color.g, _color.b);
     _buffer.draw();
+    glColor3f(1.0f, 1.0f, 1.0f);
 }

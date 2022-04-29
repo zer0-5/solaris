@@ -8,7 +8,7 @@
 
 class Curve {
   private:
-    const std::array<std::array<float, 4>, 4> _geometry_matrix;
+    const std::array<std::array<float, 4>, 4>& _geometry_matrix;
     std::vector<Point> _points;
 
     Curve(
@@ -18,7 +18,9 @@ class Curve {
       , _points(std::move(points)) {}
 
   public:
-    static Curve catmull_ron(std::vector<Point>);
-    static Curve bezier(std::vector<Point>);
+    static auto catmull_ron(std::vector<Point>) -> Curve;
+    static auto bezier(std::vector<Point>) -> Curve;
     auto get_position(float) const noexcept -> std::pair<Point, Point>;
+    static auto patch_matrix(std::array<std::array<Point, 4>, 4>) noexcept
+        -> std::array<std::array<Point, 4>, 4>;
 };

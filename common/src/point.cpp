@@ -133,3 +133,7 @@ auto operator<<(std::ostream& oss, Point const& p) -> std::ostream& {
     oss << p._x << ' ' << p._y << ' ' << p._z;
     return oss;
 }
+
+Point operator*(float lhs, Point rhs) noexcept {
+    return Point::cartesian(lhs * rhs.x(), lhs * rhs.y(), lhs * rhs.z());
+}
