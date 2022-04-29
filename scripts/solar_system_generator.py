@@ -45,26 +45,55 @@ with tag('world'):
             with_ring = planet["has ring"] == "True"
             orbit = int(planet["orbit time (days)"]) / 40
             rot_angle = random.uniform(0, 360)
+            rot_time = int(planet["rotation time (minutes)"]) / 40
             curve_points = CurvePoints(n_divs_curve, x_dist).calc_points()
             (r, g, b) = ImageColor.getcolor(planet["color"], "RGB")
             with tag('group', name=name):
-                with tag('models'):
-                    with tag('model', file='models/sphere.3d'):
-                        doc.stag('color', r=r, g=g, b=b)
-                with tag('transform'):
-                    doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
-                    with tag('translate', time=orbit, align=False):
-                        for point in curve_points:
-                            doc.stag('point', x=point["x"], y=point["y"], z=point["z"])
-                    doc.stag('scale', x=radius, y=radius, z=radius)
                 if with_ring:
-                    (r, g, b) = ImageColor.getcolor("#ab604a", "RGB")
-                    with tag('group', name='ring'):
+                    with tag('group', name="Planet"):
                         with tag('models'):
-                            with tag('model', file='models/torus.3d'):
+                            with tag('model', file='models/sphere.3d'):
                                 doc.stag('color', r=r, g=g, b=b)
                         with tag('transform'):
-                            doc.stag('rotate', angle=35, x=1, y=0, z=0)
+                            doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
+                            with tag('translate', time=orbit, align=False):
+                                for point in curve_points:
+                                    doc.stag('point', x=point["x"], y=point["y"], z=point["z"])
+                            if name == "Saturn":
+                                doc.stag('rotate', angle=45, x=1, y=0, z=0)
+                            else:
+                                doc.stag('rotate', angle=70, x=1, y=0, z=0)
+                            doc.stag('rotate', time=rot_time, x=0, y=1, z=0)
+                    with tag('group', name="Ring"): 
+                        if name == "Saturn":
+                            (r, g, b) = ImageColor.getcolor("#ab604a", "RGB")
+                        else:
+                            (r, g, b) = ImageColor.getcolor("#7ea7a8", "RGB")
+                        with tag('group', name='ring'):
+                            with tag('models'):
+                                with tag('model', file='models/torus.3d'):
+                                    doc.stag('color', r=r, g=g, b=b)
+                            with tag('transform'):
+                                doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
+                                with tag('translate', time=orbit, align=False):
+                                    for point in curve_points:
+                                        doc.stag('point', x=point["x"], y=point["y"], z=point["z"])
+                                if name == "Saturn":
+                                    doc.stag('rotate', angle=45, x=1, y=0, z=0)   
+                                else:
+                                    doc.stag('rotate', angle=70, x=1, y=0, z=0)
+                else:
+                    with tag('models'):
+                        with tag('model', file='models/sphere.3d'):
+                            doc.stag('color', r=r, g=g, b=b)
+                    with tag('transform'):
+                        doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
+                        with tag('translate', time=orbit, align=False):
+                            for point in curve_points:
+                                doc.stag('point', x=point["x"], y=point["y"], z=point["z"])
+                        doc.stag('rotate', time=rot_time, x=0, y=1, z=0)
+                        doc.stag('scale', x=radius, y=radius, z=radius)
+
                 if name in satellites_dic.keys():
                     satellites_planet = satellites_dic[name]
                     for sat in satellites_planet:
