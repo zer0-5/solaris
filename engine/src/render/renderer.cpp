@@ -15,7 +15,7 @@ World static* world = nullptr;
 auto static keyboard =
     std::array<bool, std::numeric_limits<unsigned char>::max()>();
 
-auto static is_paused = false;
+auto static simulation_speed = 1;
 auto static debug_mode = false;
 auto static polygon_mode = GL_FILL;
 }
@@ -76,9 +76,7 @@ auto get_delta() -> int {
 void render_scene(void) {
     static int elapsed_time = 0;
     auto delta = get_delta();
-    if (!state::is_paused) {
-        elapsed_time += delta;
-    }
+    elapsed_time += delta * state::simulation_speed;
 
     // clear buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -93,7 +91,7 @@ void render_scene(void) {
     }
 
     // draw groups
-    glPolygonMode(GL_FRONT, state::polygon_mode);
+    glPolygonMode(GL_FRONT_AND_BACK, state::polygon_mode);
     state::world->group.draw(elapsed_time / 1000.f, state::debug_mode);
 
     // end of frame
@@ -119,8 +117,14 @@ void handle_special_key(int key, int x, int y) {
     case GLUT_KEY_F3:
         state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
         break;
-    case GLUT_KEY_F4:
-        state::is_paused = !state::is_paused;
+    case GLUT_KEY_F10:
+        state::simulation_speed--;
+        break;
+    case GLUT_KEY_F11:
+        state::simulation_speed = !state::simulation_speed;
+        break;
+    case GLUT_KEY_F12:
+        state::simulation_speed++;
         break;
     default:
         break;
