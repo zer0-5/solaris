@@ -6,6 +6,9 @@
 #    include <GL/glew.h>
 #    include <GL/glut.h>
 #endif
+#include "imgui.h"
+#include "imgui_impl_glut.h"
+#include "imgui_impl_opengl3.h"
 
 #include <limits>
 
@@ -15,7 +18,7 @@ World static* world = nullptr;
 auto static keyboard =
     std::array<bool, std::numeric_limits<unsigned char>::max()>();
 
-auto static simulation_speed = 1;
+auto static simulation_speed = 1.0f;
 auto static debug_mode = false;
 auto static polygon_mode = GL_FILL;
 }
@@ -42,6 +45,36 @@ void change_size(int w, int h) {
 
     // return to the model view matrix mode
     glMatrixMode(GL_MODELVIEW);
+
+    ImGui_ImplGLUT_ReshapeFunc(w, h);
+}
+
+void draw_windows() {
+    ImGuiIO& io = ImGui::GetIO();
+
+    ImGui::Begin("General Controls");
+
+    ImGui::Text("FPS: %f", io.Framerate);
+
+    ImGui::Text("Simulation Speed:");
+    ImGui::SameLine();
+    ImGui::SliderFloat("##", &state::simulation_speed, -4.0f, 4.0f);
+
+    ImGui::Text("Polygon Mode:");
+    ImGui::SameLine();
+    auto label = state::polygon_mode == GL_FILL ? "Fill" : "Line";
+    if (ImGui::Button(label)) {
+        state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
+    };
+
+    ImGui::Text("Show Lines:");
+    ImGui::SameLine();
+    label = state::debug_mode ? "True" : "False";
+    if (ImGui::Button(label)) {
+        state::debug_mode = !state::debug_mode;
+    };
+
+    ImGui::End();
 }
 
 void draw_axis() {
@@ -94,16 +127,27 @@ void render_scene(void) {
     glPolygonMode(GL_FRONT_AND_BACK, state::polygon_mode);
     state::world->group.draw(elapsed_time / 1000.f, state::debug_mode);
 
+    // Start the Dear ImGui frame
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGLUT_NewFrame();
+    draw_windows();
+    ImGui::Render();
+    ImGuiIO& io = ImGui::GetIO();
+    glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
     // end of frame
     glutSwapBuffers();
 }
 
-void handle_key_down(unsigned char key, int _x, int _y) {
+void handle_key_down(unsigned char key, int x, int y) {
     state::keyboard[key] = true;
+    ImGui_ImplGLUT_KeyboardFunc(key, x, y);
 }
 
-void handle_key_up(unsigned char key, int _x, int _y) {
+void handle_key_up(unsigned char key, int x, int y) {
     state::keyboard[key] = false;
+    ImGui_ImplGLUT_KeyboardUpFunc(key, x, y);
 }
 
 void handle_special_key(int key, int x, int y) {
@@ -129,10 +173,12 @@ void handle_special_key(int key, int x, int y) {
     default:
         break;
     }
+    ImGui_ImplGLUT_SpecialFunc(key, x, y);
 }
 
 void cursor_motion(int x, int y) {
     state::world->camera.cursor_motion(x, y);
+    ImGui_ImplGLUT_MotionFunc(x, y);
 }
 
 Renderer::Renderer() {
@@ -151,21 +197,31 @@ Renderer::Renderer() {
     glEnableClientState(GL_VERTEX_ARRAY);
 
     // Required callback registry
+    glutReshapeFunc(change_size);
     glutDisplayFunc(render_scene);
     glutIdleFunc(render_scene);
     glutPassiveMotionFunc(cursor_motion);
     glutMotionFunc(cursor_motion);
-    glutReshapeFunc(change_size);
-
-    // Callback registration for keyboard processing
     glutKeyboardFunc(handle_key_down);
     glutKeyboardUpFunc(handle_key_up);
     glutSpecialFunc(handle_special_key);
+    glutSpecialUpFunc(ImGui_ImplGLUT_SpecialUpFunc);
+    glutMouseFunc(ImGui_ImplGLUT_MouseFunc);
+
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
 
     //  OpenGL settings
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
+    // Setup Platform/Renderer backends
+    ImGui_ImplGLUT_Init();
+    ImGui_ImplOpenGL3_Init();
 }
 
 auto Renderer::set_world(World& world) noexcept -> Renderer& {
@@ -176,4 +232,9 @@ auto Renderer::set_world(World& world) noexcept -> Renderer& {
 
 auto Renderer::run() const noexcept -> void {
     glutMainLoop();
+
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGLUT_Shutdown();
+    ImGui::DestroyContext();
 }

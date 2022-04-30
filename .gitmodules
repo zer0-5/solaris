@@ -7,3 +7,6 @@
 [submodule "libs/result"]
 	path = libs/result
 	url = git@github.com:bitwizeshift/result.git
+[submodule "libs/imgui"]
+	path = libs/imgui
+	url = git@github.com:ocornut/imgui.git

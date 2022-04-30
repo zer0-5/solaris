@@ -8,7 +8,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 file(GLOB SRC_FILES src/*.cpp src/scene/*.cpp src/parse/*.cpp src/render/*.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-target_link_libraries(${PROJECT_NAME} common tinyxml2 fmt Result)
+target_link_libraries(${PROJECT_NAME} common tinyxml2 fmt Result imgui)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})

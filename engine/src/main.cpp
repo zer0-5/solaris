@@ -5,7 +5,6 @@
 
 #include <chrono>
 
-
 int main(int argc, char** argv) {
     auto renderer = Renderer();
 
