@@ -31,7 +31,6 @@ auto get_patch_point(
         point
     );
     return point[0][0];
-    return Point();
 }
 
 auto Bezier::calculateCoords() const -> std::vector<Point> {
