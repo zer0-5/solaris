@@ -12,6 +12,7 @@ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -pedantic")
 set(IMGUI_PATH  libs/imgui)
 file(GLOB IMGUI_SOURCES ${IMGUI_PATH}/*.cpp ${IMGUI_PATH}/backends/imgui_impl_glut.cpp ${IMGUI_PATH}/backends/imgui_impl_opengl3.cpp)
 add_library(imgui STATIC ${IMGUI_SOURCES})
+target_link_libraries(imgui ${CMAKE_DL_LIBS})
 target_include_directories(imgui PUBLIC ${IMGUI_PATH} ${IMGUI_PATH}/backends)
 
 add_subdirectory(common)
