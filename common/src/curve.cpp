@@ -1,10 +1,10 @@
-#include "curves.hpp"
+#include "curve.hpp"
 
-#include "matrices.hpp"
+#include "matrix.hpp"
 
 #include <math.h>
 
-static const std::array<std::array<float, 4>, 4> catmull_ron_matrix{{
+static const std::array<std::array<float, 4>, 4> catmull_rom_matrix{{
     {-0.5f, +1.5f, -1.5f, +0.5f},
     {+1.0f, -2.5f, +2.0f, -0.5f},
     {-0.5f, +0.0f, +0.5f, +0.0f},
@@ -18,8 +18,8 @@ static const std::array<std::array<float, 4>, 4> bezier_matrix{{
     {+1.0f, +0.0f, +0.0f, +0.0f},
 }};
 
-auto Curve::catmull_ron(std::vector<Point> points) -> Curve {
-    return Curve(catmull_ron_matrix, std::move(points));
+auto Curve::catmull_rom(std::vector<Point> points) -> Curve {
+    return Curve(catmull_rom_matrix, std::move(points));
 }
 
 auto Curve::bezier(std::vector<Point> points) -> Curve {

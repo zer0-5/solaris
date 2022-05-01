@@ -1,6 +1,6 @@
 #pragma once
 
-#include "curves.hpp"
+#include "curve.hpp"
 #include "point.hpp"
 
 class Transform {

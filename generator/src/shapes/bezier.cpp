@@ -1,7 +1,7 @@
 #include "shapes/bezier.hpp"
 
-#include "curves.hpp"
-#include "matrices.hpp"
+#include "curve.hpp"
+#include "matrix.hpp"
 
 #include <fstream>
 

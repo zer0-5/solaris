@@ -8,12 +8,12 @@
 
 #define TESS 100
 
-void StaticTranslation::apply(float _elapsed_time) const noexcept {
+auto StaticTranslation::apply(float _elapsed_time) const noexcept -> void {
     glTranslatef(_coords.x(), _coords.y(), _coords.z());
 }
 
 TimedTranslation::TimedTranslation(std::vector<Point> points, float time, bool is_aligned)
-    : _curve(Curve::catmull_ron(std::move(points)))
+    : _curve(Curve::catmull_rom(std::move(points)))
     , _trajectory(std::vector<Point>())
     , _time(time)
     , _is_aligned(is_aligned)
@@ -25,7 +25,7 @@ TimedTranslation::TimedTranslation(std::vector<Point> points, float time, bool i
     }
 }
 
-void TimedTranslation::apply(float elapsed_time) const noexcept {
+auto TimedTranslation::apply(float elapsed_time) const noexcept -> void {
     auto [pos, dir] =  _curve.get_position(elapsed_time / _time);
 
     glTranslatef(pos.x(), pos.y(), pos.z());
@@ -38,9 +38,9 @@ void TimedTranslation::apply(float elapsed_time) const noexcept {
     }
 }
 
-std::array<float, 16> TimedTranslation::build_rotation_matrix(
+auto TimedTranslation::build_rotation_matrix(
     Point x, Point y, Point z
-) const noexcept {
+) const noexcept -> std::array<float, 16> {
     return std::array<float, 16>{{
         x.x(), x.y(), x.z(), 0,
         y.x(), y.y(), y.z(), 0,
@@ -49,7 +49,7 @@ std::array<float, 16> TimedTranslation::build_rotation_matrix(
     }};
 }
 
-void TimedTranslation::debug_info() const noexcept {
+auto TimedTranslation::debug_info() const noexcept -> void {
     glBegin(GL_LINE_LOOP);
     for (auto&& point : _trajectory) {
         glVertex3f(point.x(), point.y(), point.z());
@@ -57,17 +57,17 @@ void TimedTranslation::debug_info() const noexcept {
     glEnd();
 }
 
-void StaticRotation::apply(float _elapsed_time) const noexcept {
+auto StaticRotation::apply(float _elapsed_time) const noexcept -> void {
     glRotatef(_angle, _coords.x(), _coords.y(), _coords.z());
 }
 
-void TimedRotation::apply(float elapsed_time) const noexcept {
+auto TimedRotation::apply(float elapsed_time) const noexcept -> void {
     glRotatef(
         elapsed_time * (_time ? 360.0f / _time : 0),
         _coords.x(), _coords.y(), _coords.z()
     );
 }
 
-void Scale::apply(float _elapsed_time) const noexcept {
+auto Scale::apply(float _elapsed_time) const noexcept -> void {
     glScalef(_coords.x(), _coords.y(), _coords.z());
 }
