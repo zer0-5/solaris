@@ -4,7 +4,7 @@
 #include "tinyxml2.h"
 
 #include <fstream>
-#include <unordered_map>
+#include <utility>
 
 using namespace tinyxml2;
 
@@ -106,6 +106,10 @@ auto parse_model(
     if (stored_buffer == buffers_map.end()) {
         auto buffer = ModelBuffer::try_from_file(file_path);
         CHECK_RESULT(buffer);
+        buffers_map.insert(std::make_pair<std::string, ModelBuffer>(
+            file_path,
+            std::move(*buffer)
+        ));
         return Model(*buffer, color);
     }
 
