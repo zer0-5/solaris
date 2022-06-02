@@ -37,16 +37,19 @@ void Vec3::set_z(float z) {
     _z = z;
 }
 
-void Vec3::sum_x(float x) {
+Vec3& Vec3::sum_x(float x) {
     _x += x;
+    return *this;
 }
 
-void Vec3::sum_y(float y) {
+Vec3& Vec3::sum_y(float y) {
     _y += y;
+    return *this;
 }
 
-void Vec3::sum_z(float z) {
+Vec3& Vec3::sum_z(float z) {
     _z += z;
+    return *this;
 }
 
 float Vec3::radius() const noexcept {

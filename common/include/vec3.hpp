@@ -22,9 +22,9 @@ class Vec3 {
     void set_x(float);
     void set_y(float);
     void set_z(float);
-    void sum_x(float);
-    void sum_y(float);
-    void sum_z(float);
+    Vec3& sum_x(float);
+    Vec3& sum_y(float);
+    Vec3& sum_z(float);
     float radius() const noexcept;
     float alpha() const noexcept;
     float beta() const noexcept;
@@ -38,6 +38,7 @@ class Vec3 {
     Vec3 operator-(Vec3) const noexcept;
     Vec3& operator-=(const Vec3&) noexcept;
     Vec3 operator*(float) const noexcept;
+    Vec3 operator*(Vec3) const noexcept;
     Vec3& operator*=(const float&) noexcept;
     bool operator==(const Vec3&) const noexcept;
     bool operator!=(const Vec3&) const noexcept;
