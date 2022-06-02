@@ -68,16 +68,16 @@ std::vector<Vertex> Box::calculateCoords() const {
 
             // Top triangles
             p1.set_y(length / 2);
-            t1 = Vec2(t_top.x() - i1.x() / 4, t_top.y() + i1.y() / 3);
+            t1 = Vec2(t_top.x() - i1.x() / 4, t_top.y() - i1.y() / 3);
 
             p2.set_y(length / 2);
-            t2 = Vec2(t_top.x() - i2.x() / 4, t_top.y() + i2.y() / 3);
+            t2 = Vec2(t_top.x() - i2.x() / 4, t_top.y() - i2.y() / 3);
 
             p3.set_y(length / 2);
-            t3 = Vec2(t_top.x() - i3.x() / 4, t_top.y() + i3.y() / 3);
+            t3 = Vec2(t_top.x() - i3.x() / 4, t_top.y() - i3.y() / 3);
 
             p4.set_y(length / 2);
-            t4 = Vec2(t_top.x() - i4.x() / 4, t_top.y() + i4.y() / 3);
+            t4 = Vec2(t_top.x() - i4.x() / 4, t_top.y() - i4.y() / 3);
 
             points.push_back(Vertex(p1, n_top, t1));
             points.push_back(Vertex(p2, n_top, t2));
