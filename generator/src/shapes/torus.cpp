@@ -41,13 +41,19 @@ std::vector<Vertex> Torus::calculateCoords() const {
             Vec3 p3 = Vec3::cartesian((out_radius + torus_radius * cos(next_phi)) * cos(next_theta), torus_radius * sin(next_phi), (out_radius + torus_radius * cos(next_phi)) * sin(next_theta));
             Vec3 p4 = Vec3::cartesian((out_radius + torus_radius * cos(curr_phi)) * cos(next_theta), torus_radius * sin(curr_phi), (out_radius + torus_radius * cos(curr_phi)) * sin(next_theta));
 
-            points.push_back(Vertex(p1, p1.normalize(), Vec2(current_tex_x, current_tex_y)));
-            points.push_back(Vertex(p2, p2.normalize(), Vec2(next_tex_x, current_tex_y)));
-            points.push_back(Vertex(p4, p4.normalize(), Vec2(next_tex_x, next_tex_y)));
+            Vec3 n1 = Vec3::cartesian(torus_radius * cos(curr_phi) * cos(curr_theta), torus_radius * sin(curr_phi), torus_radius * cos(curr_phi) * sin(curr_theta)).normalize();
+            Vec3 n2 = Vec3::cartesian(torus_radius * cos(next_phi) * cos(curr_theta), torus_radius * sin(next_phi), torus_radius * cos(next_phi) * sin(curr_theta)).normalize();
+            Vec3 n3 = Vec3::cartesian(torus_radius * cos(next_phi) * cos(next_theta), torus_radius * sin(next_phi), torus_radius * cos(next_phi) * sin(next_theta)).normalize();
+            Vec3 n4 = Vec3::cartesian(torus_radius * cos(curr_phi) * cos(next_theta), torus_radius * sin(curr_phi), torus_radius * cos(curr_phi) * sin(next_theta)).normalize();
 
-            points.push_back(Vertex(p2, p2.normalize(), Vec2(next_tex_x, current_tex_y)));
-            points.push_back(Vertex(p3, p3.normalize(), Vec2(current_tex_x, next_tex_y)));
-            points.push_back(Vertex(p4, p4.normalize(), Vec2(next_tex_x, next_tex_y)));
+
+            points.push_back(Vertex(p1, n1, Vec2(current_tex_x, current_tex_y)));
+            points.push_back(Vertex(p2, n2, Vec2(next_tex_x, current_tex_y)));
+            points.push_back(Vertex(p4, n4, Vec2(next_tex_x, next_tex_y)));
+
+            points.push_back(Vertex(p2, n2, Vec2(next_tex_x, current_tex_y)));
+            points.push_back(Vertex(p3, n3, Vec2(current_tex_x, next_tex_y)));
+            points.push_back(Vertex(p4, n4, Vec2(next_tex_x, next_tex_y)));
 
             curr_phi = next_phi;
         }

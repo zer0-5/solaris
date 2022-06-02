@@ -41,15 +41,15 @@ std::vector<Vertex> Sphere::calculateCoords() const {
 
 
             if (stack != n_stacks - 1) {
-                points.push_back(Vertex(p1, p1.normalize(), Vec2(current_tex_x, current_tex_y)));
-                points.push_back(Vertex(p3, p3.normalize(), Vec2(current_tex_x, next_tex_y)));
-                points.push_back(Vertex(p4, p4.normalize(), Vec2(next_tex_x, next_tex_y)));
+                points.push_back(Vertex(p1, Vec3(p1).normalize(), Vec2(current_tex_x, current_tex_y)));
+                points.push_back(Vertex(p3, Vec3(p3).normalize(), Vec2(current_tex_x, next_tex_y)));
+                points.push_back(Vertex(p4, Vec3(p4).normalize(), Vec2(next_tex_x, next_tex_y)));
             }
 
             if (stack != 0) {
-                points.push_back(Vertex(p2, p2.normalize(), Vec2(current_tex_x, next_tex_y)));
-                points.push_back(Vertex(p1, p1.normalize(), Vec2(current_tex_x, current_tex_y)));
-                points.push_back(Vertex(p4, p4.normalize(), Vec2(next_tex_x, next_tex_y)));
+                points.push_back(Vertex(p2, Vec3(p2).normalize(), Vec2(current_tex_x, next_tex_y)));
+                points.push_back(Vertex(p1, Vec3(p1).normalize(), Vec2(current_tex_x, current_tex_y)));
+                points.push_back(Vertex(p4, Vec3(p4).normalize(), Vec2(next_tex_x, next_tex_y)));
             }
 
             current_slice_alpha = next_slice_alpha;
