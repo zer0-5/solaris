@@ -19,13 +19,13 @@ std::vector<Vertex> Plane::calculateCoords() const {
     for (size_t i = 0; i < n_divisions; ++i) {
         for (size_t j = 0; j < n_divisions; ++j) {
             auto t1 = Vec2(j, i) / nd;
-            auto p1 = starting_point + length * Vec3(t1);
+            auto p1 = starting_point + length * Vec3::cartesian(t1.x(), 0, t1.y());
             auto t2 = Vec2(j, i + 1) / nd;
-            auto p2 = starting_point + length * Vec3(t2);
+            auto p2 = starting_point + length * Vec3::cartesian(t2.x(), 0, t2.y());
             auto t3 = Vec2(j + 1, i) / nd;
-            auto p3 = starting_point + length * Vec3(t3);
+            auto p3 = starting_point + length * Vec3::cartesian(t3.x(), 0, t3.y());
             auto t4 = Vec2(j + 1, i + 1) / nd;
-            auto p4 = starting_point + length * Vec3(t4);
+            auto p4 = starting_point + length * Vec3::cartesian(t4.x(), 0, t4.y());
 
             points.push_back(Vertex(p1, n, t1));
             points.push_back(Vertex(p2, n, t2));

@@ -8,6 +8,10 @@ auto Vec2::y() const noexcept -> float {
     return _y;
 }
 
+auto Vec2::operator+(Vec2 rhs) const noexcept -> Vec2 {
+    return Vec2(_x + rhs._x, _y + rhs._y);
+}
+
 auto Vec2::operator*(float rhs) const noexcept -> Vec2 {
     return Vec2(_x * rhs, _y * rhs);
 }

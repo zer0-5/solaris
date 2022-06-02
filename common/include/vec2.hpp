@@ -11,6 +11,7 @@ class Vec2 {
     Vec2(float x, float y) : _x(x), _y(y) {}
     auto x() const noexcept -> float;
     auto y() const noexcept -> float;
+    auto operator+(Vec2) const noexcept -> Vec2;
     auto operator*(float) const noexcept -> Vec2;
     auto friend operator*(float, Vec2) noexcept -> Vec2;
     auto operator/(float) const noexcept -> Vec2;

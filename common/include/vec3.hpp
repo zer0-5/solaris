@@ -14,7 +14,6 @@ class Vec3 {
 
   public:
     Vec3() = default;
-    Vec3(Vec2 v2) : _x(v2.x()), _y(0), _z(v2.y()) {}
     static Vec3 cartesian(float, float, float);
     static Vec3 spherical(float, float, float);
     float x() const;

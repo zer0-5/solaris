@@ -1,6 +1,6 @@
 #include "logger.hpp"
 // #include "shapes/bezier.hpp"
-// #include "shapes/box.hpp"
+#include "shapes/box.hpp"
 // #include "shapes/cone.hpp"
 // #include "shapes/cylinder.hpp"
 #include "shapes/plane.hpp"
@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
         Primitive* p;
         if (type == "plane") {
             p = new Plane(argc - 2, argv + 2);
-        // } else if (type == "box") {
-        //     p = new Box(argc - 2, argv + 2);
+        } else if (type == "box") {
+            p = new Box(argc - 2, argv + 2);
         // } else if (type == "cone") {
         //     p = new Cone(argc - 2, argv + 2);
         // } else if (type == "sphere") {
