@@ -20,15 +20,15 @@ std::vector<Vertex> Sphere::calculateCoords() const {
     auto nst = static_cast<float>(n_stacks);
 
     auto current_stack_beta = M_PI / 2.f;
-    for (size_t stack = 1; stack < n_stacks; ++stack) {
-        auto next_stack_beta = M_PI / 2.f - stacks_height * stack;
+    for (size_t stack = 0; stack < n_stacks; ++stack) {
+        auto next_stack_beta = M_PI / 2.f - stacks_height * (stack + 1);
         auto current_slice_alpha = 0.0f;
 
         auto current_tex_y = stack / nst;
         auto next_tex_y = (stack + 1) / nst;
 
-        for (size_t slice = 1; slice < n_slices; ++slice) {
-            auto next_slice_alpha = alpha * slice;
+        for (size_t slice = 0; slice < n_slices; ++slice) {
+            auto next_slice_alpha = alpha * (slice + 1);
             auto current_tex_x = slice / nsl;
             auto next_tex_x = (slice + 1) / nsl;
             // P3 --- P4

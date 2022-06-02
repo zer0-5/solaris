@@ -5,7 +5,7 @@
 // #include "shapes/cylinder.hpp"
 #include "shapes/plane.hpp"
 #include "shapes/sphere.hpp"
-// #include "shapes/torus.hpp"
+#include "shapes/torus.hpp"
 
 #include <iostream>
 
@@ -39,8 +39,8 @@ int main(int argc, char** argv) {
             p = new Sphere(argc - 2, argv + 2);
         // } else if (type == "cylinder") {
         //     p = new Cylinder(argc - 2, argv + 2);
-        // } else if (type == "torus") {
-        //     p = new Torus(argc - 2, argv + 2);
+        } else if (type == "torus") {
+            p = new Torus(argc - 2, argv + 2);
         // } else if (type == "bezier") {
         //     p = new Bezier(argc - 2, argv + 2);
         } else {
