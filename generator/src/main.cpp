@@ -4,7 +4,7 @@
 // #include "shapes/cone.hpp"
 // #include "shapes/cylinder.hpp"
 #include "shapes/plane.hpp"
-// #include "shapes/sphere.hpp"
+#include "shapes/sphere.hpp"
 // #include "shapes/torus.hpp"
 
 #include <iostream>
@@ -33,9 +33,9 @@ int main(int argc, char** argv) {
             p = new Plane(argc - 2, argv + 2);
         } else if (type == "box") {
             p = new Box(argc - 2, argv + 2);
-        // } else if (type == "cone") {
-        //     p = new Cone(argc - 2, argv + 2);
-        // } else if (type == "sphere") {
+        } else if (type == "cone") {
+            p = new Cone(argc - 2, argv + 2);
+        } else if (type == "sphere") {
         //     p = new Sphere(argc - 2, argv + 2);
         // } else if (type == "cylinder") {
         //     p = new Cylinder(argc - 2, argv + 2);
