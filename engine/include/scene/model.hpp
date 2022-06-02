@@ -1,6 +1,6 @@
 #pragma once
 
-#include "point.hpp"
+#include "vec3.hpp"
 #include "result.hpp"
 #include "parse/parse_error.hpp"
 

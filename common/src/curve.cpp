@@ -18,16 +18,16 @@ static const std::array<std::array<float, 4>, 4> bezier_matrix{{
     {+1.0f, +0.0f, +0.0f, +0.0f},
 }};
 
-auto Curve::catmull_rom(std::vector<Point> points) -> Curve {
+auto Curve::catmull_rom(std::vector<Vec3> points) -> Curve {
     return Curve(catmull_rom_matrix, std::move(points));
 }
 
-auto Curve::bezier(std::vector<Point> points) -> Curve {
+auto Curve::bezier(std::vector<Vec3> points) -> Curve {
     return Curve(bezier_matrix, std::move(points));
 }
 
 auto Curve::get_position(float global_time) const noexcept
-    -> std::pair<Point, Point>
+    -> std::pair<Vec3, Vec3>
 {
     auto t = global_time * _points.size();
     auto segment = (int) floor(t);
@@ -68,19 +68,19 @@ auto Curve::get_position(float global_time) const noexcept
     }
 
     return {
-        Point::cartesian(pv[0], pv[1], pv[2]),
-        Point::cartesian(dv[0], dv[1], dv[2]),
+        Vec3::cartesian(pv[0], pv[1], pv[2]),
+        Vec3::cartesian(dv[0], dv[1], dv[2]),
     };
 }
 
-auto Curve::patch_matrix(std::array<std::array<Point, 4>, 4> points_matrix) noexcept
-    -> std::array<std::array<Point, 4>, 4>
+auto Curve::patch_matrix(std::array<std::array<Vec3, 4>, 4> points_matrix) noexcept
+    -> std::array<std::array<Vec3, 4>, 4>
 {
-    std::array<std::array<Point, 4>, 4> temp{};
-    matrices::mult<float, Point, Point, 4, 4, 4>(bezier_matrix, points_matrix, temp);
+    std::array<std::array<Vec3, 4>, 4> temp{};
+    matrices::mult<float, Vec3, Vec3, 4, 4, 4>(bezier_matrix, points_matrix, temp);
 
-    std::array<std::array<Point, 4>, 4> res{};
-    matrices::mult<Point, float, Point, 4, 4, 4>(temp, bezier_matrix, res);
+    std::array<std::array<Vec3, 4>, 4> res{};
+    matrices::mult<Vec3, float, Vec3, 4, 4, 4>(temp, bezier_matrix, res);
 
     return res;
 }

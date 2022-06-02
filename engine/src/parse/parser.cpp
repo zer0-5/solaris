@@ -25,23 +25,23 @@ using namespace tinyxml2;
     }
 
 auto parse_point(XMLElement const* const node) noexcept
-    -> cpp::result<Point, ParseError>
+    -> cpp::result<Vec3, ParseError>
 {
     TRY_QUERY_FLOAT(node, "x", x, ParseError::MALFORMED_POINT);
     TRY_QUERY_FLOAT(node, "y", y, ParseError::MALFORMED_POINT);
     TRY_QUERY_FLOAT(node, "z", z, ParseError::MALFORMED_POINT);
 
-    return Point::cartesian(x, y, z);
+    return Vec3::cartesian(x, y, z);
 }
 
 auto parse_projection(XMLElement const* const node) noexcept
-    -> cpp::result<Point, ParseError>
+    -> cpp::result<Vec3, ParseError>
 {
     TRY_QUERY_FLOAT(node, "fov", x, ParseError::MALFORMED_PROJECTION);
     TRY_QUERY_FLOAT(node, "near", y, ParseError::MALFORMED_PROJECTION);
     TRY_QUERY_FLOAT(node, "far", z, ParseError::MALFORMED_PROJECTION);
 
-    return Point::cartesian(x, y, z);
+    return Vec3::cartesian(x, y, z);
 }
 
 auto parse_camera(XMLElement const* const node) noexcept
@@ -58,8 +58,8 @@ auto parse_camera(XMLElement const* const node) noexcept
     CHECK_RESULT(look_at);
 
     auto const up_elem = node->FirstChildElement("up");
-    cpp::result<Point, ParseError> up =
-        cpp::result<Point, ParseError>(Point::cartesian(0, 1, 0));
+    cpp::result<Vec3, ParseError> up =
+        cpp::result<Vec3, ParseError>(Vec3::cartesian(0, 1, 0));
     if (up_elem) {
         up = parse_point(up_elem);
         CHECK_RESULT(up);
@@ -68,8 +68,8 @@ auto parse_camera(XMLElement const* const node) noexcept
     }
 
     auto const proj_elem = node->FirstChildElement("projection");
-    cpp::result<Point, ParseError> proj =
-        cpp::result<Point, ParseError>(Point::cartesian(60, 1, 1000));
+    cpp::result<Vec3, ParseError> proj =
+        cpp::result<Vec3, ParseError>(Vec3::cartesian(60, 1, 1000));
     if (proj_elem) {
         auto proj = parse_projection(proj_elem);
         CHECK_RESULT(proj);
@@ -127,7 +127,7 @@ auto parse_transform(XMLElement const* const node) noexcept
             bool align = false;
             node->QueryBoolAttribute("align", &align);
 
-            auto translation_points = std::vector<Point>();
+            auto translation_points = std::vector<Vec3>();
             for (auto point_element = node->FirstChildElement("point");
                 point_element;
                 point_element = point_element->NextSiblingElement("point")

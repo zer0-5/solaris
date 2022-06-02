@@ -81,7 +81,7 @@ auto Camera::react_key_orbit(
 
     beta = std::clamp(beta, -1.5f, 1.5f);
 
-    _eye = Point::spherical(radius, alpha, beta);
+    _eye = Vec3::spherical(radius, alpha, beta);
 }
 
 auto Camera::react_key_fpv(
@@ -90,14 +90,14 @@ auto Camera::react_key_fpv(
     auto vec = _center - _eye;
     vec.normalize();
 
-    auto mov = Point::cartesian(0.f, 0.f, 0.f);
+    auto mov = Vec3::cartesian(0.f, 0.f, 0.f);
 
     if (kb['w']) mov += vec * 0.5f;
     if (kb['s']) mov -= vec * 0.5f;
-    if (kb['a']) mov -= Point(vec).cross(_up).normalize() * 0.5f;
-    if (kb['d']) mov += Point(vec).cross(_up).normalize() * 0.5f;
-    if (kb['+']) mov += Point(_up) * 0.5f;
-    if (kb['-']) mov -= Point(_up) * 0.5f;
+    if (kb['a']) mov -= Vec3(vec).cross(_up).normalize() * 0.5f;
+    if (kb['d']) mov += Vec3(vec).cross(_up).normalize() * 0.5f;
+    if (kb['+']) mov += Vec3(_up) * 0.5f;
+    if (kb['-']) mov -= Vec3(_up) * 0.5f;
 
     _eye += mov;
     _center += mov;
@@ -120,7 +120,7 @@ auto Camera::cursor_motion(int x, int y) noexcept -> void {
             beta = 1.5;
         }
 
-        _center = _eye + Point::spherical(radius, alpha, beta);
+        _center = _eye + Vec3::spherical(radius, alpha, beta);
     }
 }
 
