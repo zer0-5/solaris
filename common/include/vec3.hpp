@@ -1,7 +1,5 @@
 #pragma once
 
-#include "vec2.hpp"
-
 #include <array>
 // #include <boost/container_hash/hash.hpp>
 #include <iostream>

@@ -13,6 +13,7 @@ class Vec2 {
     auto y() const noexcept -> float;
     auto operator+(Vec2) const noexcept -> Vec2;
     auto operator*(float) const noexcept -> Vec2;
+    auto operator*(Vec2) const noexcept -> Vec2;
     auto friend operator*(float, Vec2) noexcept -> Vec2;
     auto operator/(float) const noexcept -> Vec2;
     auto friend operator<<(std::ostream&, Vec2 const&) -> std::ostream&;

@@ -1,7 +1,0 @@
-#pragma once
-
-#include "vec3.hpp"
-
-#include <unordered_map>
-
-auto get_idx_or_insert(std::unordered_map<Vec3, size_t>&, Vec3, size_t&) -> size_t;
