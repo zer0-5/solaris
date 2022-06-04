@@ -13,7 +13,7 @@ Torus::Torus(int argc, char** argv){
 }
 
 std::vector<Vertex> Torus::calculateCoords() const {
-    
+
     std::vector<Vertex> points;
 
     auto phi_step = static_cast<double>(2 * M_PI / n_slices);
@@ -23,16 +23,16 @@ std::vector<Vertex> Torus::calculateCoords() const {
     auto nst = static_cast<float>(n_stacks);
     auto nsl = static_cast<float>(n_slices);
 
-    for(size_t stack = 1; stack < n_stacks; stack++){
+    for(size_t stack = 0; stack < n_stacks; stack++){
         auto next_theta = static_cast<float>(theta_step * (stack + 1));
-        
+
         auto current_tex_x = stack / nst;
         auto next_tex_x = (stack + 1) / nst;
 
         auto curr_phi = 0.f;
-        for(size_t slice = 1; slice < n_slices; slice++){
+        for(size_t slice = 0; slice < n_slices; slice++){
             auto next_phi = static_cast<float>(phi_step * (slice + 1));
-            
+
             auto current_tex_y = slice / nsl;
             auto next_tex_y = (slice + 1) / nsl;
 

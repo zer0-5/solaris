@@ -10,6 +10,7 @@
 #include "imgui_impl_glut.h"
 #include "imgui_impl_opengl3.h"
 
+#include <IL/il.h>
 #include <limits>
 
 namespace state {
@@ -21,7 +22,7 @@ auto static keyboard =
 auto static simulation_speed = 1.0f;
 auto static debug_mode = false;
 auto static polygon_mode = GL_FILL;
-}
+} // namespace state
 
 void change_size(int w, int h) {
     state::world->camera.set_screen_size(w, h);
@@ -64,7 +65,8 @@ void draw_windows() {
     ImGui::SameLine();
     auto label = state::polygon_mode == GL_FILL ? "Fill" : "Line";
     if (ImGui::Button(label)) {
-        state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
+        state::polygon_mode =
+            state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
     };
 
     ImGui::Text("Show Lines:");
@@ -100,7 +102,7 @@ auto get_delta() -> int {
     static int prev_elapsed = 0;
 
     auto curr_elapsed = glutGet(GLUT_ELAPSED_TIME);
-    auto delta =  curr_elapsed - prev_elapsed;
+    auto delta = curr_elapsed - prev_elapsed;
     prev_elapsed = curr_elapsed;
 
     return delta;
@@ -123,6 +125,11 @@ void render_scene(void) {
         draw_axis();
     }
 
+    // place lights
+    for (auto&& light : state::world->lights) {
+        light->place();
+    }
+
     // draw groups
     glPolygonMode(GL_FRONT_AND_BACK, state::polygon_mode);
     state::world->group.draw(elapsed_time / 1000.f, state::debug_mode);
@@ -133,7 +140,7 @@ void render_scene(void) {
     draw_windows();
     ImGui::Render();
     ImGuiIO& io = ImGui::GetIO();
-    glViewport(0, 0, (GLsizei)io.DisplaySize.x, (GLsizei)io.DisplaySize.y);
+    glViewport(0, 0, (GLsizei) io.DisplaySize.x, (GLsizei) io.DisplaySize.y);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // end of frame
@@ -151,7 +158,7 @@ void handle_key_up(unsigned char key, int x, int y) {
 }
 
 void handle_special_key(int key, int x, int y) {
-    switch(key) {
+    switch (key) {
     case GLUT_KEY_F1:
         state::world->camera.switch_mode();
         break;
@@ -159,7 +166,8 @@ void handle_special_key(int key, int x, int y) {
         state::debug_mode = !state::debug_mode;
         break;
     case GLUT_KEY_F3:
-        state::polygon_mode = state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
+        state::polygon_mode =
+            state::polygon_mode == GL_FILL ? GL_LINE : GL_FILL;
         break;
     case GLUT_KEY_F10:
         state::simulation_speed--;
@@ -182,7 +190,6 @@ void cursor_motion(int x, int y) {
 }
 
 Renderer::Renderer() {
-
     // init GLUT and the window
     static int glut_argc = 1;
     static char glut_arg[] = "";
@@ -194,7 +201,20 @@ Renderer::Renderer() {
     glutCreateWindow("solaris");
 
     glewInit();
+
+    ilInit();
+    ilEnable(IL_ORIGIN_SET);
+    ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_RESCALE_NORMAL);
+
+    float amb[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
 
     // Required callback registry
     glutReshapeFunc(change_size);
@@ -231,6 +251,9 @@ auto Renderer::set_world(World& world) noexcept -> Renderer& {
 }
 
 auto Renderer::run() const noexcept -> void {
+    for (auto&& light : state::world->lights) {
+        light->enable();
+    }
     glutMainLoop();
 
     // Cleanup

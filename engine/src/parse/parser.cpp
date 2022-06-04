@@ -1,10 +1,10 @@
 #include "parse/parser.hpp"
 
 #include "logger.hpp"
+#include "parse/parse_state.hpp"
 #include "tinyxml2.h"
 
 #include <fstream>
-#include <utility>
 
 using namespace tinyxml2;
 
@@ -13,14 +13,15 @@ using namespace tinyxml2;
         return cpp::fail(err);                                                 \
     }
 
-#define CHECK_RESULT(result)                                                   \
-    if (result.has_error()) {                                                  \
-        return cpp::fail(result.error());                                      \
-    }
-
 #define TRY_QUERY_FLOAT(node, name, value, err)                                \
     float value;                                                               \
     if (node->QueryFloatAttribute(name, &value) != XML_SUCCESS) {              \
+        return cpp::fail(err);                                                 \
+    }
+
+#define TRY_QUERY_INT(node, name, value, err)                                \
+    int value;                                                               \
+    if (node->QueryIntAttribute(name, &value) != XML_SUCCESS) {              \
         return cpp::fail(err);                                                 \
     }
 
@@ -42,6 +43,16 @@ auto parse_projection(XMLElement const* const node) noexcept
     TRY_QUERY_FLOAT(node, "far", z, ParseError::MALFORMED_PROJECTION);
 
     return Vec3::cartesian(x, y, z);
+}
+
+auto parse_color(XMLElement const* const node) noexcept
+    -> cpp::result<Color, ParseError>
+{
+    TRY_QUERY_INT(node, "R", r, ParseError::MALFORMED_COLOR_COMPONENT);
+    TRY_QUERY_INT(node, "G", g, ParseError::MALFORMED_COLOR_COMPONENT);
+    TRY_QUERY_INT(node, "B", b, ParseError::MALFORMED_COLOR_COMPONENT);
+
+    return Color::from_rgb(r, g, b);
 }
 
 auto parse_camera(XMLElement const* const node) noexcept
@@ -85,35 +96,68 @@ auto parse_camera(XMLElement const* const node) noexcept
     );
 }
 
-auto parse_model(
-    XMLElement const* const node,
-    std::unordered_map<std::string, ModelBuffer>& buffers_map
-) noexcept -> cpp::result<Model, ParseError> {
-    char const* file_path;
-    node->QueryStringAttribute("file", &file_path);
+auto parse_model(XMLElement const* const node, ParseState& parse_state) noexcept
+    -> cpp::result<Model, ParseError>
+{
+    char const* model_file_path;
+    node->QueryStringAttribute("file", &model_file_path);
+    CHECK_NULL(model_file_path, ParseError::PRIMITIVE_FILE_NOT_FOUND);
+    auto model_buffer = parse_state.insert_model_buffer(model_file_path);
+    CHECK_RESULT(model_buffer);
+
+    auto maybe_texture_buffer = std::optional<TextureBuffer>();
+
+    char const* texture_file_path;
+    auto texture_element = node->FirstChildElement("texture");
+    if (texture_element) {
+        texture_element->QueryStringAttribute("file", &texture_file_path);
+        CHECK_NULL(texture_file_path, ParseError::TEXTURE_FILE_NOT_FOUND);
+        auto texture_buffer = parse_state.insert_texture_buffer(texture_file_path);
+        CHECK_RESULT(texture_buffer);
+        maybe_texture_buffer = *texture_buffer;
+    }
 
     auto color_elem = node->FirstChildElement("color");
-    auto color = Color{1, 1, 1};
-    if (color_elem != nullptr) {
-        TRY_QUERY_FLOAT(color_elem, "r", r, ParseError::MALFORMED_COLOR);
-        TRY_QUERY_FLOAT(color_elem, "g", g, ParseError::MALFORMED_COLOR);
-        TRY_QUERY_FLOAT(color_elem, "b", b, ParseError::MALFORMED_COLOR);
-
-        color = Color{r / 255, g / 255, b / 255};
+    XMLElement const* component;
+    auto diffuse = Color::from_rgb(200, 200, 200);
+    if (color_elem && (component = color_elem->FirstChildElement("diffuse"))) {
+        auto c = parse_color(component);
+        CHECK_RESULT(c);
+        diffuse = *c;
+    }
+    auto ambient = Color::from_rgb(50, 50, 50);
+    if (color_elem && (component = color_elem->FirstChildElement("ambient"))) {
+        auto c = parse_color(component);
+        CHECK_RESULT(c);
+        ambient = *c;
+    }
+    auto specular = Color::from_rgb(0, 0, 0);
+    if (color_elem && (component = color_elem->FirstChildElement("specular"))) {
+        auto c = parse_color(component);
+        CHECK_RESULT(c);
+        specular = *c;
+    }
+    auto emissive = Color::from_rgb(0, 0, 0);
+    if (color_elem && (component = color_elem->FirstChildElement("emissive"))) {
+        auto c = parse_color(component);
+        CHECK_RESULT(c);
+        emissive = *c;
+    }
+    auto shininess = 0.0f;
+    if (color_elem && (component = color_elem->FirstChildElement("shininess"))) {
+        TRY_QUERY_FLOAT(component, "value", c, ParseError::MALFORMED_COLOR_COMPONENT)
+        shininess = c;
     }
 
-    auto stored_buffer = buffers_map.find(file_path);
-    if (stored_buffer == buffers_map.end()) {
-        auto buffer = ModelBuffer::try_from_file(file_path);
-        CHECK_RESULT(buffer);
-        buffers_map.insert(std::make_pair<std::string, ModelBuffer>(
-            file_path,
-            std::move(*buffer)
-        ));
-        return Model(*buffer, color);
-    }
-
-    return Model(stored_buffer->second, color);
+    return Model(
+        *model_buffer,
+        maybe_texture_buffer,
+        diffuse,
+        ambient,
+        specular,
+        emissive,
+        shininess
+    );
 }
 
 auto parse_transform(XMLElement const* const node) noexcept
@@ -129,8 +173,8 @@ auto parse_transform(XMLElement const* const node) noexcept
 
             auto translation_points = std::vector<Vec3>();
             for (auto point_element = node->FirstChildElement("point");
-                point_element;
-                point_element = point_element->NextSiblingElement("point")
+                 point_element;
+                 point_element = point_element->NextSiblingElement("point")
             ) {
                 auto point = parse_point(point_element);
                 CHECK_RESULT(point);
@@ -169,18 +213,17 @@ auto parse_transform(XMLElement const* const node) noexcept
     return cpp::fail(ParseError::UNKNOWN_TRANFORMATION);
 }
 
-auto parse_group(
-    XMLElement const* const node,
-    std::unordered_map<std::string, ModelBuffer>& buffers_map
-) noexcept -> cpp::result<Group, ParseError> {
+auto parse_group(XMLElement const* const node, ParseState& parse_state) noexcept
+    -> cpp::result<Group, ParseError>
+{
     auto models = std::vector<Model>();
     auto const models_elem = node->FirstChildElement("models");
     if (models_elem != nullptr) {
         for (auto model_elem = models_elem->FirstChildElement("model");
-            model_elem;
-            model_elem = model_elem->NextSiblingElement("model")
+             model_elem;
+             model_elem = model_elem->NextSiblingElement("model")
         ) {
-            auto model = parse_model(model_elem, buffers_map);
+            auto model = parse_model(model_elem, parse_state);
             CHECK_RESULT(model);
             models.push_back(*model);
         }
@@ -191,7 +234,7 @@ auto parse_group(
          group_elem;
          group_elem = group_elem->NextSiblingElement("group")
     ) {
-        auto group_res = parse_group(group_elem, buffers_map);
+        auto group_res = parse_group(group_elem, parse_state);
         CHECK_RESULT(group_res);
         groups.push_back(std::move(*group_res));
     }
@@ -212,6 +255,67 @@ auto parse_group(
     return Group(std::move(models), std::move(groups), std::move(transforms));
 }
 
+auto parse_lights(XMLElement const* const node) noexcept
+    -> cpp::result<std::vector<std::unique_ptr<Light>>, ParseError>
+{
+    auto lights = std::vector<std::unique_ptr<Light>>();
+
+    if (!node) {
+        return lights;
+    }
+
+    for (auto light_elem = node->FirstChildElement("light");
+         light_elem;
+         light_elem = light_elem->NextSiblingElement("light")
+    ) {
+        char const* light_type;
+        light_elem->QueryStringAttribute("type", &light_type);
+        CHECK_NULL(light_type, ParseError::MALFORMED_LIGHT);
+
+        auto lt = std::string_view(light_type);
+        if (lt == "point") {
+            TRY_QUERY_FLOAT(light_elem, "posx", px, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "posy", py, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "posz", pz, ParseError::MALFORMED_LIGHT);
+
+            auto light = PointLight::try_new(Vec3::cartesian(px, py, pz));
+            CHECK_RESULT(light);
+            lights.push_back(std::make_unique<PointLight>(*light));
+
+        } else if (lt == "directional") {
+            TRY_QUERY_FLOAT(light_elem, "dirx", dx, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "diry", dy, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "dirz", dz, ParseError::MALFORMED_LIGHT);
+
+            auto light = DirectionalLight::try_new(Vec3::cartesian(dx, dy, dz));
+            CHECK_RESULT(light);
+            lights.push_back(std::make_unique<DirectionalLight>(*light));
+
+        } else if (lt == "spot") {
+            TRY_QUERY_FLOAT(light_elem, "posx", px, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "posy", py, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "posz", pz, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "dirx", dx, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "diry", dy, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "dirz", dz, ParseError::MALFORMED_LIGHT);
+            TRY_QUERY_FLOAT(light_elem, "cutoff", cutoff, ParseError::MALFORMED_LIGHT);
+
+            auto light = SpotLight::try_new(
+                Vec3::cartesian(px, py, pz),
+                Vec3::cartesian(dx, dy, dz),
+                cutoff
+            );
+            CHECK_RESULT(light);
+            lights.push_back(std::make_unique<SpotLight>(*light));
+
+        } else {
+            return cpp::fail(ParseError::MALFORMED_LIGHT);
+        }
+    }
+
+    return lights;
+}
+
 auto parse(std::string_view file_path) noexcept
     -> cpp::result<World, ParseError>
 {
@@ -223,15 +327,20 @@ auto parse(std::string_view file_path) noexcept
     auto const root = doc.FirstChild();
     auto const camera_element = root->FirstChildElement("camera");
     auto const group_element = root->FirstChildElement("group");
+    auto const lights_element = root->FirstChildElement("lights");
 
+    // parse camera
     auto camera = parse_camera(camera_element);
     CHECK_RESULT(camera);
 
-    auto buffers_map = new
-        std::unordered_map<std::string, ModelBuffer>();
-    auto group = parse_group(group_element, *buffers_map);
-    delete buffers_map;
+    // parse groups
+    auto parse_state = ParseState();
+    auto group = parse_group(group_element, parse_state);
     CHECK_RESULT(group);
 
-    return World(std::move(*camera), std::move(*group));
+    // parse lights
+    auto lights = parse_lights(lights_element);
+    CHECK_RESULT(lights);
+
+    return World(std::move(*camera), std::move(*group), std::move(*lights));
 }

@@ -20,7 +20,7 @@ std::vector<Vertex> Cylinder::calculateCoords() const {
 
     auto t_top_center = Vec2(7.f / 16.f, 3.f / 16.f);
     auto t_bot_center = Vec2(13.f / 16.f, 3.f / 16.f);
-    auto t_side = Vec2(0.f, 3.f / 4.f);
+    auto t_side = Vec2(0.f, 3.f / 8.f);
     auto t_side_height = 5.f / 8.f;
     auto t_radius = 3.f / 16.f;
 
@@ -35,7 +35,7 @@ std::vector<Vertex> Cylinder::calculateCoords() const {
     for (size_t stack = 0; stack < n_stacks; ++stack) {
         auto next_height = stack_height * (stack + 1);
 
-        auto curr_alpha = 0;
+        auto curr_alpha = 0.0f;
         for (size_t slice = 0; slice < n_slices; ++slice) {
             auto next_alpha = alpha * (slice + 1);
 
@@ -66,7 +66,7 @@ std::vector<Vertex> Cylinder::calculateCoords() const {
                 // draw base
                 Vec3 o = Vec3::cartesian(0, 0, 0);
                 points.push_back(Vertex(p4, n_bot, t_bot_center + t_radius * Vec2(sin(next_alpha), cos(next_alpha))));
-                points.push_back(Vertex(p3, n_bot, t_bot_center + t_radius * Vec2(sin(alpha), cos(alpha))));
+                points.push_back(Vertex(p3, n_bot, t_bot_center + t_radius * Vec2(sin(curr_alpha), cos(curr_alpha))));
                 points.push_back(Vertex(o, n_bot, t_bot_center));
             }
 
@@ -74,7 +74,7 @@ std::vector<Vertex> Cylinder::calculateCoords() const {
                 // draw top
                 Vec3 o = Vec3::cartesian(0, next_height, 0);
                 points.push_back(Vertex(o, n_top, t_top_center));
-                points.push_back(Vertex(p1, n_top, t_top_center + t_radius * Vec2(sin(alpha), cos(alpha))));
+                points.push_back(Vertex(p1, n_top, t_top_center + t_radius * Vec2(sin(curr_alpha), cos(curr_alpha))));
                 points.push_back(Vertex(p2, n_top, t_top_center + t_radius * Vec2(sin(next_alpha), cos(next_alpha))));
             }
             curr_alpha = next_alpha;

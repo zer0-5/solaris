@@ -24,7 +24,7 @@ std::vector<Vertex> Cone::calculateCoords() const {
     auto radius_step = -radius / nst;
 
     auto curr_radius = radius;
-    auto curr_height = 0;
+    auto curr_height = 0.0f;
 
     auto n_bot = Vec3::cartesian(0, -1, 0);
 
@@ -34,14 +34,14 @@ std::vector<Vertex> Cone::calculateCoords() const {
 
     for (size_t stack = 0; stack < n_stacks; ++stack) {
         auto next_radius = radius + (radius_step * (stack + 1));
-        auto next_height = stack_height * stack;
+        auto next_height = stack_height * (stack + 1);
 
         auto curr_alpha = 0.f;
         for (size_t slice = 0; slice < n_slices; ++slice) {
 
             auto next_alpha = alpha * (slice + 1);
 
-            auto n_side = Vec3::spherical(1.f, alpha, beta);
+            auto n_side = Vec3::spherical(1.f, curr_alpha, beta);
             auto n_side_next = Vec3::spherical(1.f, next_alpha, beta);
 
             auto p1 = Vec3::cartesian(next_radius * sin(curr_alpha), next_height, next_radius * cos(curr_alpha));
@@ -73,7 +73,7 @@ std::vector<Vertex> Cone::calculateCoords() const {
                 // draw base
                 auto o = Vec3::cartesian(0, 0, 0);
                 points.push_back(Vertex(p4, n_bot, t_bot_center + t_radius * Vec2(sin(next_alpha), cos(next_alpha))));
-                points.push_back(Vertex(p3, n_bot, t_bot_center + t_radius * Vec2(sin(alpha), cos(alpha))));
+                points.push_back(Vertex(p3, n_bot, t_bot_center + t_radius * Vec2(sin(curr_alpha), cos(curr_alpha))));
                 points.push_back(Vertex(o, n_bot, t_bot_center));
             }
 

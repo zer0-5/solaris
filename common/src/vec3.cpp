@@ -1,6 +1,7 @@
 #include "vec3.hpp"
 
 #include <math.h>
+#include <assert.h>
 
 Vec3 Vec3::cartesian(float x, float y, float z) {
     return Vec3(x, y, z);
@@ -66,6 +67,14 @@ float Vec3::beta() const noexcept {
 
 Vec3& Vec3::normalize() noexcept {
     auto len = sqrt(_x * _x + _y * _y + _z * _z);
+
+    if (len == 0) {
+        _x = 0;
+        _y = 0;
+        _z = 0;
+
+        return *this;
+    }
 
     _x = _x / len;
     _y = _y / len;

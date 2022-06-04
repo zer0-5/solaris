@@ -20,8 +20,14 @@ char const unknown_transformation_error_msg[] =
     "unknown transformation";
 char const primitive_file_not_found_error_msg[] =
     "primitive file not found";
-char const malformed_color_error_msg[] =
-    "malformed color";
+char const malformed_color_component_error_msg[] =
+    "malformed color component";
+char const malformed_light_error_msg[] =
+    "malformed light";
+char const light_limit_error_msg[] =
+    "more than eight lights were defined";
+char const texture_file_not_found_error_msg[] =
+    "texture file not found";
 
 char const* const error_msg(ParseError e) {
     switch (e) {
@@ -45,8 +51,14 @@ char const* const error_msg(ParseError e) {
         return unknown_transformation_error_msg;
     case PRIMITIVE_FILE_NOT_FOUND:
         return primitive_file_not_found_error_msg;
-    case MALFORMED_COLOR:
-        return malformed_color_error_msg;
+    case MALFORMED_COLOR_COMPONENT:
+        return malformed_color_component_error_msg;
+    case MALFORMED_LIGHT:
+        return malformed_light_error_msg;
+    case LIGHT_LIMIT:
+        return light_limit_error_msg;
+    case TEXTURE_FILE_NOT_FOUND:
+        return texture_file_not_found_error_msg;
     default:
         return "";
     }

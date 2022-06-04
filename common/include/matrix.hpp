@@ -10,6 +10,7 @@ auto mult(
     const std::array<std::array<T2, P>, M>& mat2,
     std::array<std::array<T3, P>, N>& res
 ) -> void {
+    res = {};
     for (size_t n = 0; n < N; ++n) {
         for (size_t p = 0; p < P; ++p) {
             for (size_t m = 0; m < M; ++m) {

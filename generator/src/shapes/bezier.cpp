@@ -24,21 +24,19 @@ auto get_patch_point(
     std::array<std::array<float, 1>, 4> mv = {{{v*v*v}, {v*v}, {v}, {1}}};
     std::array<std::array<float, 1>, 4> dv = {{{3*v*v}, {2*v}, {1}, {0}}};
 
-    std::array<std::array<Vec3, 4>, 1> temp{};
-
+    std::array<std::array<Vec3, 4>, 1> temp;
     matrices::mult<float, Vec3, Vec3, 1, 4, 4>(mu, patch, temp);
-    std::array<std::array<Vec3, 1>, 1> point{};
+    std::array<std::array<Vec3, 1>, 1> point;
     matrices::mult<Vec3, float, Vec3, 1, 4, 1>(temp, mv, point);
 
-    matrices::mult<float, Vec3, Vec3, 1, 4, 4>(du, patch, temp);
-    std::array<std::array<Vec3, 1>, 1> vec_u{};
-    matrices::mult<Vec3, float, Vec3, 1, 4, 1>(temp, mv, vec_u);
-
-    matrices::mult<float, Vec3, Vec3, 1, 4, 4>(mu, patch, temp);
-    std::array<std::array<Vec3, 1>, 1> vec_v{};
+    std::array<std::array<Vec3, 1>, 1> vec_v;
     matrices::mult<Vec3, float, Vec3, 1, 4, 1>(temp, dv, vec_v);
 
-    auto n = vec_u[0][0].cross(vec_v[0][0]).normalize();
+    matrices::mult<float, Vec3, Vec3, 1, 4, 4>(du, patch, temp);
+    std::array<std::array<Vec3, 1>, 1> vec_u;
+    matrices::mult<Vec3, float, Vec3, 1, 4, 1>(temp, mv, vec_u);
+
+    auto n = vec_v[0][0].cross(vec_u[0][0]).normalize();
 
     return std::make_pair(point[0][0], n);
 }
