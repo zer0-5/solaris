@@ -14,12 +14,12 @@
 class Light {
   protected:
     GLenum _id;
-    static cpp::result<GLenum, ParseError> try_get_new_id() noexcept;
+    auto static try_get_new_id() noexcept -> cpp::result<GLenum, ParseError>;
     Light(GLenum id) : _id(id) {}
 
   public:
     void turn_on() const noexcept;
-    virtual void place() const noexcept = 0;
+    auto virtual place() const noexcept -> void = 0;
 };
 
 class PointLight: public Light {
@@ -28,8 +28,8 @@ class PointLight: public Light {
     PointLight(GLenum id, Vec3 position) : Light(id), _position(position) {}
 
   public:
-    static cpp::result<PointLight, ParseError> try_new(Vec3) noexcept;
-    void place() const noexcept override;
+    auto static try_new(Vec3) noexcept -> cpp::result<PointLight, ParseError>;
+    auto place() const noexcept -> void override;
 };
 
 class DirectionalLight: public Light {
@@ -40,8 +40,9 @@ class DirectionalLight: public Light {
       , _direction(direction) {}
 
   public:
-    static cpp::result<DirectionalLight, ParseError> try_new(Vec3) noexcept;
-    void place() const noexcept override;
+    auto static try_new(Vec3) noexcept
+      -> cpp::result<DirectionalLight, ParseError>;
+    auto place() const noexcept -> void override;
 };
 
 class SpotLight: public Light {
@@ -56,6 +57,7 @@ class SpotLight: public Light {
       , _cutoff(cutoff) {}
 
   public:
-    static cpp::result<SpotLight, ParseError> try_new(Vec3, Vec3, float) noexcept;
-    void place() const noexcept override;
+    auto static try_new(Vec3, Vec3, float) noexcept
+      -> cpp::result<SpotLight, ParseError>;
+    auto place() const noexcept -> void override;
 };
