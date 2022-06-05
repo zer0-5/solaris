@@ -43,18 +43,4 @@ class Vec3 {
     auto friend operator<<(std::ostream&, Vec3 const&) -> std::ostream&;
 };
 
-// namespace std {
-// template <>
-// struct hash<Vec3> {
-//     size_t operator()(const Vec3& p) const {
-//         size_t seed = 0;
-//         boost::hash_combine(seed, p.x());
-//         boost::hash_combine(seed, p.y());
-//         boost::hash_combine(seed, p.z());
-//
-//         return seed;
-//     }
-// };
-// } // namespace std
-
 Vec3 operator*(float, Vec3) noexcept;
