@@ -1,6 +1,6 @@
 #include "scene/light.hpp"
 
-cpp::result<GLenum, ParseError> Light::try_get_new_id() noexcept {
+auto Light::try_get_new_id() noexcept -> cpp::result<GLenum, ParseError> {
     static GLenum curr_light_id = GL_LIGHT0;
     if (curr_light_id > GL_LIGHT7) {
         return cpp::fail(ParseError::LIGHT_LIMIT);
@@ -8,7 +8,7 @@ cpp::result<GLenum, ParseError> Light::try_get_new_id() noexcept {
     return curr_light_id++;
 }
 
-void Light::turn_on() const noexcept {
+auto Light::turn_on() const noexcept -> void {
     static GLfloat dark[4] = {0.2, 0.2, 0.2, 1.0};
     static GLfloat white[4] = {1.0, 1.0, 1.0, 1.0};
 
@@ -18,35 +18,41 @@ void Light::turn_on() const noexcept {
     glLightfv(_id, GL_SPECULAR, white);
 }
 
-cpp::result<PointLight, ParseError> PointLight::try_new(Vec3 p) noexcept {
+auto PointLight::try_new(Vec3 p) noexcept
+    -> cpp::result<PointLight, ParseError>
+{
     auto id = Light::try_get_new_id();
     CHECK_RESULT(id);
     return PointLight(*id, p);
 }
 
-void PointLight::place() const noexcept {
+auto PointLight::place() const noexcept -> void {
     float pos[4] = {_position.x(), _position.y(), _position.z(), 1.0f};
     glLightfv(_id, GL_POSITION, pos);
 }
 
-cpp::result<DirectionalLight, ParseError> DirectionalLight::try_new(Vec3 d) noexcept {
+auto DirectionalLight::try_new(Vec3 d) noexcept
+    -> cpp::result<DirectionalLight, ParseError>
+{
     auto id = Light::try_get_new_id();
     CHECK_RESULT(id);
     return DirectionalLight(*id, d);
 }
 
-void DirectionalLight::place() const noexcept {
+auto DirectionalLight::place() const noexcept -> void {
     float dir[4] = {_direction.x(), _direction.y(), _direction.z(), 0.0f};
     glLightfv(_id, GL_POSITION, dir);
 }
 
-cpp::result<SpotLight, ParseError> SpotLight::try_new(Vec3 p, Vec3 d, float cutoff) noexcept {
+auto SpotLight::try_new(Vec3 p, Vec3 d, float cutoff) noexcept
+    -> cpp::result<SpotLight, ParseError>
+{
     auto id = Light::try_get_new_id();
     CHECK_RESULT(id);
     return SpotLight(*id, p, d, cutoff);
 }
 
-void SpotLight::place() const noexcept {
+auto SpotLight::place() const noexcept -> void{
     float pos[4] = {_position.x(), _position.y(), _position.z(), 1.0f};
     float dir[4] = {_direction.x(), _direction.y(), _direction.z(), 0.0f};
     glLightfv(_id, GL_POSITION, pos);
