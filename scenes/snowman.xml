@@ -143,5 +143,39 @@
                 </transform>
             </group>
         </group>
+        <group name="Hat Base">
+            <models>
+                <model file="models/hat.3d">
+                    <color>
+                        <diffuse R="0" G="0" B="0" />
+                        <ambient R="0" G="0" B="0" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="0" y="68" z="0"/>
+                <scale x="10" y="0.5" z="10"/>
+            </transform>
+        </group>
+        <group name="Hat">
+            <models>
+                <model file="models/hat.3d">
+                    <color>
+                        <diffuse R="0" G="0" B="0" />
+                        <ambient R="0" G="0" B="0" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="0" y="68" z="0"/>
+                <scale x="7" y="7" z="7"/>
+            </transform>
+        </group>
  	</group>
  </world>
