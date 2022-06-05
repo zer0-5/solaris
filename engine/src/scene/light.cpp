@@ -52,7 +52,7 @@ auto SpotLight::try_new(Vec3 p, Vec3 d, float cutoff) noexcept
     return SpotLight(*id, p, d, cutoff);
 }
 
-auto SpotLight::place() const noexcept -> void{
+auto SpotLight::place() const noexcept -> void {
     float pos[4] = {_position.x(), _position.y(), _position.z(), 1.0f};
     float dir[4] = {_direction.x(), _direction.y(), _direction.z(), 0.0f};
     glLightfv(_id, GL_POSITION, pos);
