@@ -20,7 +20,7 @@ std::vector<Vertex> Cone::calculateCoords() const {
 
     auto stack_height = height / nst;
     auto alpha = (2 * M_PI) / nsl;
-    auto beta = atan(height / radius);
+    auto beta = atan(radius / height);
     auto radius_step = -radius / nst;
 
     auto curr_radius = radius;
