@@ -17,7 +17,7 @@ static auto const help_string =
     "sphere     [radius] [slices] [stacks]\n"
     "cone       [radius] [height] [slices] [stacks]\n"
     "cylinder   [radius] [height] [slices] [stacks]\n"
-    "torus      [ring radius] [circunference radius] [slices] [stacks]\n"
+    "torus      [ring radius] [circumference radius] [slices] [stacks]\n"
     "bezier     [patch file] [tessellation level]";
 
 int main(int argc, char** argv) {

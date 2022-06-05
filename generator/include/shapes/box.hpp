@@ -9,6 +9,6 @@ private:
 
 public:
     Box(int argc, char** argv);
-    std::vector<Point> calculateCoords() const;
+    std::vector<Vertex> calculateCoords() const;
     ~Box() {};
 };

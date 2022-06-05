@@ -9,6 +9,6 @@ class Bezier : public Primitive {
 
   public:
     Bezier(int argc, char** argv);
-    auto calculateCoords() const -> std::vector<Point>;
+    auto calculateCoords() const -> std::vector<Vertex>;
     ~Bezier() {};
 };

@@ -12,12 +12,12 @@ auto StaticTranslation::apply(float _elapsed_time) const noexcept -> void {
     glTranslatef(_coords.x(), _coords.y(), _coords.z());
 }
 
-TimedTranslation::TimedTranslation(std::vector<Point> points, float time, bool is_aligned)
+TimedTranslation::TimedTranslation(std::vector<Vec3> points, float time, bool is_aligned)
     : _curve(Curve::catmull_rom(std::move(points)))
-    , _trajectory(std::vector<Point>())
+    , _trajectory(std::vector<Vec3>())
     , _time(time)
     , _is_aligned(is_aligned)
-    , _prev_y(Point::cartesian(0, 1, 0))
+    , _prev_y(Vec3::cartesian(0, 1, 0))
 {
 
     for (auto t = 0.0f; t < 1.0f; t += 1.0f / TESS) {
@@ -32,14 +32,14 @@ auto TimedTranslation::apply(float elapsed_time) const noexcept -> void {
 
     if (_is_aligned) {
         auto x = dir.normalize();
-        auto z = Point(x).cross(_prev_y).normalize();
-        auto y = Point(z).cross(x).normalize();
+        auto z = Vec3(x).cross(_prev_y).normalize();
+        auto y = Vec3(z).cross(x).normalize();
         glMultMatrixf(build_rotation_matrix(x, y, z).data());
     }
 }
 
 auto TimedTranslation::build_rotation_matrix(
-    Point x, Point y, Point z
+    Vec3 x, Vec3 y, Vec3 z
 ) const noexcept -> std::array<float, 16> {
     return std::array<float, 16>{{
         x.x(), x.y(), x.z(), 0,

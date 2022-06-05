@@ -12,36 +12,51 @@ Sphere::Sphere(int argc, char** argv) {
     n_stacks = std::stof(argv[2]);
 }
 
-std::vector<Point> Sphere::calculateCoords() const {
-    std::vector<Point> coords;
-    float stacks_height = M_PI / n_stacks;
-    float alpha = (2 * M_PI) / n_slices;
+std::vector<Vertex> Sphere::calculateCoords() const {
+    auto points = std::vector<Vertex>();
+    auto nsl = static_cast<float>(n_slices);
+    auto nst = static_cast<float>(n_stacks);
 
-    float current_stack_beta = M_PI / 2;
-    for (size_t stack = 1; stack <= n_stacks; ++stack) {
-        float next_stack_beta = M_PI / 2 - stacks_height * stack;
+    auto stacks_height = M_PI / nst;
+    auto alpha = 2 * M_PI / nsl;
 
-        float current_slice_alpha = 0;
-        for (size_t slice = 1; slice <= n_slices; ++slice) {
-            float next_slice_alpha = alpha * slice;
+    auto current_stack_beta = M_PI / 2.f;
+
+    for (size_t stack = 0; stack < n_stacks; ++stack) {
+        auto next_stack_beta = M_PI / 2.f - stacks_height * (stack + 1);
+        auto current_slice_alpha = 0.0f;
+
+        auto current_tex_y = (n_stacks - stack) / nst;
+        auto next_tex_y = (n_stacks - stack - 1) / nst;
+
+        for (size_t slice = 0; slice < n_slices; ++slice) {
+            auto next_slice_alpha = alpha * (slice + 1);
+            auto current_tex_x = slice / nsl;
+            auto next_tex_x = (slice + 1) / nsl;
             // P3 --- P4
             // |      |
             // P1 --- P2
-            Point p1 = Point::spherical(radius, current_slice_alpha, current_stack_beta);
-            Point p2 = Point::spherical(radius, next_slice_alpha, current_stack_beta);
-            Point p3 = Point::spherical(radius, current_slice_alpha, next_stack_beta);
-            Point p4 = Point::spherical(radius, next_slice_alpha, next_stack_beta);
+            Vec3 p1 = Vec3::spherical(radius, current_slice_alpha, current_stack_beta);
+            Vec3 p2 = Vec3::spherical(radius, next_slice_alpha, current_stack_beta);
+            Vec3 p3 = Vec3::spherical(radius, current_slice_alpha, next_stack_beta);
+            Vec3 p4 = Vec3::spherical(radius, next_slice_alpha, next_stack_beta);
 
-            if (stack != n_stacks) {
-                coords.push_back(p1);
-                coords.push_back(p3);
-                coords.push_back(p4);
+            Vertex vtx1 = Vertex(p1, Vec3(p1).normalize(), Vec2(current_tex_x, current_tex_y));
+            Vertex vtx2 = Vertex(p2, Vec3(p2).normalize(), Vec2(next_tex_x, current_tex_y));
+            Vertex vtx3 = Vertex(p3, Vec3(p3).normalize(), Vec2(current_tex_x, next_tex_y));
+            Vertex vtx4 = Vertex(p4, Vec3(p4).normalize(), Vec2(next_tex_x, next_tex_y));
+
+
+            if (stack != n_stacks - 1) {
+                points.push_back(vtx1);
+                points.push_back(vtx3);
+                points.push_back(vtx4);
             }
 
-            if (stack != 1) {
-                coords.push_back(p2);
-                coords.push_back(p1);
-                coords.push_back(p4);
+            if (stack != 0) {
+                points.push_back(vtx2);
+                points.push_back(vtx1);
+                points.push_back(vtx4);
             }
 
             current_slice_alpha = next_slice_alpha;
@@ -49,5 +64,5 @@ std::vector<Point> Sphere::calculateCoords() const {
 
         current_stack_beta = next_stack_beta;
     }
-    return coords;
+    return points;
 }

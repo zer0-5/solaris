@@ -11,6 +11,6 @@ private:
 
 public:
     Cone(int argc, char** argv);
-    std::vector<Point> calculateCoords() const;
+    std::vector<Vertex> calculateCoords() const;
     ~Cone() {};
 };

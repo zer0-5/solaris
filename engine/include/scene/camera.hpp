@@ -1,6 +1,6 @@
 #pragma once
 
-#include "point.hpp"
+#include "vec3.hpp"
 #include "tinyxml2.h"
 
 #include <iostream>
@@ -15,10 +15,10 @@ enum CameraMode {
 
 class Camera {
   private:
-    Point _eye;
-    Point _center;
-    Point _up;
-    Point _projection;
+    Vec3 _eye;
+    Vec3 _center;
+    Vec3 _up;
+    Vec3 _projection;
     CameraMode _mode;
     int _screen_width;
     int _screen_height;
@@ -32,12 +32,12 @@ class Camera {
 
   public:
     Camera()
-      : _eye(Point::cartesian(0, 0, 0))
-      , _center(Point::cartesian(0, 0, 0))
-      , _up(Point::cartesian(0, 0, 0))
-      , _projection(Point::cartesian(0, 0, 0))
+      : _eye(Vec3::cartesian(0, 0, 0))
+      , _center(Vec3::cartesian(0, 0, 0))
+      , _up(Vec3::cartesian(0, 0, 0))
+      , _projection(Vec3::cartesian(0, 0, 0))
       , _mode(CameraMode::ORBIT) {}
-    Camera(Point&& eye, Point&& center, Point&& up, Point&& projection)
+    Camera(Vec3&& eye, Vec3&& center, Vec3&& up, Vec3&& projection)
       : _eye(std::move(eye))
       , _center(std::move(center))
       , _up(std::move(up))

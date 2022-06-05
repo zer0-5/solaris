@@ -1,0 +1,112 @@
+<world>
+    <camera>
+	    <position x="-20" y="20" z="-100" />
+	    <lookAt x="-20" y="20" z="0" />
+	    <up x="0" y="1" z="0" />
+        <projection fov="60" near="1" far="1000" />
+    </camera>
+    <lights>
+		<light type="point" posx="0" posy="0" posz="0" />
+	</lights>
+	<group>
+        <group name="Sky">
+            <models>
+                <model file="models/box.3d">
+                    <texture file="textures/skybox.jpg" />
+                    <color>
+                        <ambient R="255" G="255" B="255" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <scale x="-500" y="-500" z="-500" />
+                <rotate angle="180" x="1" y="0" z="0" />
+            </transform>
+        </group>
+        <group name="Field">
+            <models>
+                <model file="models/plane.3d">
+                    <texture file="textures/field.jpg"/>
+                    <color>
+                        <ambient R="255" G="255" B="255" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <scale x="-500" y="-500" z="-500"/>
+            </transform>
+        </group>
+        <group name="Football">
+            <models>
+                <model file="models/sphere.3d">
+                    <texture file="textures/football.jpg"/>
+                    <color>
+                        <diffuse R="200" G="200" B="200" />
+                        <ambient R="50" G="50" B="50" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="30" y="15" z="0"/>
+                <scale x="10" y="10" z="10"/>
+            </transform>
+        </group>
+        <group name="Basketball">
+            <models>
+                <model file="models/sphere.3d">
+                    <texture file="textures/basketball.jpg"/>
+                    <color>
+                        <diffuse R="200" G="200" B="200" />
+                        <ambient R="50" G="50" B="50" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="0" y="15" z="0"/>
+                <scale x="12" y="12" z="12"/>
+            </transform>
+        </group>
+        <group name="Handball">
+            <models>
+                <model file="models/sphere.3d">
+                    <texture file="textures/handball.jpg"/>
+                    <color>
+                        <diffuse R="200" G="200" B="200" />
+                        <ambient R="50" G="50" B="50" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="-30" y="15" z="0"/>
+                <scale x="5" y="5" z="5"/>
+            </transform>
+        </group>
+        <group name="Rugby">
+            <models>
+                <model file="models/sphere.3d">
+                    <texture file="textures/rugby.jpg"/>
+                    <color>
+                        <diffuse R="200" G="200" B="200" />
+                        <ambient R="50" G="50" B="50" />
+                        <specular R="0" G="0" B="0" />
+                        <emissive R="0" G="0" B="0" />
+                        <shininess value="0" />
+                    </color>
+                </model>
+            </models>
+            <transform>
+                <translate x="-60" y="15" z="0"/>
+                <scale x="10" y="5" z="5"/>
+            </transform>
+        </group>
+ 	</group>
+ </world>
