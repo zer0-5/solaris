@@ -95,17 +95,17 @@
                         <texture file="textures/carrot.jpg"/>
                         <color>
                             <diffuse R="200" G="200" B="200" />
-                            <ambient R="50" G="50" B="50" />
-                            <specular R="0" G="0" B="0" />
+                            <ambient R="100" G="100" B="100" />
+                            <specular R="200" G="200" B="200" />
                             <emissive R="0" G="0" B="0" />
-                            <shininess value="0" />
+                            <shininess value="50" />
                         </color>
                     </model>
                 </models>
                 <transform>
                     <rotate angle="270" x="0" y="0" z="1"/>
                     <translate x="0" y="0.95" z="0"/>
-                    <scale x="0.2" y="0.2" z="0.2"/>
+                    <scale x="0.2" y="0.5" z="0.2"/>
                 </transform>
             </group>
             <group name="Right Eye">
@@ -114,9 +114,9 @@
                         <color>
                             <diffuse R="0" G="0" B="0" />
                             <ambient R="0" G="0" B="0" />
-                            <specular R="0" G="0" B="0" />
+                            <specular R="200" G="200" B="200" />
                             <emissive R="0" G="0" B="0" />
-                            <shininess value="0" />
+                            <shininess value="50" />
                         </color>
                     </model>
                 </models>
@@ -131,9 +131,9 @@
                         <color>
                             <diffuse R="0" G="0" B="0" />
                             <ambient R="0" G="0" B="0" />
-                            <specular R="0" G="0" B="0" />
+                            <specular R="200" G="200" B="200" />
                             <emissive R="0" G="0" B="0" />
-                            <shininess value="0" />
+                            <shininess value="50" />
                         </color>
                     </model>
                 </models>
