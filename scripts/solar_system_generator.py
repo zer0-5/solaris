@@ -30,12 +30,29 @@ with tag('world'):
         doc.stag('lookAt', x="0", y="0", z="0")
         doc.stag('up', x="0", y="1", z="0")
         doc.stag('projection', fov="60", near="1", far="1000")
+    with tag('lights'):
+        doc.stag('light', type="point", posx="0", posy="0", posz="0")
     with tag('group'):
+        with tag('group', name='Skybox'):
+            with tag('models'):
+                with tag('model', file='models/sphere.3d'):
+                    doc.stag('texture', file="textures/8k_skybox.jpg")
+                    with tag('color'):
+                        doc.stag('ambient', R="255", G="255", B="255")
+            with tag('transform'):
+                doc.stag('scale', x="-500", y="-500", z="-500")
+                doc.stag('rotate', angle="180", x="1", y="0", z="0")
         with tag('group', name='Sun'):
             (r, g, b) = ImageColor.getcolor("#FDB813", "RGB")
             with tag('models'):
                 with tag('model', file='models/sphere.3d'):
-                    doc.stag('color', r=r, g=g, b=b)
+                    doc.stag('texture', file="textures/8k_sun.jpg")
+                    with tag('color'): # TODO: FIX VALUES
+                        doc.stag('diffuse', R="200", G="200", B="200")
+                        doc.stag('ambient', R="50", G="50", B="50")
+                        doc.stag('specular', R="0", G="0", B="0")
+                        doc.stag('emissive', R="255", G="255", B="255")
+                        doc.stag('shininess', value="0")
             with tag('transform'):
                 size = dist_scale
                 doc.stag('scale', x=str(size), y=str(size), z=str(size))
@@ -50,10 +67,17 @@ with tag('world'):
             tilt = float(planet["axial tilt"])
             curve_points = CurvePoints(n_divs_curve, x_dist).calc_points()
             (r, g, b) = ImageColor.getcolor(planet["color"], "RGB")
+            texture_file = planet["texture"]
             with tag('group', name=name):
                 with tag('models'):
                     with tag('model', file='models/sphere.3d'):
-                        doc.stag('color', r=r, g=g, b=b)
+                        doc.stag('texture', file=texture_file)
+                        with tag('color'):
+                            doc.stag('diffuse', R="200", G="200", B="200")
+                            doc.stag('ambient', R="50", G="50", B="50")
+                            doc.stag('specular', R="0", G="0", B="0")
+                            doc.stag('emissive', R="0", G="0", B="0")
+                            doc.stag('shininess', value="0")
                 with tag('transform'):
                     doc.stag('rotate', angle=rot_angle, x=0, y=1, z=0)
                     with tag('translate', time=orbit, align=False):
@@ -65,8 +89,17 @@ with tag('world'):
                 if with_ring:
                     with tag('group', name='ring'):
                         with tag('models'):
-                            with tag('model', file='models/torus.3d'):
-                                doc.stag('color', r=r, g=g, b=b)
+                            with tag('model', file='models/ring.3d'):
+                                if name == "Uranus":
+                                    doc.stag('texture', file='textures/uranus_ring.png')
+                                else:
+                                    doc.stag('texture', file='textures/8k_saturn_ring.png')
+                                with tag('color'):
+                                    doc.stag('diffuse', R="200", G="200", B="200")
+                                    doc.stag('ambient', R="50", G="50", B="50")
+                                    doc.stag('specular', R="0", G="0", B="0")
+                                    doc.stag('emissive', R="0", G="0", B="0")
+                                    doc.stag('shininess', value="0")
                 if name in satellites_dic.keys():
                     satellites_planet = satellites_dic[name]
                     for sat in satellites_planet:
@@ -75,14 +108,20 @@ with tag('world'):
                         (sat_r, sat_g, sat_b) = ImageColor.getcolor("#767676", "RGB")
                         with tag('group', name=sat_name):
                             with tag('models'):
-                                with tag('model', file='models/sphere_low_res.3d'):
-                                    doc.stag('color', r=sat_r, g=sat_g, b=sat_b)
+                                with tag('model', file='models/sphere_lowres.3d'):
+                                    doc.stag('texture', file="textures/8k_moon.jpg")
+                                    with tag('color'):
+                                        doc.stag('diffuse', R="200", G="200", B="200")
+                                        doc.stag('ambient', R="50", G="50", B="50")
+                                        doc.stag('specular', R="0", G="0", B="0")
+                                        doc.stag('emissive', R="0", G="0", B="0")
+                                        doc.stag('shininess', value="0")   
                             with tag('transform'):
                                 dist = random.uniform(1.5 * radius, 2.5 * radius) / radius
                                 rot_angle = random.uniform(0, 360)
                                 curve_points = CurvePoints(n_divs_curve, dist).calc_points()
                                 doc.stag('rotate', angle=rot_angle, x=1, y=0, z=0)
-                                with tag('translate', time=random.uniform(30, 50), align=False):
+                                with tag('translate', time=random.uniform(5, 10), align=False):
                                     for point in curve_points:
                                         doc.stag('point', x=point["x"], y=point["y"], z=point["z"])
                                 doc.stag('scale', x=sat_radius, y=sat_radius, z=sat_radius)
@@ -92,8 +131,14 @@ with tag('world'):
                 curve_points = CurvePoints(n_divs_curve, random.uniform(dist_scale + 8, dist_scale + 9)).calc_points()
                 with tag ('group', name=f"Asteroid {x}"):
                     with tag('models'):
-                        with tag('model', file='models/sphere_low_res.3d'):
-                            doc.stag('color', r=r, g=g, b=b)
+                        with tag('model', file='models/sphere_lowres.3d'):
+                            doc.stag('texture', file='textures/4k_haumea.jpg')
+                            with tag('color'):
+                                doc.stag('diffuse', R="200", G="200", B="200")
+                                doc.stag('ambient', R="50", G="50", B="50")
+                                doc.stag('specular', R="0", G="0", B="0")
+                                doc.stag('emissive', R="0", G="0", B="0")
+                                doc.stag('shininess', value="0")
                     with tag('transform'):
                         size = random.uniform(0.01, 0.03)
                         rot_angle = random.uniform(0, 360)
@@ -113,8 +158,14 @@ with tag('world'):
             b = a * sqrt(1 - eccentricity*eccentricity)
             (r, g, b) = ImageColor.getcolor("#5a554c", "RGB")
             with tag('models'):
-                with tag('model', file='models/teapot.3d'):
-                    doc.stag('color', r=r, g=g, b=b)
+                with tag('model', file='models/bezier.3d'):
+                    doc.stag('texture', file='textures/teapot.jpg')
+                    with tag('color'):
+                        doc.stag('diffuse', R="200", G="200", B="200")
+                        doc.stag('ambient', R="50", G="50", B="50")
+                        doc.stag('specular', R="0", G="0", B="0")
+                        doc.stag('emissive', R="0", G="0", B="0")
+                        doc.stag('shininess', value="0")
             with tag('transform'):
                 doc.stag('rotate', angle=-10, x=0, y=0, z=1)
                 doc.stag('translate', x= aphelion * a / (perihelion + aphelion), y=0, z=0)
@@ -130,8 +181,6 @@ with tag('world'):
                         doc.stag('point', x=x, y=0, z=y)
                 doc.stag('rotate', angle=-90, x=1, y=0, z=0)
                 doc.stag('scale', x=size, y=size, z=size)
-
-
 
 result = indent(
     doc.getvalue(),
