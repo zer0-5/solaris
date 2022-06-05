@@ -43,16 +43,16 @@ std::vector<Vertex> Cylinder::calculateCoords() const {
             auto nn = Vec3::cartesian(sin(next_alpha), 0, cos(next_alpha));
 
             auto p1 = (radius * nc).sum_y(next_height);
-            auto t1 = t_side + Vec2(slice, (stack + 1) * t_side_height) / nst;
+            auto t1 = t_side + Vec2(slice / nsl, (stack + 1) * t_side_height / nst);
 
             auto p2 = (radius * nn).sum_y(next_height);
-            auto t2 = t_side + Vec2((slice + 1), (stack + 1) * t_side_height) / nst;
+            auto t2 = t_side + Vec2((slice + 1) / nsl, (stack + 1) * t_side_height / nst);
 
             auto p3 = (radius * nc).sum_y(curr_height);
-            auto t3 = t_side + Vec2(slice, stack * t_side_height) / nst;
+            auto t3 = t_side + Vec2(slice / nsl, stack * t_side_height / nst);
 
             auto p4 = (radius * nn).sum_y(curr_height);
-            auto t4 = t_side + Vec2((slice + 1), stack * t_side_height) / nst;
+            auto t4 = t_side + Vec2((slice + 1) / nsl, stack * t_side_height / nst);
 
             points.push_back(Vertex(p4, nn, t4));
             points.push_back(Vertex(p2, nn, t2));
