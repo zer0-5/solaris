@@ -120,12 +120,15 @@ void render_scene(void) {
     state::world->camera.place();
     state::world->camera.react_key(state::keyboard);
 
+    glDisable(GL_LIGHTING);
+
     // draw axis
     if (state::debug_mode) {
         draw_axis();
     }
 
     // place lights
+    glEnable(GL_LIGHTING);
     for (auto&& light : state::world->lights) {
         light->place();
     }
@@ -209,9 +212,10 @@ Renderer::Renderer() {
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_RESCALE_NORMAL);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
 
     float amb[4] = {1.0f, 1.0f, 1.0f, 1.0f};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
@@ -235,10 +239,6 @@ Renderer::Renderer() {
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
 
-    //  OpenGL settings
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-
     // Setup Platform/Renderer backends
     ImGui_ImplGLUT_Init();
     ImGui_ImplOpenGL3_Init();
@@ -252,8 +252,9 @@ auto Renderer::set_world(World& world) noexcept -> Renderer& {
 
 auto Renderer::run() const noexcept -> void {
     for (auto&& light : state::world->lights) {
-        light->enable();
+        light->turn_on();
     }
+
     glutMainLoop();
 
     // Cleanup

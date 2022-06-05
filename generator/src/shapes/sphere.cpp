@@ -14,18 +14,20 @@ Sphere::Sphere(int argc, char** argv) {
 
 std::vector<Vertex> Sphere::calculateCoords() const {
     auto points = std::vector<Vertex>();
-    auto stacks_height = static_cast<float>(M_PI / n_stacks);
-    auto alpha = static_cast<float>((2 * M_PI) / n_slices);
     auto nsl = static_cast<float>(n_slices);
     auto nst = static_cast<float>(n_stacks);
 
+    auto stacks_height = M_PI / nst;
+    auto alpha = 2 * M_PI / nsl;
+
     auto current_stack_beta = M_PI / 2.f;
+
     for (size_t stack = 0; stack < n_stacks; ++stack) {
         auto next_stack_beta = M_PI / 2.f - stacks_height * (stack + 1);
         auto current_slice_alpha = 0.0f;
 
-        auto current_tex_y = stack / nst;
-        auto next_tex_y = (stack + 1) / nst;
+        auto current_tex_y = (n_stacks - stack) / nst;
+        auto next_tex_y = (n_stacks - stack - 1) / nst;
 
         for (size_t slice = 0; slice < n_slices; ++slice) {
             auto next_slice_alpha = alpha * (slice + 1);
@@ -42,7 +44,7 @@ std::vector<Vertex> Sphere::calculateCoords() const {
             Vertex vtx1 = Vertex(p1, Vec3(p1).normalize(), Vec2(current_tex_x, current_tex_y));
             Vertex vtx2 = Vertex(p2, Vec3(p2).normalize(), Vec2(next_tex_x, current_tex_y));
             Vertex vtx3 = Vertex(p3, Vec3(p3).normalize(), Vec2(current_tex_x, next_tex_y));
-            Vertex vtx4 = Vertex(p4, Vec3(p4).normalize(), Vec2(next_tex_x, current_tex_y));
+            Vertex vtx4 = Vertex(p4, Vec3(p4).normalize(), Vec2(next_tex_x, next_tex_y));
 
 
             if (stack != n_stacks - 1) {

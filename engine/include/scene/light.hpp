@@ -18,7 +18,7 @@ class Light {
     Light(GLenum id) : _id(id) {}
 
   public:
-    void enable() const noexcept;
+    void turn_on() const noexcept;
     virtual void place() const noexcept = 0;
 };
 

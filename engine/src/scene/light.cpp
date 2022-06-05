@@ -8,7 +8,7 @@ cpp::result<GLenum, ParseError> Light::try_get_new_id() noexcept {
     return curr_light_id++;
 }
 
-void Light::enable() const noexcept {
+void Light::turn_on() const noexcept {
     static GLfloat dark[4] = {0.2, 0.2, 0.2, 1.0};
     static GLfloat white[4] = {1.0, 1.0, 1.0, 1.0};
 

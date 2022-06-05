@@ -1,7 +1,6 @@
 #include "scene/model.hpp"
 
 #include <IL/il.h>
-#include <IL/ilu.h>
 #include <fstream>
 
 auto ModelBuffer::try_from_file(std::string_view file_path) noexcept
@@ -84,12 +83,6 @@ auto TextureBuffer::try_from_file(std::string_view file_path) noexcept
 
     ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
 
-    ILinfo image_info;
-    iluGetImageInfo(&image_info);
-    if (image_info.Origin == IL_ORIGIN_LOWER_LEFT) {
-        iluFlipImage();
-    }
-
     auto image_data = ilGetData();
 
     GLuint id;
@@ -125,4 +118,5 @@ auto Model::draw() const noexcept -> void {
         _texture_buffer->bind();
     }
     _model_buffer.draw();
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
