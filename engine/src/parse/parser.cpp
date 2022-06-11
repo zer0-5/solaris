@@ -82,7 +82,7 @@ auto parse_camera(XMLElement const* const node) noexcept
     cpp::result<Vec3, ParseError> proj =
         cpp::result<Vec3, ParseError>(Vec3::cartesian(60, 1, 1000));
     if (proj_elem) {
-        auto proj = parse_projection(proj_elem);
+        proj = parse_projection(proj_elem);
         CHECK_RESULT(proj);
     } else {
         warn("no 'projection' attribute found for 'camera', using default");
